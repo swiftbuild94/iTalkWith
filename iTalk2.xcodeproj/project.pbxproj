@@ -13,19 +13,19 @@
 		181552712935B62900E051FE /* iTalk2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552702935B62900E051FE /* iTalk2UITests.swift */; };
 		181552732935B62900E051FE /* iTalk2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */; };
 		181552802935B65B00E051FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1815527F2935B65B00E051FE /* README.md */; };
-		181552822935B66900E051FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 181552812935B66900E051FE /* GoogleService-Info.plist */; };
 		181552852935B6BA00E051FE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 181552842935B6BA00E051FE /* Documentation.docc */; };
 		181552872935B6CC00E051FE /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 181552862935B6CB00E051FE /* Model */; };
 		181552892935B6D800E051FE /* ViewModel in Resources */ = {isa = PBXBuildFile; fileRef = 181552882935B6D700E051FE /* ViewModel */; };
 		1815528B2935B72E00E051FE /* View in Resources */ = {isa = PBXBuildFile; fileRef = 1815528A2935B72E00E051FE /* View */; };
 		1815528F2935B77100E051FE /* Support in Resources */ = {isa = PBXBuildFile; fileRef = 1815528E2935B77100E051FE /* Support */; };
-		1829E50A29360E48008BF351 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E50929360E48008BF351 /* FirebaseAuth */; };
-		1829E50C29360E48008BF351 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E50B29360E48008BF351 /* FirebaseDatabase */; };
-		1829E50E29360E48008BF351 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E50D29360E48008BF351 /* FirebaseFirestore */; };
-		1829E51029360E48008BF351 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E50F29360E48008BF351 /* FirebaseFirestoreSwift-Beta */; };
-		1829E51229360E48008BF351 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E51129360E48008BF351 /* FirebaseStorage */; };
-		1829E51429360E48008BF351 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E51329360E48008BF351 /* FirebaseStorageSwift-Beta */; };
-		18C4917A2935B87E00844F38 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 18C491792935B87E00844F38 /* SDWebImageSwiftUI */; };
+		1829E518293610CF008BF351 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1829E517293610CF008BF351 /* GoogleService-Info.plist */; };
+		1829E51B293618AD008BF351 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E51A293618AD008BF351 /* FirebaseAuth */; };
+		1829E51D293618AD008BF351 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E51C293618AD008BF351 /* FirebaseDatabase */; };
+		1829E51F293618AD008BF351 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E51E293618AD008BF351 /* FirebaseDatabaseSwift */; };
+		1829E521293618AD008BF351 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E520293618AD008BF351 /* FirebaseFirestore */; };
+		1829E523293618AD008BF351 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E522293618AD008BF351 /* FirebaseFirestoreSwift */; };
+		1829E525293618AD008BF351 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E524293618AD008BF351 /* FirebaseStorage */; };
+		1829E52829361909008BF351 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1829E52729361909008BF351 /* SDWebImageSwiftUI */; };
 		18C491892935BDE800844F38 /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C491882935BDE800844F38 /* ContentView2.swift */; };
 		18C4918B2935BE1600844F38 /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4918A2935BE1600844F38 /* ContentView3.swift */; };
 /* End PBXBuildFile section */
@@ -58,12 +58,12 @@
 		181552702935B62900E051FE /* iTalk2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2UITests.swift; sourceTree = "<group>"; };
 		181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1815527F2935B65B00E051FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		181552812935B66900E051FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		181552842935B6BA00E051FE /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		181552862935B6CB00E051FE /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
 		181552882935B6D700E051FE /* ViewModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ViewModel; sourceTree = "<group>"; };
 		1815528A2935B72E00E051FE /* View */ = {isa = PBXFileReference; lastKnownFileType = folder; path = View; sourceTree = "<group>"; };
 		1815528E2935B77100E051FE /* Support */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Support; sourceTree = "<group>"; };
+		1829E517293610CF008BF351 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18C491882935BDE800844F38 /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		18C4918A2935BE1600844F38 /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,13 +73,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1829E50C29360E48008BF351 /* FirebaseDatabase in Frameworks */,
-				1829E50E29360E48008BF351 /* FirebaseFirestore in Frameworks */,
-				1829E51029360E48008BF351 /* FirebaseFirestoreSwift-Beta in Frameworks */,
-				18C4917A2935B87E00844F38 /* SDWebImageSwiftUI in Frameworks */,
-				1829E50A29360E48008BF351 /* FirebaseAuth in Frameworks */,
-				1829E51429360E48008BF351 /* FirebaseStorageSwift-Beta in Frameworks */,
-				1829E51229360E48008BF351 /* FirebaseStorage in Frameworks */,
+				1829E52829361909008BF351 /* SDWebImageSwiftUI in Frameworks */,
+				1829E523293618AD008BF351 /* FirebaseFirestoreSwift in Frameworks */,
+				1829E51F293618AD008BF351 /* FirebaseDatabaseSwift in Frameworks */,
+				1829E521293618AD008BF351 /* FirebaseFirestore in Frameworks */,
+				1829E51D293618AD008BF351 /* FirebaseDatabase in Frameworks */,
+				1829E51B293618AD008BF351 /* FirebaseAuth in Frameworks */,
+				1829E525293618AD008BF351 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +126,7 @@
 			children = (
 				1815525A2935B62800E051FE /* iTalk2.xcdatamodeld */,
 				1815525D2935B62800E051FE /* Info.plist */,
-				181552812935B66900E051FE /* GoogleService-Info.plist */,
+				1829E517293610CF008BF351 /* GoogleService-Info.plist */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
 				181552862935B6CB00E051FE /* Model */,
 				181552882935B6D700E051FE /* ViewModel */,
@@ -189,13 +189,13 @@
 			);
 			name = iTalk2;
 			packageProductDependencies = (
-				18C491792935B87E00844F38 /* SDWebImageSwiftUI */,
-				1829E50929360E48008BF351 /* FirebaseAuth */,
-				1829E50B29360E48008BF351 /* FirebaseDatabase */,
-				1829E50D29360E48008BF351 /* FirebaseFirestore */,
-				1829E50F29360E48008BF351 /* FirebaseFirestoreSwift-Beta */,
-				1829E51129360E48008BF351 /* FirebaseStorage */,
-				1829E51329360E48008BF351 /* FirebaseStorageSwift-Beta */,
+				1829E51A293618AD008BF351 /* FirebaseAuth */,
+				1829E51C293618AD008BF351 /* FirebaseDatabase */,
+				1829E51E293618AD008BF351 /* FirebaseDatabaseSwift */,
+				1829E520293618AD008BF351 /* FirebaseFirestore */,
+				1829E522293618AD008BF351 /* FirebaseFirestoreSwift */,
+				1829E524293618AD008BF351 /* FirebaseStorage */,
+				1829E52729361909008BF351 /* SDWebImageSwiftUI */,
 			);
 			productName = iTalk2;
 			productReference = 1815524C2935B62500E051FE /* iTalk2.app */;
@@ -270,8 +270,8 @@
 			);
 			mainGroup = 181552432935B62500E051FE;
 			packageReferences = (
-				18C491782935B87E00844F38 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
-				1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1829E52629361909008BF351 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 1815524D2935B62500E051FE /* Products */;
 			projectDirPath = "";
@@ -293,9 +293,9 @@
 				1815528B2935B72E00E051FE /* View in Resources */,
 				181552802935B65B00E051FE /* README.md in Resources */,
 				1815528F2935B77100E051FE /* Support in Resources */,
-				181552822935B66900E051FE /* GoogleService-Info.plist in Resources */,
 				181552572935B62800E051FE /* Preview Assets.xcassets in Resources */,
 				181552892935B6D800E051FE /* ViewModel in Resources */,
+				1829E518293610CF008BF351 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +495,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -524,7 +524,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -650,16 +650,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
-				kind = versionRange;
-				maximumVersion = 8.0.0;
-				minimumVersion = 7.0.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
 			};
 		};
-		18C491782935B87E00844F38 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+		1829E52629361909008BF351 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
 			requirement = {
@@ -670,39 +669,39 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1829E50929360E48008BF351 /* FirebaseAuth */ = {
+		1829E51A293618AD008BF351 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		1829E50B29360E48008BF351 /* FirebaseDatabase */ = {
+		1829E51C293618AD008BF351 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
 		};
-		1829E50D29360E48008BF351 /* FirebaseFirestore */ = {
+		1829E51E293618AD008BF351 /* FirebaseDatabaseSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		1829E520293618AD008BF351 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		1829E50F29360E48008BF351 /* FirebaseFirestoreSwift-Beta */ = {
+		1829E522293618AD008BF351 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreSwift-Beta";
+			package = 1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
-		1829E51129360E48008BF351 /* FirebaseStorage */ = {
+		1829E524293618AD008BF351 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1829E519293618AD008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
-		1829E51329360E48008BF351 /* FirebaseStorageSwift-Beta */ = {
+		1829E52729361909008BF351 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1829E50829360E48008BF351 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseStorageSwift-Beta";
-		};
-		18C491792935B87E00844F38 /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 18C491782935B87E00844F38 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			package = 1829E52629361909008BF351 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
