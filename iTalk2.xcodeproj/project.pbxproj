@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		181552502935B62500E051FE /* iTalk2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815524F2935B62500E051FE /* iTalk2App.swift */; };
+		181552522935B62500E051FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552512935B62500E051FE /* ContentView.swift */; };
+		181552542935B62800E051FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181552532935B62800E051FE /* Assets.xcassets */; };
+		181552572935B62800E051FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181552562935B62800E051FE /* Preview Assets.xcassets */; };
+		181552592935B62800E051FE /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552582935B62800E051FE /* Persistence.swift */; };
+		1815525C2935B62800E051FE /* iTalk2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1815525A2935B62800E051FE /* iTalk2.xcdatamodeld */; };
+		181552672935B62900E051FE /* iTalk2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552662935B62900E051FE /* iTalk2Tests.swift */; };
+		181552712935B62900E051FE /* iTalk2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552702935B62900E051FE /* iTalk2UITests.swift */; };
+		181552732935B62900E051FE /* iTalk2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		181552632935B62900E051FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 181552442935B62500E051FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1815524B2935B62500E051FE;
+			remoteInfo = iTalk2;
+		};
+		1815526D2935B62900E051FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 181552442935B62500E051FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1815524B2935B62500E051FE;
+			remoteInfo = iTalk2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1815524C2935B62500E051FE /* iTalk2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTalk2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1815524F2935B62500E051FE /* iTalk2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2App.swift; sourceTree = "<group>"; };
+		181552512935B62500E051FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		181552532935B62800E051FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		181552562935B62800E051FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		181552582935B62800E051FE /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		1815525B2935B62800E051FE /* iTalk2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTalk2.xcdatamodel; sourceTree = "<group>"; };
+		1815525D2935B62800E051FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		181552622935B62900E051FE /* iTalk2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTalk2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		181552662935B62900E051FE /* iTalk2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2Tests.swift; sourceTree = "<group>"; };
+		1815526C2935B62900E051FE /* iTalk2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTalk2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		181552702935B62900E051FE /* iTalk2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2UITests.swift; sourceTree = "<group>"; };
+		181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		181552492935B62500E051FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1815525F2935B62900E051FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		181552692935B62900E051FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		181552432935B62500E051FE = {
+			isa = PBXGroup;
+			children = (
+				1815524E2935B62500E051FE /* iTalk2 */,
+				181552652935B62900E051FE /* iTalk2Tests */,
+				1815526F2935B62900E051FE /* iTalk2UITests */,
+				1815524D2935B62500E051FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1815524D2935B62500E051FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1815524C2935B62500E051FE /* iTalk2.app */,
+				181552622935B62900E051FE /* iTalk2Tests.xctest */,
+				1815526C2935B62900E051FE /* iTalk2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1815524E2935B62500E051FE /* iTalk2 */ = {
+			isa = PBXGroup;
+			children = (
+				1815524F2935B62500E051FE /* iTalk2App.swift */,
+				181552512935B62500E051FE /* ContentView.swift */,
+				181552532935B62800E051FE /* Assets.xcassets */,
+				181552582935B62800E051FE /* Persistence.swift */,
+				1815525D2935B62800E051FE /* Info.plist */,
+				1815525A2935B62800E051FE /* iTalk2.xcdatamodeld */,
+				181552552935B62800E051FE /* Preview Content */,
+			);
+			path = iTalk2;
+			sourceTree = "<group>";
+		};
+		181552552935B62800E051FE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				181552562935B62800E051FE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		181552652935B62900E051FE /* iTalk2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				181552662935B62900E051FE /* iTalk2Tests.swift */,
+			);
+			path = iTalk2Tests;
+			sourceTree = "<group>";
+		};
+		1815526F2935B62900E051FE /* iTalk2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				181552702935B62900E051FE /* iTalk2UITests.swift */,
+				181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */,
+			);
+			path = iTalk2UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1815524B2935B62500E051FE /* iTalk2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 181552762935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2" */;
+			buildPhases = (
+				181552482935B62500E051FE /* Sources */,
+				181552492935B62500E051FE /* Frameworks */,
+				1815524A2935B62500E051FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iTalk2;
+			productName = iTalk2;
+			productReference = 1815524C2935B62500E051FE /* iTalk2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		181552612935B62900E051FE /* iTalk2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 181552792935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2Tests" */;
+			buildPhases = (
+				1815525E2935B62900E051FE /* Sources */,
+				1815525F2935B62900E051FE /* Frameworks */,
+				181552602935B62900E051FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				181552642935B62900E051FE /* PBXTargetDependency */,
+			);
+			name = iTalk2Tests;
+			productName = iTalk2Tests;
+			productReference = 181552622935B62900E051FE /* iTalk2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1815526B2935B62900E051FE /* iTalk2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1815527C2935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2UITests" */;
+			buildPhases = (
+				181552682935B62900E051FE /* Sources */,
+				181552692935B62900E051FE /* Frameworks */,
+				1815526A2935B62900E051FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1815526E2935B62900E051FE /* PBXTargetDependency */,
+			);
+			name = iTalk2UITests;
+			productName = iTalk2UITests;
+			productReference = 1815526C2935B62900E051FE /* iTalk2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		181552442935B62500E051FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					1815524B2935B62500E051FE = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					181552612935B62900E051FE = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 1815524B2935B62500E051FE;
+					};
+					1815526B2935B62900E051FE = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 1815524B2935B62500E051FE;
+					};
+				};
+			};
+			buildConfigurationList = 181552472935B62500E051FE /* Build configuration list for PBXProject "iTalk2" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 181552432935B62500E051FE;
+			productRefGroup = 1815524D2935B62500E051FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1815524B2935B62500E051FE /* iTalk2 */,
+				181552612935B62900E051FE /* iTalk2Tests */,
+				1815526B2935B62900E051FE /* iTalk2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1815524A2935B62500E051FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				181552572935B62800E051FE /* Preview Assets.xcassets in Resources */,
+				181552542935B62800E051FE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		181552602935B62900E051FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1815526A2935B62900E051FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		181552482935B62500E051FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				181552592935B62800E051FE /* Persistence.swift in Sources */,
+				181552522935B62500E051FE /* ContentView.swift in Sources */,
+				1815525C2935B62800E051FE /* iTalk2.xcdatamodeld in Sources */,
+				181552502935B62500E051FE /* iTalk2App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1815525E2935B62900E051FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				181552672935B62900E051FE /* iTalk2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		181552682935B62900E051FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				181552712935B62900E051FE /* iTalk2UITests.swift in Sources */,
+				181552732935B62900E051FE /* iTalk2UITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		181552642935B62900E051FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1815524B2935B62500E051FE /* iTalk2 */;
+			targetProxy = 181552632935B62900E051FE /* PBXContainerItemProxy */;
+		};
+		1815526E2935B62900E051FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1815524B2935B62500E051FE /* iTalk2 */;
+			targetProxy = 1815526D2935B62900E051FE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		181552742935B62900E051FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		181552752935B62900E051FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		181552772935B62900E051FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iTalk2/Preview Content\"";
+				DEVELOPMENT_TEAM = U4M526LLNP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		181552782935B62900E051FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iTalk2/Preview Content\"";
+				DEVELOPMENT_TEAM = U4M526LLNP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1815527A2935B62900E051FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U4M526LLNP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTalk2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iTalk2";
+			};
+			name = Debug;
+		};
+		1815527B2935B62900E051FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U4M526LLNP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTalk2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iTalk2";
+			};
+			name = Release;
+		};
+		1815527D2935B62900E051FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U4M526LLNP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iTalk2;
+			};
+			name = Debug;
+		};
+		1815527E2935B62900E051FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U4M526LLNP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalk2.iTalk2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iTalk2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		181552472935B62500E051FE /* Build configuration list for PBXProject "iTalk2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				181552742935B62900E051FE /* Debug */,
+				181552752935B62900E051FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		181552762935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				181552772935B62900E051FE /* Debug */,
+				181552782935B62900E051FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		181552792935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1815527A2935B62900E051FE /* Debug */,
+				1815527B2935B62900E051FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1815527C2935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1815527D2935B62900E051FE /* Debug */,
+				1815527E2935B62900E051FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1815525A2935B62800E051FE /* iTalk2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1815525B2935B62800E051FE /* iTalk2.xcdatamodel */,
+			);
+			currentVersion = 1815525B2935B62800E051FE /* iTalk2.xcdatamodel */;
+			path = iTalk2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 181552442935B62500E051FE /* Project object */;
+}
