@@ -1,14 +1,14 @@
 //
 //  ContentView.swift
-//  iTalk2
+//  iTalk
 //
-//  Created by Patricio Benavente on 29/11/2022.
+//  Created by Patricio Benavente on 10/07/2022.
 //
 
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ContentView2: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -81,8 +81,9 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentView2_Previews2: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView2()
+//        ContentView2().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
