@@ -8,14 +8,11 @@
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-//import FirebaseFirestoreSwift
-//import FirebaseStorage
-//import FirebaseStorageSwift
+import FirebaseStorage
 
 /// For managing Firebase
 final class FirebaseManager: NSObject {
 	
-    let storage
 	let auth: Auth
 	let storage: Storage
 	let firestore: Firestore
@@ -27,14 +24,14 @@ final class FirebaseManager: NSObject {
 		FirebaseApp.configure()
 		self.auth = Auth.auth()
 		self.storage = Storage.storage()
-		self.firestore = Firestore.firestore()
+        self.firestore = Firestore.firestore()
 		super.init()
 	}
 	
 	// MARK: - Stop firestoreListener
 	func stopFirestoreListener() {
 		firestoreListener?.remove()
-		print("ChatsVM: firestoreListener removed")
+		print("FirestoreManger: firestoreListener removed")
 	}
 	
 }

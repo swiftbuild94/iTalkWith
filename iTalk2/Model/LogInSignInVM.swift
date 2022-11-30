@@ -23,9 +23,7 @@ final class LogInSignInVM: ObservableObject {
     @Published var myUserName = ""
     @Published var myUserPhoto = ""
 	@Published var shouldShowLogOutOptions = false
-    @Published var bubbleColor: BubbleColors = .green
-//    @Published var didCompleateLoginProcess = (() -> ()).self
-//    var didCompleateLoginProcess: () -> ()
+    @Published var bubbleColor: BubbleColors = .blue
 
     var selectedUser: String?
     
@@ -49,7 +47,7 @@ final class LogInSignInVM: ObservableObject {
     }
     
     private func fethCurrentUser(_ uid: String) {
-//        print("Fetch Current User: \(uid)")
+        print("Fetch Current User: \(uid)")
 //        let name = FirebaseManager.shared.auth.currentUser?.name
 //        currentUser = User(uid: uid, name: name)
         FirebaseManager.shared.firestore.collection("users").document(uid).getDocument { [self] snapshot, error in

@@ -167,16 +167,13 @@ struct LogInView: View {
                       Text(vm.isLoginMode ? "Log In" : "Create Account" )
                           .font(.headline)
                           .padding(.vertical, 10)
+                          .padding(5)
                   })
                   .buttonBorderShape(.capsule)
-                  .buttonStyle(.bordered)
-                      .background(Color.blue)
-                      .buttonStyle(.borderedProminent)
-                     
-                      .controlSize(.regular)
-                      .padding()
+                    .background(Color.blue)
+                    .controlSize(.regular)
                   Text(vm.errorMessage)
-                      .foregroundColor(.red)
+                    .foregroundColor(.red)
               }
           }
           .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
@@ -188,6 +185,6 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LogInView(isUserLoggedOut: .constant(true), didCompleateLoginProcess: { })
     }
 }

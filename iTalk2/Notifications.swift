@@ -12,6 +12,8 @@ import UserNotifications
 final class NotificationManager: ObservableObject {
     var notifications = [Notification]()
     
+    static let shared = NotificationManager()
+    
     init() {
         notificationsAllowed()
     }

@@ -22,6 +22,8 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
         }
     }
     
+    static let shared = AudioPlayer()
+    
     deinit {
         self.stopPlay()
     }

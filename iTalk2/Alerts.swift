@@ -24,6 +24,8 @@ final class Alerts: ObservableObject {
 //    @Published var cancelHandler: (()->Void)?
     @Published var destructiveHandler: (()->Void)?
     
+    static let shared = Alerts()
+    
     init() {
         self.okHandler = {
             print("Ok")

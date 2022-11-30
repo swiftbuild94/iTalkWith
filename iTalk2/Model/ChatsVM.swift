@@ -10,10 +10,9 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 //import FirebaseFirestoreSwift
-//import FirebaseStorage
+import FirebaseStorage
 //import FirebaseStorageSwift
 import SwiftUI
-//import FirebaseStorage    
 
 /// Just for inside the ChatView
 ///
@@ -115,7 +114,7 @@ final class ChatsVM: ObservableObject {
     func downloadPhoto(_ photo: String) -> UIImage? {
         var image: UIImage?
         print("===Photo")
-        let storageRef = Storage.storage().reference()
+        let storageRef = FirebaseManager.shared.storage.reference()
         let photoRef = storageRef.child(photo)
         print("===Photo: \(photoRef.fullPath)")
         photoRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
@@ -136,7 +135,7 @@ final class ChatsVM: ObservableObject {
         print("----DOWNLOAD AUDIO")
         //guard let uid = Auth.auth().currentUser?.uid else { return nil }
         print("---AUDIO DOWNLOADING: \(audio)" )
-        let storageRef = Storage.storage()
+        let storageRef = FirebaseManager.shared.storage
         let audioRef = storageRef.reference(forURL: audio)
         let finalRef = audioRef.child(FirebaseConstants.audios)
         let fileName = URL(string: audio)?.pathComponents.last?.description
@@ -184,7 +183,7 @@ final class ChatsVM: ObservableObject {
         var audios = [URL]()
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        
+
         let directoryContents = try? fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
         for audio in directoryContents! {
             audios.append(audio)
@@ -230,7 +229,7 @@ final class ChatsVM: ObservableObject {
         print("Saving Image")
         //guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
         guard let imageData = self.image?.jpegData(compressionQuality: 0.5) else { return }
-        let ref = Storage.storage().reference()
+        let ref = FirebaseManager.shared.storage.reference()
         let photoRef = ref.child(FirebaseConstants.photos)
         let fileName = String(UUID().description) + ".jpg"
         let spaceRef = photoRef.child(fileName)
@@ -324,7 +323,7 @@ final class ChatsVM: ObservableObject {
         let collection = firebaseDocument.firstCollection
         let document = firebaseDocument.firstDocument
         let secondCollection = firebaseDocument.secondCollection
-        
+
         if firebaseDocument.secondDocument != nil {
             guard let secondDocument = firebaseDocument.secondDocument else { return }
             let document = FirebaseManager.shared.firestore
@@ -332,7 +331,7 @@ final class ChatsVM: ObservableObject {
                 .document(document)
                 .collection(secondCollection)
                 .document(secondDocument)
-            
+
             try? document.setData(from: chat) { error in
                 if let error = error {
                     self.errorMessage = "Failed to save: \(error)"

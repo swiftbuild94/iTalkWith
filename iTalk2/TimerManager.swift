@@ -12,6 +12,8 @@ final class TimerManager: ObservableObject {
     @Published var secondsElapsed = 0.0
     private var timer = Timer()
     
+    static let shared = TimerManager()
+    
     func startTimer() {
         secondsElapsed = 0
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { timer in
