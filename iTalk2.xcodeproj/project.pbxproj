@@ -291,6 +291,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		180946EC293742FB0061AA22 /* ContentViewPersistent */ = {
+			isa = PBXGroup;
+			children = (
+				18C491882935BDE800844F38 /* ContentView2.swift */,
+				18C4918A2935BE1600844F38 /* ContentView3.swift */,
+			);
+			path = ContentViewPersistent;
+			sourceTree = "<group>";
+		};
 		181552432935B62500E051FE = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +335,8 @@
 				180946BD293732570061AA22 /* VisualModel */,
 				180946E429373FF50061AA22 /* View */,
 				180946E8293741870061AA22 /* Support */,
-				181552832935B67900E051FE /* New Group */,
+				180946EC293742FB0061AA22 /* ContentViewPersistent */,
+				181552832935B67900E051FE /* Old */,
 				181552552935B62800E051FE /* Preview Content */,
 			);
 			path = iTalk2;
@@ -357,15 +367,13 @@
 			path = iTalk2UITests;
 			sourceTree = "<group>";
 		};
-		181552832935B67900E051FE /* New Group */ = {
+		181552832935B67900E051FE /* Old */ = {
 			isa = PBXGroup;
 			children = (
 				18BACEE12936EA90005EE142 /* Grid.swift */,
 				18BACEDE2936EA8F005EE142 /* GridLayout.swift */,
-				18C491882935BDE800844F38 /* ContentView2.swift */,
-				18C4918A2935BE1600844F38 /* ContentView3.swift */,
 			);
-			path = "New Group";
+			path = Old;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
