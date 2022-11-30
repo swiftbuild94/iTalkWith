@@ -21,7 +21,7 @@ struct ContentView: View {
                 .tabItem {
                     VStack {
                         Image(systemName: "bubble.left.and.bubble.right.fill")
-                        Text("iTalk")
+                        Text("iTalk2")
                     }
             }
             .tag(0)

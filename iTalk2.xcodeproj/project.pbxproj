@@ -224,6 +224,20 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		180946C829373E440061AA22 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				18A603CA293731CC00C45CC9 /* Alerts.swift */,
+				18A603C5293731C800C45CC9 /* AudioPlayer.swift */,
+				18A603C7293731CA00C45CC9 /* AudioRecorder.swift */,
+				18A603C2293731C700C45CC9 /* ImagePicker.swift */,
+				18A603C4293731C800C45CC9 /* LocationManager.swift */,
+				18A603C8293731CB00C45CC9 /* Notifications.swift */,
+				18A603C9293731CC00C45CC9 /* TimerManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		181552432935B62500E051FE = {
 			isa = PBXGroup;
 			children = (
@@ -256,8 +270,9 @@
 				1829E517293610CF008BF351 /* GoogleService-Info.plist */,
 				180946C5293735DC0061AA22 /* Model */,
 				180946BD293732570061AA22 /* VisualModel */,
-				180946C6293738520061AA22 /* Extensions */,
 				180946C7293738F30061AA22 /* Enum */,
+				180946C6293738520061AA22 /* Extensions */,
+				180946C829373E440061AA22 /* Helpers */,
 				18BACED02936EA83005EE142 /* Assets.xcassets */,
 				18BACF0229370550005EE142 /* iTalkView.swift */,
 				18BACF0129370550005EE142 /* NotificationsView.swift */,
@@ -274,13 +289,6 @@
 				18BACF1529370569005EE142 /* ContactsView.swift */,
 				18BACF192937056F005EE142 /* HistoryCell.swift */,
 				18BACF1A2937056F005EE142 /* HistoryView.swift */,
-				18A603CA293731CC00C45CC9 /* Alerts.swift */,
-				18A603C5293731C800C45CC9 /* AudioPlayer.swift */,
-				18A603C7293731CA00C45CC9 /* AudioRecorder.swift */,
-				18A603C2293731C700C45CC9 /* ImagePicker.swift */,
-				18A603C4293731C800C45CC9 /* LocationManager.swift */,
-				18A603C8293731CB00C45CC9 /* Notifications.swift */,
-				18A603C9293731CC00C45CC9 /* TimerManager.swift */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
 				1815528A2935B72E00E051FE /* View */,
 				1815528E2935B77100E051FE /* Support */,
