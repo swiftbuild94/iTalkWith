@@ -204,6 +204,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		180946C6293738520061AA22 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				18A603C6293731C900C45CC9 /* Array+Extension.swift */,
+				180946C3293733DE0061AA22 /* String+Extension.swift */,
+				18A603C3293731C700C45CC9 /* Date+Extension.swift */,
+				18A603CC293731CE00C45CC9 /* Double+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		181552432935B62500E051FE = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +247,7 @@
 				1829E517293610CF008BF351 /* GoogleService-Info.plist */,
 				180946C5293735DC0061AA22 /* Model */,
 				180946BD293732570061AA22 /* VisualModel */,
+				180946C6293738520061AA22 /* Extensions */,
 				18BACED02936EA83005EE142 /* Assets.xcassets */,
 				18BACF0229370550005EE142 /* iTalkView.swift */,
 				18BACF0129370550005EE142 /* NotificationsView.swift */,
@@ -254,10 +266,6 @@
 				18BACF192937056F005EE142 /* HistoryCell.swift */,
 				18BACF1A2937056F005EE142 /* HistoryView.swift */,
 				18A603CB293731CD00C45CC9 /* BubbleColors.swift */,
-				18A603C6293731C900C45CC9 /* Array+Extension.swift */,
-				180946C3293733DE0061AA22 /* String+Extension.swift */,
-				18A603C3293731C700C45CC9 /* Date+Extension.swift */,
-				18A603CC293731CE00C45CC9 /* Double+Extension.swift */,
 				18A603CA293731CC00C45CC9 /* Alerts.swift */,
 				18A603C5293731C800C45CC9 /* AudioPlayer.swift */,
 				18A603C7293731CA00C45CC9 /* AudioRecorder.swift */,
