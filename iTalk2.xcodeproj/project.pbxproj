@@ -191,6 +191,19 @@
 			path = VisualModel;
 			sourceTree = "<group>";
 		};
+		180946C5293735DC0061AA22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				180946BF293733640061AA22 /* FirebaseManager.swift */,
+				18A603B92937318000C45CC9 /* Chat.swift */,
+				18A603B82937317E00C45CC9 /* FirebaseConstants.swift */,
+				18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */,
+				18A603BC2937319300C45CC9 /* RecentMessage.swift */,
+				18A603BA2937318700C45CC9 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		181552432935B62500E051FE = {
 			isa = PBXGroup;
 			children = (
@@ -221,11 +234,12 @@
 				18BACEB829368697005EE142 /* Persistence.swift */,
 				18BACEBA293686C5005EE142 /* ContentView.swift */,
 				1829E517293610CF008BF351 /* GoogleService-Info.plist */,
+				180946C5293735DC0061AA22 /* Model */,
+				180946BD293732570061AA22 /* VisualModel */,
 				18BACED02936EA83005EE142 /* Assets.xcassets */,
 				18BACF0229370550005EE142 /* iTalkView.swift */,
 				18BACF0129370550005EE142 /* NotificationsView.swift */,
 				18BACF0329370551005EE142 /* SettingsView.swift */,
-				180946BF293733640061AA22 /* FirebaseManager.swift */,
 				18A603B0293730C800C45CC9 /* LogInView.swift */,
 				18BACF0D2937055D005EE142 /* ChatAudioBar.swift */,
 				18BACF0A2937055C005EE142 /* ChatTextBar.swift */,
@@ -239,12 +253,6 @@
 				18BACF1529370569005EE142 /* ContactsView.swift */,
 				18BACF192937056F005EE142 /* HistoryCell.swift */,
 				18BACF1A2937056F005EE142 /* HistoryView.swift */,
-				180946BD293732570061AA22 /* VisualModel */,
-				18A603B92937318000C45CC9 /* Chat.swift */,
-				18A603B82937317E00C45CC9 /* FirebaseConstants.swift */,
-				18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */,
-				18A603BC2937319300C45CC9 /* RecentMessage.swift */,
-				18A603BA2937318700C45CC9 /* User.swift */,
 				18A603CB293731CD00C45CC9 /* BubbleColors.swift */,
 				18A603C6293731C900C45CC9 /* Array+Extension.swift */,
 				180946C3293733DE0061AA22 /* String+Extension.swift */,
