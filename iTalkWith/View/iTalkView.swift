@@ -97,7 +97,7 @@ struct iTalkView: View {
 struct iTalk_Previews: PreviewProvider {
     static var previews: some View {
         iTalkView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
             .previewDevice("iPhone 13 mini")
     }
 }

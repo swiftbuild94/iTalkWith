@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>325335534345-ad8ssam9q5usrvlkkrgj4jrvt7vdukhm.apps.googleusercontent.com</string>
+	<string>669858147099-sqepqbf8nvidbbne4lpamdll1ob48r85.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.325335534345-ad8ssam9q5usrvlkkrgj4jrvt7vdukhm</string>
+	<string>com.googleusercontent.apps.669858147099-sqepqbf8nvidbbne4lpamdll1ob48r85</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCOOKwjePrQyty1fUFZ8F-tvGNl8-sJI2E</string>
+	<string>AIzaSyAJXvDDyHRUdLY32Yh2ynbGe-aynUr_J6w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>325335534345</string>
+	<string>669858147099</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>iTalk2</string>
+	<string>iTalkWith</string>
 	<key>PROJECT_ID</key>
-	<string>italk2-7a6d3</string>
+	<string>italkwith-7dcaa</string>
 	<key>STORAGE_BUCKET</key>
-	<string>italk2-7a6d3.appspot.com</string>
+	<string>italkwith-7dcaa.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:325335534345:ios:4ea8edbda57834491021d8</string>
+	<string>1:669858147099:ios:8a0d785009a14e9db281be</string>
 </dict>
 </plist>

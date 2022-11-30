@@ -28,7 +28,6 @@
 		181552732935B62900E051FE /* iTalk2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */; };
 		181552802935B65B00E051FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1815527F2935B65B00E051FE /* README.md */; };
 		181552852935B6BA00E051FE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 181552842935B6BA00E051FE /* Documentation.docc */; };
-		1829E518293610CF008BF351 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1829E517293610CF008BF351 /* GoogleService-Info.plist */; };
 		18A603B1293730C800C45CC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B0293730C800C45CC9 /* LogInView.swift */; };
 		18A603B52937315400C45CC9 /* ChatsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B42937315200C45CC9 /* ChatsVM.swift */; };
 		18A603B62937315400C45CC9 /* LogInSignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B22937315100C45CC9 /* LogInSignInVM.swift */; };
@@ -38,7 +37,8 @@
 		18A603BF2937319400C45CC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603BA2937318700C45CC9 /* User.swift */; };
 		18A603C02937319400C45CC9 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B92937318000C45CC9 /* Chat.swift */; };
 		18A603C12937319400C45CC9 /* FirebaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */; };
-		18BACEB72936863A005EE142 /* iTalk2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEB62936863A005EE142 /* iTalk2App.swift */; };
+		18B84ABE293804B000508B67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18B84ABD293804AF00508B67 /* GoogleService-Info.plist */; };
+		18BACEB72936863A005EE142 /* iTalkWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEB62936863A005EE142 /* iTalkWithApp.swift */; };
 		18BACEB929368697005EE142 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEB829368697005EE142 /* Persistence.swift */; };
 		18BACEBB293686C5005EE142 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEBA293686C5005EE142 /* ContentView.swift */; };
 		18BACEE72936EA91005EE142 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEDE2936EA8F005EE142 /* GridLayout.swift */; };
@@ -100,18 +100,17 @@
 		180946DB29373F710061AA22 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		180946DC29373F710061AA22 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		180946DD29373F720061AA22 /* BubbleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleColors.swift; sourceTree = "<group>"; };
-		1815524C2935B62500E051FE /* iTalk2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTalk2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1815524C2935B62500E051FE /* iTalkWith.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTalkWith.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		181552562935B62800E051FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1815525B2935B62800E051FE /* iTalk2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTalk2.xcdatamodel; sourceTree = "<group>"; };
 		1815525D2935B62800E051FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		181552622935B62900E051FE /* iTalk2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTalk2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		181552622935B62900E051FE /* iTalkWithTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTalkWithTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		181552662935B62900E051FE /* iTalk2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2Tests.swift; sourceTree = "<group>"; };
-		1815526C2935B62900E051FE /* iTalk2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTalk2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1815526C2935B62900E051FE /* iTalkWithUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTalkWithUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		181552702935B62900E051FE /* iTalk2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2UITests.swift; sourceTree = "<group>"; };
 		181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1815527F2935B65B00E051FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		181552842935B6BA00E051FE /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		1829E517293610CF008BF351 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18A603B0293730C800C45CC9 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		18A603B22937315100C45CC9 /* LogInSignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignInVM.swift; sourceTree = "<group>"; };
 		18A603B32937315100C45CC9 /* ContactsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVM.swift; sourceTree = "<group>"; };
@@ -121,7 +120,8 @@
 		18A603BA2937318700C45CC9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDocument.swift; sourceTree = "<group>"; };
 		18A603BC2937319300C45CC9 /* RecentMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessage.swift; sourceTree = "<group>"; };
-		18BACEB62936863A005EE142 /* iTalk2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2App.swift; sourceTree = "<group>"; };
+		18B84ABD293804AF00508B67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18BACEB62936863A005EE142 /* iTalkWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalkWithApp.swift; sourceTree = "<group>"; };
 		18BACEB829368697005EE142 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		18BACEBA293686C5005EE142 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18BACED02936EA83005EE142 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -307,9 +307,9 @@
 			isa = PBXGroup;
 			children = (
 				1815527F2935B65B00E051FE /* README.md */,
-				1815524E2935B62500E051FE /* iTalk2 */,
-				181552652935B62900E051FE /* iTalk2Tests */,
-				1815526F2935B62900E051FE /* iTalk2UITests */,
+				1815524E2935B62500E051FE /* iTalkWith */,
+				181552652935B62900E051FE /* iTalkWithTests */,
+				1815526F2935B62900E051FE /* iTalkWithUITests */,
 				1815524D2935B62500E051FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -317,19 +317,19 @@
 		1815524D2935B62500E051FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1815524C2935B62500E051FE /* iTalk2.app */,
-				181552622935B62900E051FE /* iTalk2Tests.xctest */,
-				1815526C2935B62900E051FE /* iTalk2UITests.xctest */,
+				1815524C2935B62500E051FE /* iTalkWith.app */,
+				181552622935B62900E051FE /* iTalkWithTests.xctest */,
+				1815526C2935B62900E051FE /* iTalkWithUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1815524E2935B62500E051FE /* iTalk2 */ = {
+		1815524E2935B62500E051FE /* iTalkWith */ = {
 			isa = PBXGroup;
 			children = (
-				18BACEB62936863A005EE142 /* iTalk2App.swift */,
+				18BACEB62936863A005EE142 /* iTalkWithApp.swift */,
 				1815525D2935B62800E051FE /* Info.plist */,
-				1829E517293610CF008BF351 /* GoogleService-Info.plist */,
+				18B84ABD293804AF00508B67 /* GoogleService-Info.plist */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
 				180946C5293735DC0061AA22 /* Model */,
 				180946BD293732570061AA22 /* VisualModel */,
@@ -339,7 +339,7 @@
 				181552832935B67900E051FE /* Old */,
 				181552552935B62800E051FE /* Preview Content */,
 			);
-			path = iTalk2;
+			path = iTalkWith;
 			sourceTree = "<group>";
 		};
 		181552552935B62800E051FE /* Preview Content */ = {
@@ -350,21 +350,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		181552652935B62900E051FE /* iTalk2Tests */ = {
+		181552652935B62900E051FE /* iTalkWithTests */ = {
 			isa = PBXGroup;
 			children = (
 				181552662935B62900E051FE /* iTalk2Tests.swift */,
 			);
-			path = iTalk2Tests;
+			path = iTalkWithTests;
 			sourceTree = "<group>";
 		};
-		1815526F2935B62900E051FE /* iTalk2UITests */ = {
+		1815526F2935B62900E051FE /* iTalkWithUITests */ = {
 			isa = PBXGroup;
 			children = (
 				181552702935B62900E051FE /* iTalk2UITests.swift */,
 				181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */,
 			);
-			path = iTalk2UITests;
+			path = iTalkWithUITests;
 			sourceTree = "<group>";
 		};
 		181552832935B67900E051FE /* Old */ = {
@@ -379,9 +379,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1815524B2935B62500E051FE /* iTalk2 */ = {
+		1815524B2935B62500E051FE /* iTalkWith */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 181552762935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2" */;
+			buildConfigurationList = 181552762935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalkWith" */;
 			buildPhases = (
 				181552482935B62500E051FE /* Sources */,
 				181552492935B62500E051FE /* Frameworks */,
@@ -391,7 +391,7 @@
 			);
 			dependencies = (
 			);
-			name = iTalk2;
+			name = iTalkWith;
 			packageProductDependencies = (
 				18BACEF22936EE2E005EE142 /* SDWebImageSwiftUI */,
 				18BACEF52936F1AF005EE142 /* FirebaseAuth */,
@@ -402,12 +402,12 @@
 				18BACEFF2936F1AF005EE142 /* FirebaseStorage */,
 			);
 			productName = iTalk2;
-			productReference = 1815524C2935B62500E051FE /* iTalk2.app */;
+			productReference = 1815524C2935B62500E051FE /* iTalkWith.app */;
 			productType = "com.apple.product-type.application";
 		};
-		181552612935B62900E051FE /* iTalk2Tests */ = {
+		181552612935B62900E051FE /* iTalkWithTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 181552792935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2Tests" */;
+			buildConfigurationList = 181552792935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalkWithTests" */;
 			buildPhases = (
 				1815525E2935B62900E051FE /* Sources */,
 				1815525F2935B62900E051FE /* Frameworks */,
@@ -418,14 +418,14 @@
 			dependencies = (
 				181552642935B62900E051FE /* PBXTargetDependency */,
 			);
-			name = iTalk2Tests;
+			name = iTalkWithTests;
 			productName = iTalk2Tests;
-			productReference = 181552622935B62900E051FE /* iTalk2Tests.xctest */;
+			productReference = 181552622935B62900E051FE /* iTalkWithTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		1815526B2935B62900E051FE /* iTalk2UITests */ = {
+		1815526B2935B62900E051FE /* iTalkWithUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1815527C2935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2UITests" */;
+			buildConfigurationList = 1815527C2935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalkWithUITests" */;
 			buildPhases = (
 				181552682935B62900E051FE /* Sources */,
 				181552692935B62900E051FE /* Frameworks */,
@@ -436,9 +436,9 @@
 			dependencies = (
 				1815526E2935B62900E051FE /* PBXTargetDependency */,
 			);
-			name = iTalk2UITests;
+			name = iTalkWithUITests;
 			productName = iTalk2UITests;
-			productReference = 1815526C2935B62900E051FE /* iTalk2UITests.xctest */;
+			productReference = 1815526C2935B62900E051FE /* iTalkWithUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -464,7 +464,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 181552472935B62500E051FE /* Build configuration list for PBXProject "iTalk2" */;
+			buildConfigurationList = 181552472935B62500E051FE /* Build configuration list for PBXProject "iTalkWith" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -481,9 +481,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1815524B2935B62500E051FE /* iTalk2 */,
-				181552612935B62900E051FE /* iTalk2Tests */,
-				1815526B2935B62900E051FE /* iTalk2UITests */,
+				1815524B2935B62500E051FE /* iTalkWith */,
+				181552612935B62900E051FE /* iTalkWithTests */,
+				1815526B2935B62900E051FE /* iTalkWithUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -495,7 +495,7 @@
 			files = (
 				181552802935B65B00E051FE /* README.md in Resources */,
 				181552572935B62800E051FE /* Preview Assets.xcassets in Resources */,
-				1829E518293610CF008BF351 /* GoogleService-Info.plist in Resources */,
+				18B84ABE293804B000508B67 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,7 +555,7 @@
 				181552852935B6BA00E051FE /* Documentation.docc in Sources */,
 				18BACF122937055D005EE142 /* ImageZoom.swift in Sources */,
 				18A603BD2937319400C45CC9 /* FirebaseConstants.swift in Sources */,
-				18BACEB72936863A005EE142 /* iTalk2App.swift in Sources */,
+				18BACEB72936863A005EE142 /* iTalkWithApp.swift in Sources */,
 				18A603B62937315400C45CC9 /* LogInSignInVM.swift in Sources */,
 				18A603B1293730C800C45CC9 /* LogInView.swift in Sources */,
 				18BACF0429370552005EE142 /* iTalkView.swift in Sources */,
@@ -591,12 +591,12 @@
 /* Begin PBXTargetDependency section */
 		181552642935B62900E051FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1815524B2935B62500E051FE /* iTalk2 */;
+			target = 1815524B2935B62500E051FE /* iTalkWith */;
 			targetProxy = 181552632935B62900E051FE /* PBXContainerItemProxy */;
 		};
 		1815526E2935B62900E051FE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1815524B2935B62500E051FE /* iTalk2 */;
+			target = 1815524B2935B62500E051FE /* iTalkWith */;
 			targetProxy = 1815526D2935B62900E051FE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -725,7 +725,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iTalk2/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iTalkWith/Preview Content\"";
 				DEVELOPMENT_TEAM = U4M526LLNP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -739,7 +739,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = iTalk2;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalkWith;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -754,7 +754,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iTalk2/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iTalkWith/Preview Content\"";
 				DEVELOPMENT_TEAM = U4M526LLNP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -768,7 +768,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = iTalk2;
+				PRODUCT_BUNDLE_IDENTIFIER = iTalkWith;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -792,7 +792,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTalk2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iTalk2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTalkWith.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iTalkWith";
 			};
 			name = Debug;
 		};
@@ -812,7 +812,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTalk2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iTalk2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iTalkWith.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iTalkWith";
 			};
 			name = Release;
 		};
@@ -855,7 +855,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		181552472935B62500E051FE /* Build configuration list for PBXProject "iTalk2" */ = {
+		181552472935B62500E051FE /* Build configuration list for PBXProject "iTalkWith" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				181552742935B62900E051FE /* Debug */,
@@ -864,7 +864,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		181552762935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2" */ = {
+		181552762935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalkWith" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				181552772935B62900E051FE /* Debug */,
@@ -873,7 +873,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		181552792935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2Tests" */ = {
+		181552792935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalkWithTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1815527A2935B62900E051FE /* Debug */,
@@ -882,7 +882,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1815527C2935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalk2UITests" */ = {
+		1815527C2935B62900E051FE /* Build configuration list for PBXNativeTarget "iTalkWithUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1815527D2935B62900E051FE /* Debug */,
