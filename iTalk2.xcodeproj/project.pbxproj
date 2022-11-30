@@ -202,6 +202,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		180946E429373FF50061AA22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18BACED02936EA83005EE142 /* Assets.xcassets */,
+				18BACF0229370550005EE142 /* iTalkView.swift */,
+				18BACF0129370550005EE142 /* NotificationsView.swift */,
+				18BACF0329370551005EE142 /* SettingsView.swift */,
+				18A603B0293730C800C45CC9 /* LogInView.swift */,
+				18BACF0D2937055D005EE142 /* ChatAudioBar.swift */,
+				18BACF0A2937055C005EE142 /* ChatTextBar.swift */,
+				18BACF082937055B005EE142 /* ChatView.swift */,
+				18BACF072937055B005EE142 /* ImageZoom.swift */,
+				18BACF092937055B005EE142 /* InputsButtons.swift */,
+				18BACF0B2937055C005EE142 /* MapView.swift */,
+				18BACF0C2937055C005EE142 /* PhotoView.swift */,
+				18BACF1629370569005EE142 /* ContactCell.swift */,
+				18BACF1529370569005EE142 /* ContactsView.swift */,
+				18BACF192937056F005EE142 /* HistoryCell.swift */,
+				18BACF1A2937056F005EE142 /* HistoryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		181552432935B62500E051FE = {
 			isa = PBXGroup;
 			children = (
@@ -247,22 +270,7 @@
 				180946D929373F6F0061AA22 /* String+Extension.swift */,
 				180946C5293735DC0061AA22 /* Model */,
 				180946BD293732570061AA22 /* VisualModel */,
-				18BACED02936EA83005EE142 /* Assets.xcassets */,
-				18BACF0229370550005EE142 /* iTalkView.swift */,
-				18BACF0129370550005EE142 /* NotificationsView.swift */,
-				18BACF0329370551005EE142 /* SettingsView.swift */,
-				18A603B0293730C800C45CC9 /* LogInView.swift */,
-				18BACF0D2937055D005EE142 /* ChatAudioBar.swift */,
-				18BACF0A2937055C005EE142 /* ChatTextBar.swift */,
-				18BACF082937055B005EE142 /* ChatView.swift */,
-				18BACF072937055B005EE142 /* ImageZoom.swift */,
-				18BACF092937055B005EE142 /* InputsButtons.swift */,
-				18BACF0B2937055C005EE142 /* MapView.swift */,
-				18BACF0C2937055C005EE142 /* PhotoView.swift */,
-				18BACF1629370569005EE142 /* ContactCell.swift */,
-				18BACF1529370569005EE142 /* ContactsView.swift */,
-				18BACF192937056F005EE142 /* HistoryCell.swift */,
-				18BACF1A2937056F005EE142 /* HistoryView.swift */,
+				180946E429373FF50061AA22 /* View */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
 				1815528A2935B72E00E051FE /* View2 */,
 				181552832935B67900E051FE /* New Group */,
