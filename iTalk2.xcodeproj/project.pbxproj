@@ -181,14 +181,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		180946BD293732570061AA22 /* Model */ = {
+		180946BD293732570061AA22 /* VisualModel */ = {
 			isa = PBXGroup;
 			children = (
 				18A603B42937315200C45CC9 /* ChatsVM.swift */,
 				18A603B32937315100C45CC9 /* ContactsVM.swift */,
 				18A603B22937315100C45CC9 /* LogInSignInVM.swift */,
 			);
-			path = Model;
+			path = VisualModel;
 			sourceTree = "<group>";
 		};
 		181552432935B62500E051FE = {
@@ -239,7 +239,7 @@
 				18BACF1529370569005EE142 /* ContactsView.swift */,
 				18BACF192937056F005EE142 /* HistoryCell.swift */,
 				18BACF1A2937056F005EE142 /* HistoryView.swift */,
-				180946BD293732570061AA22 /* Model */,
+				180946BD293732570061AA22 /* VisualModel */,
 				18A603B92937318000C45CC9 /* Chat.swift */,
 				18A603B82937317E00C45CC9 /* FirebaseConstants.swift */,
 				18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */,
