@@ -78,7 +78,7 @@ struct iTalkView: View {
                 }
 //                    if UIDevice.current.userInterfaceIdiom == .pad {
             }
-                .navigationBarTitle(Text("iTalk2"))
+                .navigationBarTitle(Text("iTalk"))
 //            
 //                .toolbar {
 //                    ToolbarItem(placement: .navigationBarTrailing) {
