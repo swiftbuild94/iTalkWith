@@ -215,6 +215,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		180946C7293738F30061AA22 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				180946C1293733A80061AA22 /* TypeOfContent.swift */,
+				18A603CB293731CD00C45CC9 /* BubbleColors.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		181552432935B62500E051FE = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +257,7 @@
 				180946C5293735DC0061AA22 /* Model */,
 				180946BD293732570061AA22 /* VisualModel */,
 				180946C6293738520061AA22 /* Extensions */,
+				180946C7293738F30061AA22 /* Enum */,
 				18BACED02936EA83005EE142 /* Assets.xcassets */,
 				18BACF0229370550005EE142 /* iTalkView.swift */,
 				18BACF0129370550005EE142 /* NotificationsView.swift */,
@@ -255,7 +265,6 @@
 				18A603B0293730C800C45CC9 /* LogInView.swift */,
 				18BACF0D2937055D005EE142 /* ChatAudioBar.swift */,
 				18BACF0A2937055C005EE142 /* ChatTextBar.swift */,
-				180946C1293733A80061AA22 /* TypeOfContent.swift */,
 				18BACF082937055B005EE142 /* ChatView.swift */,
 				18BACF072937055B005EE142 /* ImageZoom.swift */,
 				18BACF092937055B005EE142 /* InputsButtons.swift */,
@@ -265,7 +274,6 @@
 				18BACF1529370569005EE142 /* ContactsView.swift */,
 				18BACF192937056F005EE142 /* HistoryCell.swift */,
 				18BACF1A2937056F005EE142 /* HistoryView.swift */,
-				18A603CB293731CD00C45CC9 /* BubbleColors.swift */,
 				18A603CA293731CC00C45CC9 /* Alerts.swift */,
 				18A603C5293731C800C45CC9 /* AudioPlayer.swift */,
 				18A603C7293731CA00C45CC9 /* AudioRecorder.swift */,
