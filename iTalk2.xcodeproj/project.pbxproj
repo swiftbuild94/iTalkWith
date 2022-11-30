@@ -28,7 +28,7 @@
 		181552732935B62900E051FE /* iTalk2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */; };
 		181552802935B65B00E051FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1815527F2935B65B00E051FE /* README.md */; };
 		181552852935B6BA00E051FE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 181552842935B6BA00E051FE /* Documentation.docc */; };
-		1815528B2935B72E00E051FE /* View in Resources */ = {isa = PBXBuildFile; fileRef = 1815528A2935B72E00E051FE /* View */; };
+		1815528B2935B72E00E051FE /* View2 in Resources */ = {isa = PBXBuildFile; fileRef = 1815528A2935B72E00E051FE /* View2 */; };
 		1829E518293610CF008BF351 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1829E517293610CF008BF351 /* GoogleService-Info.plist */; };
 		18A603B1293730C800C45CC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B0293730C800C45CC9 /* LogInView.swift */; };
 		18A603B52937315400C45CC9 /* ChatsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B42937315200C45CC9 /* ChatsVM.swift */; };
@@ -112,7 +112,7 @@
 		181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalk2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1815527F2935B65B00E051FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		181552842935B6BA00E051FE /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		1815528A2935B72E00E051FE /* View */ = {isa = PBXFileReference; lastKnownFileType = folder; path = View; sourceTree = "<group>"; };
+		1815528A2935B72E00E051FE /* View2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = View2; sourceTree = "<group>"; };
 		1829E517293610CF008BF351 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18A603B0293730C800C45CC9 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		18A603B22937315100C45CC9 /* LogInSignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignInVM.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 				18BACF192937056F005EE142 /* HistoryCell.swift */,
 				18BACF1A2937056F005EE142 /* HistoryView.swift */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
-				1815528A2935B72E00E051FE /* View */,
+				1815528A2935B72E00E051FE /* View2 */,
 				181552832935B67900E051FE /* New Group */,
 				181552552935B62800E051FE /* Preview Content */,
 			);
@@ -424,7 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1815528B2935B72E00E051FE /* View in Resources */,
+				1815528B2935B72E00E051FE /* View2 in Resources */,
 				181552802935B65B00E051FE /* README.md in Resources */,
 				181552572935B62800E051FE /* Preview Assets.xcassets in Resources */,
 				1829E518293610CF008BF351 /* GoogleService-Info.plist in Resources */,
