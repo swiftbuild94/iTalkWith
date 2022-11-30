@@ -190,12 +190,13 @@
 		180946C5293735DC0061AA22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1815525A2935B62800E051FE /* iTalk2.xcdatamodeld */,
 				180946BF293733640061AA22 /* FirebaseManager.swift */,
-				18A603B92937318000C45CC9 /* Chat.swift */,
 				18A603B82937317E00C45CC9 /* FirebaseConstants.swift */,
 				18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */,
-				18A603BC2937319300C45CC9 /* RecentMessage.swift */,
 				18A603BA2937318700C45CC9 /* User.swift */,
+				18A603B92937318000C45CC9 /* Chat.swift */,
+				18A603BC2937319300C45CC9 /* RecentMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				18BACED02936EA83005EE142 /* Assets.xcassets */,
+				18BACEBA293686C5005EE142 /* ContentView.swift */,
 				18BACF0229370550005EE142 /* iTalkView.swift */,
 				18BACF0129370550005EE142 /* NotificationsView.swift */,
 				18BACF0329370551005EE142 /* SettingsView.swift */,
@@ -250,9 +252,9 @@
 		180946E8293741870061AA22 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				180946EB293742430061AA22 /* Helpers */,
 				180946EA293742340061AA22 /* Enum */,
 				180946E92937421C0061AA22 /* Extensions */,
+				180946EB293742430061AA22 /* Helpers */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -280,6 +282,7 @@
 		180946EB293742430061AA22 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				18BACEB829368697005EE142 /* Persistence.swift */,
 				180946CD29373F3A0061AA22 /* Alerts.swift */,
 				180946CA29373F390061AA22 /* AudioPlayer.swift */,
 				180946CC29373F3A0061AA22 /* AudioRecorder.swift */,
@@ -324,11 +327,8 @@
 		1815524E2935B62500E051FE /* iTalk2 */ = {
 			isa = PBXGroup;
 			children = (
-				1815525A2935B62800E051FE /* iTalk2.xcdatamodeld */,
-				1815525D2935B62800E051FE /* Info.plist */,
 				18BACEB62936863A005EE142 /* iTalk2App.swift */,
-				18BACEB829368697005EE142 /* Persistence.swift */,
-				18BACEBA293686C5005EE142 /* ContentView.swift */,
+				1815525D2935B62800E051FE /* Info.plist */,
 				1829E517293610CF008BF351 /* GoogleService-Info.plist */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
 				180946C5293735DC0061AA22 /* Model */,
