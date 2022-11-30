@@ -250,6 +250,36 @@
 		180946E8293741870061AA22 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				180946EB293742430061AA22 /* Helpers */,
+				180946EA293742340061AA22 /* Enum */,
+				180946E92937421C0061AA22 /* Extensions */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		180946E92937421C0061AA22 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				180946DB29373F710061AA22 /* Array+Extension.swift */,
+				180946D829373F6F0061AA22 /* Date+Extension.swift */,
+				180946DC29373F710061AA22 /* Double+Extension.swift */,
+				180946D929373F6F0061AA22 /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		180946EA293742340061AA22 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				180946DD29373F720061AA22 /* BubbleColors.swift */,
+				180946DA29373F700061AA22 /* TypeOfContent.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		180946EB293742430061AA22 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 				180946CD29373F3A0061AA22 /* Alerts.swift */,
 				180946CA29373F390061AA22 /* AudioPlayer.swift */,
 				180946CC29373F3A0061AA22 /* AudioRecorder.swift */,
@@ -257,14 +287,8 @@
 				180946CF29373F3B0061AA22 /* LocationManager.swift */,
 				180946CB29373F390061AA22 /* Notifications.swift */,
 				180946CE29373F3B0061AA22 /* TimerManager.swift */,
-				180946DD29373F720061AA22 /* BubbleColors.swift */,
-				180946DA29373F700061AA22 /* TypeOfContent.swift */,
-				180946DB29373F710061AA22 /* Array+Extension.swift */,
-				180946D829373F6F0061AA22 /* Date+Extension.swift */,
-				180946DC29373F710061AA22 /* Double+Extension.swift */,
-				180946D929373F6F0061AA22 /* String+Extension.swift */,
 			);
-			path = Support;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		181552432935B62500E051FE = {
@@ -298,10 +322,10 @@
 				18BACEBA293686C5005EE142 /* ContentView.swift */,
 				1829E517293610CF008BF351 /* GoogleService-Info.plist */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
-				180946E8293741870061AA22 /* Support */,
 				180946C5293735DC0061AA22 /* Model */,
 				180946BD293732570061AA22 /* VisualModel */,
 				180946E429373FF50061AA22 /* View */,
+				180946E8293741870061AA22 /* Support */,
 				181552832935B67900E051FE /* New Group */,
 				181552552935B62800E051FE /* Preview Content */,
 			);
