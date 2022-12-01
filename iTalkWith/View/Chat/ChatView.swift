@@ -135,7 +135,7 @@ struct MessagesView: View {
         ZStack(alignment: .top){
             ScrollView {
                 ScrollViewReader { scrollViewProxy in
-                    VStack {
+                    LazyVStack {
                         ForEach(vm.chatMessages) { message in
                             MessageView(vm: vm, message: message)
                         }

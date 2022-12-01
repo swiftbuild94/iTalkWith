@@ -31,15 +31,17 @@ struct iTalkView: View {
                         if let user = user {
                             //  if UIDevice.current.userInterfaceIdiom == .pad {
                             NavigationLink(destination: ChatView(chatUser: user)) {
-                                HistoryCell(contact: user, recentMessage: recentMessage)
-                                    .swipeActions(edge: .leading) {
-                                        Button {
-                                            print("Pinned")
-                                        } label: {
-                                            Label("Pin",systemImage: "pin")
-                                                .foregroundColor(Color(.blue))
+                                VStack {
+                                    HistoryCell(contact: user, recentMessage: recentMessage)
+                                        .swipeActions(edge: .leading) {
+                                            Button {
+                                                print("Pinned")
+                                            } label: {
+                                                Label("Pin",systemImage: "pin")
+                                                    .foregroundColor(Color(.blue))
+                                            }
+                                            .tint(.orange)
                                         }
-                                        .tint(.orange)
                                     }
                                     .swipeActions(edge: .trailing) {
                                         Button {
@@ -78,7 +80,7 @@ struct iTalkView: View {
                 }
 //                    if UIDevice.current.userInterfaceIdiom == .pad {
             }
-                .navigationBarTitle(Text("iTalk"))
+                .navigationBarTitle(Text("iTalkWith"))
 //            
 //                .toolbar {
 //                    ToolbarItem(placement: .navigationBarTrailing) {

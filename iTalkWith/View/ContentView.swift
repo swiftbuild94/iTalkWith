@@ -21,11 +21,11 @@ struct ContentView: View {
                 .tabItem {
                     VStack {
                         Image(systemName: "bubble.left.and.bubble.right.fill")
-                        Text("iTalk")
+                        Text("iTalkWith")
                     }
             }
             .tag(0)
-           /* HistoryView()
+            HistoryView()
                 .tabItem {
                     VStack {
                         Image(systemName: "clock.fill")
@@ -33,7 +33,7 @@ struct ContentView: View {
                     }
             }
             .tag(1)
-            */
+            
             SettingsView()
                 .tabItem {
                     VStack {

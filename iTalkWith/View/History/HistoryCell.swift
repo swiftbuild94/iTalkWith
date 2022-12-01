@@ -79,8 +79,14 @@ struct HistoryCell: View {
 
 
 struct HistoryCell_Previews: PreviewProvider {
+    
+    let testUser = User(data: ["uid": "Id", "name": "test", "email": "email", "photo": "", "profileImageURL": "nil", "phoneNumber": "11111" ])
+    let testRecentMessage = RecentMessage(id: "Id", fromId: "FromId", toId: "ToId", text: "messageText", audioTimer: nil, photo: nil, timestamp: Date() )
+    
     static var previews: some View {
-        HistoryView()
-            .preferredColorScheme(.dark)
+       HistoryView()
+        
+        // HistoryCell(contact: testUser, recentMessage: testRecentMessage)
+//            .preferredColorScheme(.dark)
     }
 }
