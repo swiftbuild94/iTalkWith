@@ -25,7 +25,8 @@ struct ContentView: View {
                     }
             }
             .tag(0)
-            HistoryView()
+            /*
+             HistoryView()
                 .tabItem {
                     VStack {
                         Image(systemName: "clock.fill")
@@ -33,7 +34,23 @@ struct ContentView: View {
                     }
             }
             .tag(1)
-            
+            HistoryView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "photo.on.rectangle.angled")
+                        Text("Stories")
+                    }
+            }
+            .tag(3)
+            HistoryView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "person.2.fill")
+                        Text("Meet")
+                    }
+            }
+            .tag(4)
+             */
             SettingsView()
                 .tabItem {
                     VStack {

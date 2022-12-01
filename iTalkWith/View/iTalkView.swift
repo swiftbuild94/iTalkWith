@@ -31,34 +31,32 @@ struct iTalkView: View {
                         if let user = user {
                             //  if UIDevice.current.userInterfaceIdiom == .pad {
                             NavigationLink(destination: ChatView(chatUser: user)) {
-                                VStack {
-                                    HistoryCell(contact: user, recentMessage: recentMessage)
-                                        .swipeActions(edge: .leading) {
-                                            Button {
-                                                print("Pinned")
-                                            } label: {
-                                                Label("Pin",systemImage: "pin")
-                                                    .foregroundColor(Color(.blue))
-                                            }
-                                            .tint(.orange)
-                                        }
-                                    }
-                                    .swipeActions(edge: .trailing) {
+                                GridCell(contact: user, recentMessage: recentMessage)
+                                    .swipeActions(edge: .leading) {
                                         Button {
-                                            print("UserDetails")
+                                            print("Pinned")
                                         } label: {
-                                            Label("User Details",systemImage: "person.crop.circle.badge.questionmark")
+                                            Label("Pin",systemImage: "pin")
                                                 .foregroundColor(Color(.blue))
                                         }
-                                        .tint(.blue)
-                                        Button(role: .destructive) {
-                                            print("Archive")
-                                        } label: {
-                                            Label("Archive",systemImage: "archivebox")
-                                                .foregroundColor(Color(.blue))
-                                        }
-                                        .tint(.gray)
+                                        .tint(.orange)
                                     }
+                            }
+                            .swipeActions(edge: .trailing) {
+                                Button {
+                                    print("UserDetails")
+                                } label: {
+                                    Label("User Details",systemImage: "person.crop.circle.badge.questionmark")
+                                        .foregroundColor(Color(.blue))
+                                }
+                                .tint(.blue)
+                                Button(role: .destructive) {
+                                    print("Archive")
+                                } label: {
+                                    Label("Archive",systemImage: "archivebox")
+                                        .foregroundColor(Color(.blue))
+                                }
+                                .tint(.gray)
                             }
                             //   } else {
                             //                            Button {
