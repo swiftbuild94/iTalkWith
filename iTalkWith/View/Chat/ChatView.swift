@@ -30,7 +30,7 @@ struct ChatView: View {
 	
 	var body: some View {
             ZStack(alignment: .top) {
-                LazyVStack() {
+                VStack() {
                     MessagesView(vm: vmChat)
                         .padding(.bottom, topPadding)
                     InputsButtons(vm: vmChat)
