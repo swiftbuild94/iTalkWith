@@ -11,7 +11,7 @@ import UserNotifications
 /// Manage the Notifications
 final class NotificationManager: ObservableObject {
     var notifications = [Notification]()
-    
+    var badge = 0
     static let shared = NotificationManager()
     
     init() {
@@ -29,6 +29,11 @@ final class NotificationManager: ObservableObject {
                 // Enable or disable features based on the authorization.
             }
         }
+    }
+    
+    func removeBadge(_ qty: Int) {
+        print("Remove Badges: \(qty)")
+        UIApplication.shared.applicationIconBadgeNumber = badge-qty
     }
     
     func sendNotification(title: String, subtitle: String?, body: String, launchIn: Double, badge: Int = 0) {

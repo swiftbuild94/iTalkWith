@@ -47,7 +47,7 @@ final class LogInSignInVM: ObservableObject {
     }
     
     private func fethCurrentUser(_ uid: String) {
-        print("Fetch Current User: \(uid)")
+//        print("Fetch Current User: \(uid)")
 //        let name = FirebaseManager.shared.auth.currentUser?.name
 //        currentUser = User(uid: uid, name: name)
         FirebaseManager.shared.firestore.collection("users").document(uid).getDocument { [self] snapshot, error in

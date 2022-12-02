@@ -30,7 +30,10 @@ struct iTalkView: View {
                         let user = vm.usersDictionary[uid]
                         if let user = user {
                             //  if UIDevice.current.userInterfaceIdiom == .pad {
-                            NavigationLink(destination: ChatView(chatUser: user)) {
+                            Button(action: {
+                                vm.selectedUser = user.uid
+                                vm.isShowChat = true
+                            }, label: {
                                 GridCell(contact: user, recentMessage: recentMessage)
                                     .swipeActions(edge: .leading) {
                                         Button {
@@ -41,31 +44,23 @@ struct iTalkView: View {
                                         }
                                         .tint(.orange)
                                     }
-                            }
-                            .swipeActions(edge: .trailing) {
-                                Button {
-                                    print("UserDetails")
-                                } label: {
-                                    Label("User Details",systemImage: "person.crop.circle.badge.questionmark")
-                                        .foregroundColor(Color(.blue))
-                                }
-                                .tint(.blue)
-                                Button(role: .destructive) {
-                                    print("Archive")
-                                } label: {
-                                    Label("Archive",systemImage: "archivebox")
-                                        .foregroundColor(Color(.blue))
-                                }
-                                .tint(.gray)
-                            }
-                            //   } else {
-                            //                            Button {
-                            //                                vm.selectedUser = user.uid
-                            //                                vm.isShowChat = true
-                            //                            } label : {
-                            //                                HistoryCell(contact: user, recentMessage: recentMessage)
-                            //                            }
-                            //  }
+                                    .swipeActions(edge: .trailing) {
+                                        Button {
+                                            print("UserDetails")
+                                        } label: {
+                                            Label("User Details",systemImage: "person.crop.circle.badge.questionmark")
+                                                .foregroundColor(Color(.blue))
+                                        }
+                                        .tint(.blue)
+                                        Button(role: .destructive) {
+                                            print("Archive")
+                                        } label: {
+                                            Label("Archive",systemImage: "archivebox")
+                                                .foregroundColor(Color(.blue))
+                                        }
+                                        .tint(.gray)
+                                    }
+                            })
                         }
                     }
                 }

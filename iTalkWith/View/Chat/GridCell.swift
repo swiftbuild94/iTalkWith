@@ -43,8 +43,10 @@ struct GridCell: View {
                             Text(contact.name)
                             //                            .font(.system(size: contactSize, weight: .bold))
                                 .dynamicTypeSize(.large)
-                            Spacer()
-                            NotificationsView(notifications: 1)
+                            if contact.badge > 0 {
+                                Spacer()
+                                NotificationsView(notifications: contact.badge)
+                            }
                         }
                         HStack {
                             if recentMessage.audioTimer != nil {

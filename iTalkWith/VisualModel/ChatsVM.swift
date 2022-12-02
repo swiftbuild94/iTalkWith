@@ -9,9 +9,7 @@ import Foundation
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-//import FirebaseFirestoreSwift
 import FirebaseStorage
-//import FirebaseStorageSwift
 import SwiftUI
 
 /// Just for inside the ChatView
@@ -41,7 +39,7 @@ final class ChatsVM: ObservableObject {
     @Published var data: Data?
     
     @State var bubbleColor: Color = Color.green
-    
+    private var badge = 0
     private var url: URL?
     var audioTimer: Double?
     
@@ -51,6 +49,8 @@ final class ChatsVM: ObservableObject {
 		self.chatUser = chatUser
 		fetchMessages()
         setBubbleColor()
+        self.badge = chatUser?.badge ?? 0
+        NotificationManager.shared.removeBadge(self.badge)
 	}
     
     deinit {
@@ -113,10 +113,10 @@ final class ChatsVM: ObservableObject {
     // MARK: - Download Photo
     func downloadPhoto(_ photo: String) -> UIImage? {
         var image: UIImage?
-        print("===Photo")
+        // print("===Photo")
         let storageRef = FirebaseManager.shared.storage.reference()
         let photoRef = storageRef.child(photo)
-        print("===Photo: \(photoRef.fullPath)")
+        // print("===Photo: \(photoRef.fullPath)")
         photoRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
                 print("====Error downloading \(error)")
@@ -125,7 +125,7 @@ final class ChatsVM: ObservableObject {
                 print("====Image NOT Error: \(String(describing: data!))")
             }
         }
-        print("====Image Returned===")
+        // print("====Image Returned===")
         return image
     }
     

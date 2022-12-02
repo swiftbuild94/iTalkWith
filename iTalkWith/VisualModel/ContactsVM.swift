@@ -10,9 +10,6 @@ import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-//import FirebaseFirestoreSwift
-//import FirebaseStorage
-//import FirebaseStorageSwift
 
 /// To Get All Users and Recent Messages
 ///
@@ -30,8 +27,8 @@ final class ContactsVM: ObservableObject {
 	@Published var errorMessage = ""
     @Published var count = 0
     @Published var isShowChat = false
-    @ObservedObject var notificationManager = NotificationManager()
-//    @Published var namesX = [String]()
+//  @ObservedObject var notificationManager = NotificationManager()
+//  @Published var namesX = [String]()
 //	@Published var isUserLoggedOut = true
     @Published var recentMessages = [RecentMessage]()
 	var selectedUser: String?
@@ -81,7 +78,8 @@ final class ContactsVM: ObservableObject {
                     //}
 				}
 			})
-                print("Users Count: \(self.users.count)")
+                // print("Users Count: \(self.users.count)")
+                // print("UserDictionary: \(self.usersDictionary)")
 		}
 	}
 	
@@ -94,7 +92,7 @@ final class ContactsVM: ObservableObject {
 	
     /// - Returns: all recent Messages and an array if usersWithOutReccentMessages
 	private func fetchRecentMessages() {
-        var badge = 0
+        var badge = NotificationManager.shared.badge
 		//self.recentMessages.removeAll()
         self.firestoreListener?.remove()
 		guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
@@ -119,25 +117,26 @@ final class ContactsVM: ObservableObject {
 //                    }
                     do {
                         if let rm = try change.document.data(as: RecentMessage?.self) {
-                            print(">>>>>Fetch Recent Messages<<<<<")
+                            print(">>>>Fetch Recent Messages<<<<")
                             badge += 1
+                            self.usersDictionary[rm.toId]?.badge = badge
+                            print(">>>usersDictionary: \(self.usersDictionary)")
                             self.recentMessages.append(rm)
                             //print("RecentMessages: \(self.recentMessages)")
                             self.unshownUsersDictionary.removeValue(forKey: rm.toId)
-                            
-                            let user = self.usersDictionary[rm.toId]
-                            
+                        
                             var body = ""
                             if rm.audioTimer == nil {
                                 body = rm.text ?? "Photo"
                             } else {
                                 body = String("Audio: \(rm.audioTimer)")
                             }
-                            
-                            self.notificationManager.sendNotification(title: "iTalk", subtitle: user?.name, body: body, launchIn: 5, badge: badge)
+                            let user = self.usersDictionary[rm.toId]
+                            NotificationManager.shared.sendNotification(title: "iTalkWith", subtitle: user?.name, body: body, launchIn: 1, badge: badge)
                             print("RecentMessages User: \(String(describing: user?.name))")
                         }
-                        self.unshownUsers = Array(self.unshownUsersDictionary.values.map { $0 })
+                        
+                        //self.unshownUsers = Array(self.unshownUsersDictionary.values.map { $0 })
                         
                         self.recentMessages.sort(by: { $0.timestamp > $1.timestamp })
                         print("Unshown Users: \(String(describing: self.unshownUsers))")

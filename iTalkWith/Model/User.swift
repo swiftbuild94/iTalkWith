@@ -17,6 +17,7 @@ struct User: Identifiable, Codable, Hashable {
     var phoneNumber: String?
     var email: String?
     var profileImageURL: String?
+    var badge: Int = 0
     
     init(data: [String:Any]){
         self.uid = data[FirebaseConstants.uid] as? String ?? ""
