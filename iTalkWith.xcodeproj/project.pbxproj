@@ -12,7 +12,7 @@
 		180946D229373F3D0061AA22 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CC29373F3A0061AA22 /* AudioRecorder.swift */; };
 		180946D329373F3D0061AA22 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CF29373F3B0061AA22 /* LocationManager.swift */; };
 		180946D429373F3D0061AA22 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946D029373F3C0061AA22 /* ImagePicker.swift */; };
-		180946D529373F3D0061AA22 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CD29373F3A0061AA22 /* Alerts.swift */; };
+		180946D529373F3D0061AA22 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CD29373F3A0061AA22 /* AlertsManager.swift */; };
 		180946D629373F3D0061AA22 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CA29373F390061AA22 /* AudioPlayer.swift */; };
 		180946D729373F3D0061AA22 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CE29373F3B0061AA22 /* TimerManager.swift */; };
 		180946DE29373F720061AA22 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946DC29373F710061AA22 /* Double+Extension.swift */; };
@@ -91,7 +91,7 @@
 		180946CA29373F390061AA22 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		180946CB29373F390061AA22 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		180946CC29373F3A0061AA22 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
-		180946CD29373F3A0061AA22 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		180946CD29373F3A0061AA22 /* AlertsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
 		180946CE29373F3B0061AA22 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		180946CF29373F3B0061AA22 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		180946D029373F3C0061AA22 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				18BACEB829368697005EE142 /* Persistence.swift */,
-				180946CD29373F3A0061AA22 /* Alerts.swift */,
+				180946CD29373F3A0061AA22 /* AlertsManager.swift */,
 				180946CA29373F390061AA22 /* AudioPlayer.swift */,
 				180946CC29373F3A0061AA22 /* AudioRecorder.swift */,
 				180946D029373F3C0061AA22 /* ImagePicker.swift */,
@@ -549,7 +549,7 @@
 				180946E229373F720061AA22 /* BubbleColors.swift in Sources */,
 				1852C2FE29383A690064D51D /* GridCell.swift in Sources */,
 				18A603BE2937319400C45CC9 /* RecentMessage.swift in Sources */,
-				180946D529373F3D0061AA22 /* Alerts.swift in Sources */,
+				180946D529373F3D0061AA22 /* AlertsManager.swift in Sources */,
 				180946DE29373F720061AA22 /* Double+Extension.swift in Sources */,
 				18A603C12937319400C45CC9 /* FirebaseDocument.swift in Sources */,
 				18BACEE72936EA91005EE142 /* GridLayout.swift in Sources */,

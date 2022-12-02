@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var vmLogin = LogInSignInVM()
     @StateObject private var vmContacts = ContactsVM()
-    @StateObject private var vmAlerts = Alerts()
-//    @StateObject private var vmChats = ChatsVM(chatUser: nil)
-//    @State var isUserLoggedOut = false
+    // @StateObject private var vmAlerts = Alerts()
+    // @StateObject private var vmChats = ChatsVM(chatUser: nil)
+    // @State var isUserLoggedOut = false
     @State private var selection = 0
     
     var body: some View {
@@ -73,22 +73,24 @@ struct ContentView: View {
             let selectedUser = vmContacts.usersDictionary[vmContacts.selectedUser!]
             ChatView(chatUser: selectedUser!)
         }
-        .alert(isPresented: $vmAlerts.isAlert) {
-            if vmAlerts.showCancel {
-                let defaultButton = Alert.Button.default(Text(vmAlerts.defaultText)) {
-                    vmAlerts.okHandler!()
+        /*
+        .alert(isPresented: AlertsManager.shared.$isAlert) {
+            if AlertsManager.shared.showCancel {
+                let defaultButton = Alert.Button.default(Text(AlertsManager.shared.defaultText)) {
+                    AlertsManager.shared.okHandler!()
                 }
-                return Alert(title: Text(vmAlerts.title), message: Text(vmAlerts.message), primaryButton: vmAlerts.buttonCancel, secondaryButton: defaultButton)
+                return Alert(title: Text(AlertsManager.shared.title), message: Text(AlertsManager.shared.message), primaryButton: AlertsManager.shared.buttonCancel, secondaryButton: defaultButton)
                 
-            } else if vmAlerts.showDestructive {
-                let destructiveButton = Alert.Button.destructive(Text(vmAlerts.defaultText)) {
-                    vmAlerts.destructiveHandler!()
+            } else if AlertsManager.shared.showDestructive {
+                let destructiveButton = Alert.Button.destructive(Text(AlertsManager.shared.defaultText)) {
+                    AlertsManager.shared.destructiveHandler!()
                 }
-                return Alert(title: Text(vmAlerts.title), message: Text(vmAlerts.message), primaryButton: vmAlerts.buttonCancel, secondaryButton: destructiveButton)
+                return Alert(title: Text(AlertsManager.shared.title), message: Text(AlertsManager.shared.message), primaryButton: AlertsManager.shared.buttonCancel, secondaryButton: destructiveButton)
             } else {
-                return Alert(title: Text(vmAlerts.title), message: Text(vmAlerts.message), dismissButton: vmAlerts.buttonDefault)
+                return Alert(title: Text(AlertsManager.shared.title), message: Text(AlertsManager.shared.message), dismissButton: AlertsManager.shared.buttonDefault)
             }
         }
+         */
     }
 }
 
