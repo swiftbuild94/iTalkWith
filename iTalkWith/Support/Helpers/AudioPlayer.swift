@@ -16,6 +16,7 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     private var audioSession = AVAudioSession.sharedInstance()
     @Published var audioPlayer = AVAudioPlayer()
     let objectWillChange = PassthroughSubject<AudioPlayer, Never>()
+    
     @Published var isPlaying = false {
         didSet {
             objectWillChange.send(self)

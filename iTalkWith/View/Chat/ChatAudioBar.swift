@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ChatAudioBar: View {
     @State private var audioIsRecording = false
-    @ObservedObject var audioRecorder = AudioRecorder()
-    @ObservedObject var timerManager = TimerManager()
     @ObservedObject var vmChat: ChatsVM
+    // @ObservedObject var audioRecorder = AudioRecorder()
+    // @ObservedObject var timerManager = TimerManager()
     
     var body: some View {
         if audioIsRecording == true {
             Button {
                 print("Stop Recording")
                 self.audioIsRecording = false
-                self.audioRecorder.stopRecording()
-                let _ = self.timerManager.stopTimer()
+                AudioRecorder.shared.stopRecording()
+                //self.audioRecorder.stopRecording()
+                let _ = TimerManager.shared.stopTimer()
             } label: {
                 Image(systemName: "trash.circle.fill")
                     .resizable()
@@ -30,14 +31,15 @@ struct ChatAudioBar: View {
                     .padding(.bottom, 40)
                     .padding(.leading, 40)
                 Spacer()
-                Text(String(timerManager.secondsElapsed).prefix(4))
+                Text(String(TimerManager.shared.secondsElapsed).prefix(4))
                     .dynamicTypeSize(.xxxLarge)
                 Spacer()
                 Button {
                     self.audioIsRecording = false
-                    self.audioRecorder.stopRecording()
-                    vmChat.audioTimer = self.timerManager.stopTimer()
-                    if self.audioRecorder.getAudios() != nil {
+                    AudioRecorder.shared.stopRecording()
+                    //self.audioRecorder.stopRecording()
+                    vmChat.audioTimer = TimerManager.shared.stopTimer()
+                    if AudioRecorder.shared.getAudios() != nil {
                         vmChat.handleSend(.audio)
                     }
                 } label: {
@@ -55,8 +57,9 @@ struct ChatAudioBar: View {
             Button {
                 print("Start Recording")
                 self.audioIsRecording = true
-                self.timerManager.startTimer()
-                self.audioRecorder.startRecording()
+                TimerManager.shared.startTimer()
+                AudioRecorder.shared.startRecording()
+                //self.audioRecorder.startRecording()
             } label: {
                 Image(systemName: "mic.circle.fill")
                     .resizable()
