@@ -18,6 +18,8 @@ final class LocationManager: NSObject, ObservableObject {
     
     private let locationManager = CLLocationManager()
     
+    static let shared = LocationManager()
+    
     override init() {
         super.init()
         
