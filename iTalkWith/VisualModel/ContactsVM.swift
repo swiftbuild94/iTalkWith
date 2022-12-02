@@ -16,7 +16,7 @@ import FirebaseAuth
 /// Used in iTalkView and HistoryView
 final class ContactsVM: ObservableObject {
 	@Published var users = [User]()
-    @Published var unshownUsers = [User]()
+    //@Published var unshownUsers = [User]()
 	@Published var usersDictionary = [String: User]()
     @Published var unshownUsersDictionary = [String: User]()
 	@Published var currentUser: User?
@@ -31,10 +31,10 @@ final class ContactsVM: ObservableObject {
 //  @Published var namesX = [String]()
 //	@Published var isUserLoggedOut = true
     @Published var recentMessages = [RecentMessage]()
-	var selectedUser: String?
+	//var selectedUser: String?
     private var firestoreListener: ListenerRegistration?
     
-    /// On Init get all users andall recent messages
+    /// On Init get all users and all recent messages
     init() {
         DispatchQueue.main.async() {
             self.getAllUsers()
@@ -79,7 +79,8 @@ final class ContactsVM: ObservableObject {
 				}
 			})
                 // print("Users Count: \(self.users.count)")
-                // print("UserDictionary: \(self.usersDictionary)")
+                //print("UserDictionary: \(self.usersDictionary)")
+                print(">>>>unshownUsersDictionary: \(self.unshownUsersDictionary)")
 		}
 	}
 	
@@ -139,7 +140,7 @@ final class ContactsVM: ObservableObject {
                         //self.unshownUsers = Array(self.unshownUsersDictionary.values.map { $0 })
                         
                         self.recentMessages.sort(by: { $0.timestamp > $1.timestamp })
-                        print("Unshown Users: \(String(describing: self.unshownUsers))")
+                        print("UnshownUsersDictionary: \(String(describing: self.unshownUsersDictionary))")
                     } catch {
                         print(error)
                     }

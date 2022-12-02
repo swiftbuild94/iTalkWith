@@ -30,10 +30,7 @@ struct iTalkView: View {
                         let user = vm.usersDictionary[uid]
                         if let user = user {
                             //  if UIDevice.current.userInterfaceIdiom == .pad {
-                            Button(action: {
-                                vm.selectedUser = user.uid
-                                vm.isShowChat = true
-                            }, label: {
+                            NavigationLink(destination: ChatView(chatUser: user)) {
                                 GridCell(contact: user, recentMessage: recentMessage)
                                     .swipeActions(edge: .leading) {
                                         Button {
@@ -60,7 +57,7 @@ struct iTalkView: View {
                                         }
                                         .tint(.gray)
                                     }
-                            })
+                            }
                         }
                     }
                 }

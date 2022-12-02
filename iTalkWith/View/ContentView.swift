@@ -70,7 +70,7 @@ struct ContentView: View {
             })
         }
         .fullScreenCover(isPresented: $vmContacts.isShowChat) {
-            let selectedUser = vmContacts.usersDictionary[vmContacts.selectedUser!]
+            let selectedUser = vmContacts.usersDictionary[vmContacts.currentUser!.uid]
             ChatView(chatUser: selectedUser!)
         }
         /*

@@ -25,7 +25,7 @@ final class NotificationManager: ObservableObject {
                 print("Notifications Error: \(error)")
             }
             if granted == true {
-                print("Allowed Notifications")
+                //print("-Allowed Notifications")
                 // Enable or disable features based on the authorization.
             }
         }
@@ -37,7 +37,7 @@ final class NotificationManager: ObservableObject {
     }
     
     func sendNotification(title: String, subtitle: String?, body: String, launchIn: Double, badge: Int = 0) {
-        print("Badge: \(badge)")
+        // print("Badge: \(badge)")
         if badge > 0 {
                 UIApplication.shared.applicationIconBadgeNumber = badge
         }
