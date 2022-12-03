@@ -56,8 +56,3 @@ struct ContactCell: View {
 	}
 }
 
-struct ContactCell_Previews: PreviewProvider {
-    static var previews: some View {
-        iTalkView()
-    }
-}

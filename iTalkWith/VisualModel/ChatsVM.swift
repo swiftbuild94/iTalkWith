@@ -47,7 +47,7 @@ final class ChatsVM: ObservableObject {
     
 	init(chatUser: User?) {
 		self.chatUser = chatUser
-		fetchMessages()
+		//fetchMessages()
         setBubbleColor()
         self.badge = chatUser?.badge ?? 0
         NotificationManager.shared.removeBadge(self.badge)
@@ -75,7 +75,8 @@ final class ChatsVM: ObservableObject {
         }
     }
     
-    private func fetchMessages() {
+    func fetchMessages() {
+        print("#### FETCH MESSAGES \(Date()) ####")
         guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else { return }
         guard let toId = chatUser?.uid else { return }
         self.chatMessages.removeAll()
@@ -95,7 +96,7 @@ final class ChatsVM: ObservableObject {
                     if change.type == .added {
                         do {
                             if let chats = try change.document.data(as: Chat?.self) {
-                                self.chatMessages.append(chats)
+                                self.chatMessages.append(chats) 
                             }
                             self.chatMessages.sort(by: { $0.timestamp < $1.timestamp })
                         } catch {

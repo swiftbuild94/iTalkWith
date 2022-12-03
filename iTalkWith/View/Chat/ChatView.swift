@@ -12,20 +12,30 @@ import SDWebImageSwiftUI
 struct ChatView: View {
 	@Environment(\.presentationMode) var chatMode
 //    @ObservedObject private var vmLogin = LogInSignInVM()
-    @ObservedObject private var vmChat: ChatsVM
+    @ObservedObject var vmChat: ChatsVM
 	@State private var zoomed = false
 //	@State private var typeOfContent: TypeOfContent = .text
 //    @State private var image: UIImage?
     @State private var shouldShowImagePicker = false
     @State private var shouldShowLocation = false
     @FocusState private var focus
-	private var contact: User
+    var contact: User?
 	private let topPadding: CGFloat = 8
     @ObservedObject private var vmContacts = ContactsVM()
+   
+    init(vmChat: ChatsVM){
+        self.vmChat = vmChat
+        // self.contact = chatUser
+        // self.vmChat = .init(chatUser: chatUser)
+        self.focus = vmChat.focus
+    }
+    
+    
 	init(chatUser: User){
 		self.contact = chatUser
 		self.vmChat = .init(chatUser: chatUser)
         self.focus = vmChat.focus
+        self.vmChat.getMessages()
 	}
 	
 	var body: some View {
@@ -46,8 +56,8 @@ struct ChatView: View {
                     Button {
 //                          chatMode.showUserDetails()
                     } label: {
-                        ContactImage(contact: contact)
-                        Text(contact.name)
+                        ContactImage(contact: contact!)
+                        Text(contact!.name)
                             .foregroundColor(Color.accentColor)
                             .dynamicTypeSize(.xxxLarge)
                     }
@@ -60,26 +70,34 @@ struct ChatView: View {
 //                }
             }
 			.onDisappear {
-                
+                vmChat.firestoreListener?.remove()
 			}
-            .fullScreenCover(isPresented: $vmChat.shouldShowImagePicker, onDismiss: {
+            .sheet(isPresented: $vmChat.shouldShowImagePicker, onDismiss: {
                 if vmChat.image != nil {
                     vmChat.handleSend(.photoalbum)
                     vmChat.count += 1
                     vmChat.getMessages()
                 }
             }) {
-                ImagePicker(selectedImage: $vmChat.image, didSet: $shouldShowImagePicker)
+                VStack {
+                    ImagePicker(selectedImage: $vmChat.image, didSet: $shouldShowImagePicker)
+                }
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
 			}
-            .fullScreenCover(isPresented: $vmChat.shouldShowLocation, onDismiss: {
+            .sheet(isPresented: $vmChat.shouldShowLocation, onDismiss: {
                 if vmChat.location != nil {
                     vmChat.handleSend(.location)
                     vmChat.count += 1
                     vmChat.getMessages()
                 }
-            }) {
-                MapView(vmChat: vmChat)
-            }
+            }, content: {
+                VStack {
+                    MapView(vmChat: vmChat)
+                }
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+            })
 	}
 }
 
@@ -277,7 +295,7 @@ struct ShowPhoto: View {
 struct ShowAudio: View {
     @ObservedObject var vm: ChatsVM
     @ObservedObject var vmAudio = AudioPlayer()
-    @ObservedObject var timerManager = TimerManager()
+    @ObservedObject var timerManager = Timer()
     let message: Chat
     
     var body: some View {
@@ -319,7 +337,9 @@ let userTest = User(data: data)
 
 struct ChatView_Previews: PreviewProvider {
 	static var previews: some View {
-        ChatView(chatUser: userTest)
+        iTalkView(userSelected: .constant(nil))
+        //ChatView()
+        //ChatView(chatUser: userTest)
             .previewDevice("iPhone 13 mini")
             .preferredColorScheme(.dark)
 	}

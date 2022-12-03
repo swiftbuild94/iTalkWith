@@ -10,17 +10,17 @@ import SwiftUI
 struct ChatAudioBar: View {
     @State private var audioIsRecording = false
     @ObservedObject var vmChat: ChatsVM
-    // @ObservedObject var audioRecorder = AudioRecorder()
-    // @ObservedObject var timerManager = TimerManager()
+    @ObservedObject var audioRecorder = AudioRecorder()
+    @ObservedObject var timerManager = Timer()
     
     var body: some View {
         if audioIsRecording == true {
             Button {
                 print("Stop Recording")
                 self.audioIsRecording = false
-                AudioRecorder.shared.stopRecording()
-                //self.audioRecorder.stopRecording()
-                let _ = TimerManager.shared.stopTimer()
+                //AudioRecorder.shared.stopRecording()
+                self.audioRecorder.stopRecording()
+                let _ = self.timerManager.stopTimer()
             } label: {
                 Image(systemName: "trash.circle.fill")
                     .resizable()
@@ -31,15 +31,15 @@ struct ChatAudioBar: View {
                     .padding(.bottom, 40)
                     .padding(.leading, 40)
                 Spacer()
-                Text(String(TimerManager.shared.secondsElapsed).prefix(4))
+                Text(String(self.timerManager.secondsElapsed).prefix(4))
                     .dynamicTypeSize(.xxxLarge)
                 Spacer()
                 Button {
                     self.audioIsRecording = false
-                    AudioRecorder.shared.stopRecording()
-                    //self.audioRecorder.stopRecording()
-                    vmChat.audioTimer = TimerManager.shared.stopTimer()
-                    if AudioRecorder.shared.getAudios() != nil {
+                    //AudioRecorder.shared.stopRecording()
+                    self.audioRecorder.stopRecording()
+                    vmChat.audioTimer = self.timerManager.stopTimer()
+                    if self.audioRecorder.getAudios() != nil {
                         vmChat.handleSend(.audio)
                     }
                 } label: {
@@ -57,9 +57,9 @@ struct ChatAudioBar: View {
             Button {
                 print("Start Recording")
                 self.audioIsRecording = true
-                TimerManager.shared.startTimer()
-                AudioRecorder.shared.startRecording()
-                //self.audioRecorder.startRecording()
+                self.timerManager.startTimer()
+                //AudioRecorder.shared.startRecording()
+                self.audioRecorder.startRecording()
             } label: {
                 Image(systemName: "mic.circle.fill")
                     .resizable()

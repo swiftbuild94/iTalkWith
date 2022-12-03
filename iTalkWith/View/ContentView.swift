@@ -10,14 +10,16 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var vmLogin = LogInSignInVM()
     @StateObject private var vmContacts = ContactsVM()
+    @StateObject var vmChats = ChatsVM(chatUser: nil)
     // @StateObject private var vmAlerts = Alerts()
-    // @StateObject private var vmChats = ChatsVM(chatUser: nil)
     // @State var isUserLoggedOut = false
     @State private var selection = 0
+    @State private var isShowChat = false
+    @State private var userSelected: User?
     
     var body: some View {
         TabView(selection: $selection){
-            iTalkView()
+            iTalkView(userSelected: $userSelected)
                 .tabItem {
                     VStack {
                         Image(systemName: "bubble.left.and.bubble.right.fill")
@@ -66,13 +68,39 @@ struct ContentView: View {
                 self.vmLogin.getCurrentUser()
                 self.vmContacts.getAllUsers()
                 self.vmContacts.getRecentMessagges()
-                
             })
         }
-        .fullScreenCover(isPresented: $vmContacts.isShowChat) {
-            let selectedUser = vmContacts.usersDictionary[vmContacts.currentUser!.uid]
-            ChatView(chatUser: selectedUser!)
+        .sheet(item: $userSelected, onDismiss: {
+            //vmContacts.getAllUsers()
+            //vmContacts.getRecentMessagges()
+            vmChats.firestoreListener?.remove()
+            userSelected = nil
+        }) { _ in
+            if let userSelected {
+                VStack {
+                    NavigationView {
+                        ChatView(chatUser: userSelected)
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button {
+                                //vmChat.shouldShowLocation = false
+                                // self.presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Text("Cancel")
+                                    .foregroundColor(Color.accentColor)
+                            }
+                        }
+                    }
+                }
+                .presentationDetents([.large])
+                .presentationDragIndicator(.hidden)
+            }
         }
+//        .fullScreenCover(isPresented: $isShowChat) {
+//            ChatView(vmChat: vmChats)
+//        }
         /*
         .alert(isPresented: AlertsManager.shared.$isAlert) {
             if AlertsManager.shared.showCancel {

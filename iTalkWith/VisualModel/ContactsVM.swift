@@ -26,8 +26,7 @@ final class ContactsVM: ObservableObject {
     @Published var myUserPhoto = ""
 	@Published var errorMessage = ""
     @Published var count = 0
-    @Published var isShowChat = false
-//  @ObservedObject var notificationManager = NotificationManager()
+//  @Published var isShowChat = false
 //  @Published var namesX = [String]()
 //	@Published var isUserLoggedOut = true
     @Published var recentMessages = [RecentMessage]()
@@ -69,7 +68,7 @@ final class ContactsVM: ObservableObject {
                 let data = snapshot.data()
                 let user = User(data: data)
 				if user.uid != FirebaseManager.shared.auth.currentUser?.uid {
-                    print(">>>>FETCH ALL USERS<<<<")
+                    print(">>>>Fetch All Users<<<<")
                    // DispatchQueue.main.async {
                         self.users.append(.init(data: data))
                         //print("User: \(self.users)")
@@ -79,8 +78,8 @@ final class ContactsVM: ObservableObject {
 				}
 			})
                 // print("Users Count: \(self.users.count)")
-                //print("UserDictionary: \(self.usersDictionary)")
-                print(">>>>unshownUsersDictionary: \(self.unshownUsersDictionary)")
+                // print("UserDictionary: \(self.usersDictionary)")
+                // print(">>>>unshownUsersDictionary: \(self.unshownUsersDictionary)")
 		}
 	}
 	
@@ -94,8 +93,10 @@ final class ContactsVM: ObservableObject {
     /// - Returns: all recent Messages and an array if usersWithOutReccentMessages
 	private func fetchRecentMessages() {
         var badge = NotificationManager.shared.badge
-		//self.recentMessages.removeAll()
+		
         self.firestoreListener?.remove()
+        self.recentMessages.removeAll()
+        
 		guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
         //print(">>>>>>fetchRecentMessages")
         firestoreListener = FirebaseManager.shared.firestore
@@ -121,7 +122,7 @@ final class ContactsVM: ObservableObject {
                             print(">>>>Fetch Recent Messages<<<<")
                             badge += 1
                             self.usersDictionary[rm.toId]?.badge = badge
-                            print(">>>usersDictionary: \(self.usersDictionary)")
+                            //print(">>>usersDictionary: \(self.usersDictionary)")
                             self.recentMessages.append(rm)
                             //print("RecentMessages: \(self.recentMessages)")
                             self.unshownUsersDictionary.removeValue(forKey: rm.toId)
@@ -140,7 +141,7 @@ final class ContactsVM: ObservableObject {
                         //self.unshownUsers = Array(self.unshownUsersDictionary.values.map { $0 })
                         
                         self.recentMessages.sort(by: { $0.timestamp > $1.timestamp })
-                        print("UnshownUsersDictionary: \(String(describing: self.unshownUsersDictionary))")
+                        //print("UnshownUsersDictionary: \(String(describing: self.unshownUsersDictionary))")
                     } catch {
                         print(error)
                     }

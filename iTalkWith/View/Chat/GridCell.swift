@@ -79,8 +79,3 @@ struct GridCell: View {
     }
 }
 
-struct GridCell_Previews: PreviewProvider {
-    static var previews: some View {
-        iTalkView()
-    }
-}

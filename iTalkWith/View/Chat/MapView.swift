@@ -19,7 +19,7 @@ struct MapView: View {
     @State private var userTrackingMode: MapUserTrackingMode = .follow
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: -34.603722, longitude: -58.381592),
-        span: MKCoordinateSpan(latitudeDelta: 0.0001, longitudeDelta: 0.0001)
+        span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
     )
     @ObservedObject private var locationManager = LocationManager()
     @ObservedObject var vmChat: ChatsVM
@@ -40,8 +40,13 @@ struct MapView: View {
                 userTrackingMode: $userTrackingMode,
                 annotationItems: homeLocation
             ) {
-                MapPin(coordinate: $0.coordinate, tint: .blue)
+                //MapPin(coordinate: $0.coordinate, tint: .blue)
+                MapMarker(coordinate: $0.coordinate, tint: .blue)
             }
+            // # TODO:  setRegion:animated:
+            //MKMapSnapshotter
+//            MKLookAroundSnapshotter
+
             .edgesIgnoringSafeArea(.all)
             //.navigationTitle("Your location")
             .navigationBarTitleDisplayMode(.inline)
@@ -69,8 +74,3 @@ struct MapView: View {
     }
 }
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(chatUser: userTest)
-    }
-}

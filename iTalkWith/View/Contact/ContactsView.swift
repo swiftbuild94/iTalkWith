@@ -45,7 +45,7 @@ struct ContactsView: View {
 
 struct ContactsView_Previews: PreviewProvider {
     static var previews: some View {
-		iTalkView()
+        iTalkView(userSelected: .constant(nil))
 //		HistoryView()
 //		ContactsView()
     }

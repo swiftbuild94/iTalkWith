@@ -79,10 +79,3 @@ struct InputsButtons: View {
         .font(.system(size: buttonsSize))
     }
 }
-
-struct InputsButtons_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(chatUser: userTest)
-            .preferredColorScheme(.dark)
-    }
-}

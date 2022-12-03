@@ -18,9 +18,7 @@ final class AudioRecorder: ObservableObject {
     @Published var audios = [URL]()
     private var audioRecorder: AVAudioRecorder!
     private var audioSession: AVAudioSession!
-    
-    static let shared = AudioRecorder()
-    
+   
     deinit {
         self.stopRecording()
     }

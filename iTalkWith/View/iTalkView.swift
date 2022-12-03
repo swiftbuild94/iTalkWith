@@ -9,11 +9,13 @@
 import SwiftUI
 
 struct iTalkView: View {
-	@ObservedObject private var vm = ContactsVM()
+	@ObservedObject private var vmContacts = ContactsVM()
     @State private var shouldShowNewUserScreen = false
     @State private var shouldNavigateToChatView = false
-    @State private var userSelected: User?
-
+    @Binding var userSelected: User?
+   // @Binding var isShowChat: Bool
+    @ObservedObject private var vmChats = ChatsVM(chatUser: nil)
+    
     var columns = [
         GridItem(spacing: 0),
         GridItem(spacing: 0)
@@ -22,15 +24,25 @@ struct iTalkView: View {
 	var body: some View {
 		NavigationView {
             ScrollView {
-                Text(vm.errorMessage)
+                Text(vmContacts.errorMessage)
                     .foregroundColor(Color.red)
                 LazyVGrid(columns: columns, spacing: 0){
-                    ForEach(vm.recentMessages, id:\.self) { recentMessage in
+                    ForEach(vmContacts.recentMessages, id:\.self) { recentMessage in
                         let uid = recentMessage.toId
-                        let user = vm.usersDictionary[uid]
+                        let user = vmContacts.usersDictionary[uid]
                         if let user = user {
                             //  if UIDevice.current.userInterfaceIdiom == .pad {
-                            NavigationLink(destination: ChatView(chatUser: user)) {
+//                            NavigationLink(destination: //ChatView(chatUser: user)) {
+//                                ChatView(vmChats: vmChats) {
+                            Button(action: {
+                                    userSelected = user
+                                    //vmChats.chatUser = user
+                                    //vmChats.fetchMessages()
+                                    print("UserSelected: \(user.name)")
+                                
+                                //isShowChat.toggle()
+                                // ChatView(vmChats: vmChats)
+                            }, label: {
                                 GridCell(contact: user, recentMessage: recentMessage)
                                     .swipeActions(edge: .leading) {
                                         Button {
@@ -57,15 +69,42 @@ struct iTalkView: View {
                                         }
                                         .tint(.gray)
                                     }
-                            }
+                            })
                         }
                     }
                 }
-                ForEach(vm.users, id:\.self) { user in
+                ForEach(vmContacts.users, id:\.self) { user in
                     if let user = user {
-                        NavigationLink(destination: ChatView(chatUser: user)) {
+                        Button(action: {
+                            userSelected = user
+                        }, label: {
                             ContactCell(contact: user)
-                        }
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        print("Pinned")
+                                    } label: {
+                                        Label("Pin",systemImage: "pin")
+                                            .foregroundColor(Color(.blue))
+                                    }
+                                    .tint(.orange)
+                                }
+                                .swipeActions(edge: .trailing) {
+                                    Button {
+                                        print("UserDetails")
+                                    } label: {
+                                        Label("User Details",systemImage: "person.crop.circle.badge.questionmark")
+                                            .foregroundColor(Color(.blue))
+                                    }
+                                    .tint(.blue)
+                                    Button(role: .destructive) {
+                                        print("Archive")
+                                    } label: {
+                                        Label("Archive",systemImage: "archivebox")
+                                            .foregroundColor(Color(.blue))
+                                    }
+                                    .tint(.gray)
+                                }
+                        })
                     }
                 }
 //                    if UIDevice.current.userInterfaceIdiom == .pad {
@@ -88,7 +127,7 @@ struct iTalkView: View {
 
 struct iTalk_Previews: PreviewProvider {
     static var previews: some View {
-        iTalkView()
+        iTalkView(userSelected: .constant(nil))
 //            .preferredColorScheme(.dark)
             .previewDevice("iPhone 13 mini")
     }
