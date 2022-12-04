@@ -50,7 +50,9 @@ final class ChatsVM: ObservableObject {
 		//fetchMessages()
         setBubbleColor()
         self.badge = chatUser?.badge ?? 0
-        NotificationManager.shared.removeBadge(self.badge)
+        if self.badge > 0 {
+            NotificationManager.shared.removeBadge(self.badge)
+        }
 	}
     
     deinit {

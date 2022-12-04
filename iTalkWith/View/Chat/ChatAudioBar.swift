@@ -11,7 +11,7 @@ struct ChatAudioBar: View {
     @State private var audioIsRecording = false
     @ObservedObject var vmChat: ChatsVM
     @ObservedObject var audioRecorder = AudioRecorder()
-    @ObservedObject var timerManager = Timer()
+    @ObservedObject var timerManager = TimerManager()
     
     var body: some View {
         if audioIsRecording == true {

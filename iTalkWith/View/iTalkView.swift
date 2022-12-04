@@ -73,6 +73,7 @@ struct iTalkView: View {
                         }
                     }
                 }
+                Divider()
                 ForEach(vmContacts.users, id:\.self) { user in
                     if let user = user {
                         Button(action: {

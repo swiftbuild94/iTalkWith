@@ -14,7 +14,7 @@
 		180946D429373F3D0061AA22 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946D029373F3C0061AA22 /* ImagePicker.swift */; };
 		180946D529373F3D0061AA22 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CD29373F3A0061AA22 /* AlertsManager.swift */; };
 		180946D629373F3D0061AA22 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CA29373F390061AA22 /* AudioPlayer.swift */; };
-		180946D729373F3D0061AA22 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CE29373F3B0061AA22 /* Timer.swift */; };
+		180946D729373F3D0061AA22 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946CE29373F3B0061AA22 /* TimerManager.swift */; };
 		180946DE29373F720061AA22 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946DC29373F710061AA22 /* Double+Extension.swift */; };
 		180946DF29373F720061AA22 /* TypeOfContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946DA29373F700061AA22 /* TypeOfContent.swift */; };
 		180946E029373F720061AA22 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180946DB29373F710061AA22 /* Array+Extension.swift */; };
@@ -92,7 +92,7 @@
 		180946CB29373F390061AA22 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		180946CC29373F3A0061AA22 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		180946CD29373F3A0061AA22 /* AlertsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
-		180946CE29373F3B0061AA22 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		180946CE29373F3B0061AA22 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		180946CF29373F3B0061AA22 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		180946D029373F3C0061AA22 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		180946D829373F6F0061AA22 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 				180946D029373F3C0061AA22 /* ImagePicker.swift */,
 				180946CF29373F3B0061AA22 /* LocationManager.swift */,
 				180946CB29373F390061AA22 /* Notifications.swift */,
-				180946CE29373F3B0061AA22 /* Timer.swift */,
+				180946CE29373F3B0061AA22 /* TimerManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -524,7 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A603B52937315400C45CC9 /* ChatsVM.swift in Sources */,
-				180946D729373F3D0061AA22 /* Timer.swift in Sources */,
+				180946D729373F3D0061AA22 /* TimerManager.swift in Sources */,
 				180946DF29373F720061AA22 /* TypeOfContent.swift in Sources */,
 				18BACF112937055D005EE142 /* ChatView.swift in Sources */,
 				18A603B72937315400C45CC9 /* ContactsVM.swift in Sources */,

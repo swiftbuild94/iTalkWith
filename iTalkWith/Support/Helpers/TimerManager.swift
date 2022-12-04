@@ -8,9 +8,11 @@
 import SwiftUI
 
 /// Returns a Timer with second Elapsed
-final class Timer: ObservableObject {
+final class TimerManager: ObservableObject {
     @Published var secondsElapsed = 0.0
     private var timer = Timer()
+    
+    static let shared = TimerManager()
     
     func startTimer() {
         secondsElapsed = 0

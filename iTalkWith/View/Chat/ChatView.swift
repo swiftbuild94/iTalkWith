@@ -22,14 +22,13 @@ struct ChatView: View {
     var contact: User?
 	private let topPadding: CGFloat = 8
     @ObservedObject private var vmContacts = ContactsVM()
-   
-    init(vmChat: ChatsVM){
-        self.vmChat = vmChat
-        // self.contact = chatUser
-        // self.vmChat = .init(chatUser: chatUser)
-        self.focus = vmChat.focus
-    }
-    
+    @State private var isLoading = true
+//    init(vmChat: ChatsVM){
+//        self.vmChat = vmChat
+//        // self.contact = chatUser
+//        // self.vmChat = .init(chatUser: chatUser)
+//        self.focus = vmChat.focus
+//    }
     
 	init(chatUser: User){
 		self.contact = chatUser
@@ -41,6 +40,8 @@ struct ChatView: View {
 	var body: some View {
             ZStack(alignment: .top) {
                 VStack() {
+                    Divider()
+                    ActivityIndicator($isLoading, style: .large)
                     MessagesView(vm: vmChat)
                         .padding(.bottom, topPadding)
                     InputsButtons(vm: vmChat)
@@ -52,6 +53,13 @@ struct ChatView: View {
                 }
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading)  {
+                    Text("Back")
+                //                    Image(systemName: "phone.fill")
+                //                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+                //                    Image(systemName: "video.fill")
+                //                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+                }
                 ToolbarItem(placement: .principal) {
                     Button {
 //                          chatMode.showUserDetails()
@@ -62,12 +70,12 @@ struct ChatView: View {
                             .dynamicTypeSize(.xxxLarge)
                     }
                 }
-//                ToolbarItemGroup(placement: .navigationBarTrailing)  {
-//                    Image(systemName: "phone.fill")
-//                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
-//                    Image(systemName: "video.fill")
-//                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
-//                }
+                ToolbarItemGroup(placement: .navigationBarTrailing)  {
+                    Image(systemName: "phone.fill")
+                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+                    Image(systemName: "video.fill")
+                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+                }
             }
 			.onDisappear {
                 vmChat.firestoreListener?.remove()
@@ -295,7 +303,7 @@ struct ShowPhoto: View {
 struct ShowAudio: View {
     @ObservedObject var vm: ChatsVM
     @ObservedObject var vmAudio = AudioPlayer()
-    @ObservedObject var timerManager = Timer()
+    @ObservedObject var timerManager = TimerManager()
     let message: Chat
     
     var body: some View {
