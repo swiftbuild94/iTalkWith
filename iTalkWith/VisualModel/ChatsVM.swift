@@ -37,6 +37,7 @@ final class ChatsVM: ObservableObject {
     @Published var alertMessage = ""
     @Published var image: UIImage?
     @Published var data: Data?
+    @Published  var isLoading = true
     
     @State var bubbleColor: Color = Color.green
     private var badge = 0
@@ -47,11 +48,13 @@ final class ChatsVM: ObservableObject {
     
 	init(chatUser: User?) {
 		self.chatUser = chatUser
-		//fetchMessages()
         setBubbleColor()
         self.badge = chatUser?.badge ?? 0
         if self.badge > 0 {
             NotificationManager.shared.removeBadge(self.badge)
+        }
+        DispatchQueue.main.async {
+            self.getMessages()
         }
 	}
     

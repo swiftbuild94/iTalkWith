@@ -10,103 +10,109 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ChatView: View {
-	@Environment(\.presentationMode) var chatMode
-//    @ObservedObject private var vmLogin = LogInSignInVM()
+    @Environment(\.presentationMode) var chatMode
+    //    @ObservedObject private var vmLogin = LogInSignInVM()
     @ObservedObject var vmChat: ChatsVM
-	@State private var zoomed = false
-//	@State private var typeOfContent: TypeOfContent = .text
-//    @State private var image: UIImage?
+    @State private var zoomed = false
+    //	@State private var typeOfContent: TypeOfContent = .text
+    //    @State private var image: UIImage?
     @State private var shouldShowImagePicker = false
     @State private var shouldShowLocation = false
     @FocusState private var focus
     var contact: User?
-	private let topPadding: CGFloat = 8
+    private let topPadding: CGFloat = 8
     @ObservedObject private var vmContacts = ContactsVM()
-    @State private var isLoading = true
-//    init(vmChat: ChatsVM){
-//        self.vmChat = vmChat
-//        // self.contact = chatUser
-//        // self.vmChat = .init(chatUser: chatUser)
-//        self.focus = vmChat.focus
-//    }
+    @ObservedObject var audioRecorder = AudioRecorder()
+    private var isAllowedToRecord = false
     
-	init(chatUser: User){
-		self.contact = chatUser
-		self.vmChat = .init(chatUser: chatUser)
+    //    init(vmChat: ChatsVM){
+    //        self.vmChat = vmChat
+    //        // self.contact = chatUser
+    //        // self.vmChat = .init(chatUser: chatUser)
+    //        self.focus = vmChat.focus
+    //    }
+    
+    init(chatUser: User){
+        self.contact = chatUser
+        self.vmChat = .init(chatUser: chatUser)
         self.focus = vmChat.focus
         self.vmChat.getMessages()
-	}
-	
-	var body: some View {
-            ZStack(alignment: .top) {
-                VStack() {
-                    Divider()
-                    ActivityIndicator($isLoading, style: .large)
-                    MessagesView(vm: vmChat)
-                        .padding(.bottom, topPadding)
-                    InputsButtons(vm: vmChat)
-                    if vmChat.typeOfContent == .text {
-                        ChatTextBar(vm: vmChat)
-                    } else if vmChat.typeOfContent == .audio {
-                        ChatAudioBar(vmChat: vmChat)
-                    }
+        isAllowedToRecord = self.audioRecorder.isAllowedToRecord()
+    }
+    
+    var body: some View {
+//        ActivityIndicator(isAnimating: $vmChat.isLoading) {
+//            $0.style = .large
+//            $0.hidesWhenStopped = true
+//        }
+        ZStack(alignment: .top) {
+            VStack() {
+                Divider()
+                MessagesView(vm: vmChat)
+                    .padding(.bottom, topPadding)
+                InputsButtons(vm: vmChat)
+                if vmChat.typeOfContent == .text {
+                    ChatTextBar(vm: vmChat)
+                } else if vmChat.typeOfContent == .audio {
+                    ChatAudioBar(vmChat: vmChat)
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading)  {
-                    Text("Back")
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading)  {
+                Text("Back")
                 //                    Image(systemName: "phone.fill")
                 //                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
                 //                    Image(systemName: "video.fill")
                 //                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
-                }
-                ToolbarItem(placement: .principal) {
-                    Button {
-//                          chatMode.showUserDetails()
-                    } label: {
-                        ContactImage(contact: contact!)
-                        Text(contact!.name)
-                            .foregroundColor(Color.accentColor)
-                            .dynamicTypeSize(.xxxLarge)
-                    }
-                }
-                ToolbarItemGroup(placement: .navigationBarTrailing)  {
-                    Image(systemName: "phone.fill")
-                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
-                    Image(systemName: "video.fill")
-                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+            }
+            ToolbarItem(placement: .principal) {
+                Button {
+                    //                          chatMode.showUserDetails()
+                } label: {
+                    ContactImage(contact: contact!)
+                    Text(contact!.name)
+                        .foregroundColor(Color.accentColor)
+                        .dynamicTypeSize(.xxxLarge)
                 }
             }
-			.onDisappear {
-                vmChat.firestoreListener?.remove()
-			}
-            .sheet(isPresented: $vmChat.shouldShowImagePicker, onDismiss: {
-                if vmChat.image != nil {
-                    vmChat.handleSend(.photoalbum)
-                    vmChat.count += 1
-                    vmChat.getMessages()
-                }
-            }) {
-                VStack {
-                    ImagePicker(selectedImage: $vmChat.image, didSet: $shouldShowImagePicker)
-                }
-                .presentationDetents([.medium, .large])
-                .presentationDragIndicator(.visible)
-			}
-            .sheet(isPresented: $vmChat.shouldShowLocation, onDismiss: {
-                if vmChat.location != nil {
-                    vmChat.handleSend(.location)
-                    vmChat.count += 1
-                    vmChat.getMessages()
-                }
-            }, content: {
-                VStack {
-                    MapView(vmChat: vmChat)
-                }
-                .presentationDetents([.medium, .large])
-                .presentationDragIndicator(.visible)
-            })
-	}
+            ToolbarItemGroup(placement: .navigationBarTrailing)  {
+                Image(systemName: "phone.fill")
+                    .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+                Image(systemName: "video.fill")
+                    .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+            }
+        }
+        .onDisappear {
+            vmChat.firestoreListener?.remove()
+        }
+        .sheet(isPresented: $vmChat.shouldShowImagePicker, onDismiss: {
+            if vmChat.image != nil {
+                vmChat.handleSend(.photoalbum)
+                vmChat.count += 1
+                vmChat.getMessages()
+            }
+        }) {
+            VStack {
+                ImagePicker(selectedImage: $vmChat.image, didSet: $shouldShowImagePicker)
+            }
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+        }
+        .sheet(isPresented: $vmChat.shouldShowLocation, onDismiss: {
+            if vmChat.location != nil {
+                vmChat.handleSend(.location)
+                vmChat.count += 1
+                vmChat.getMessages()
+            }
+        }, content: {
+            VStack {
+                MapView(vmChat: vmChat)
+            }
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+        })
+    }
 }
 
 
@@ -114,12 +120,12 @@ struct ChatView: View {
 // MARK: - ContactImage
 /// Shows the Contact Image
 struct ContactImage: View {
-	var contact: User
-	private let imageSize: CGFloat  = 40
-	private let imagePadding: CGFloat = 8
-	private let shadowRadius: CGFloat = 15
-	private let circleLineWidth: CGFloat = 1
-	private let cornerRadius: CGFloat = 38
+    var contact: User
+    private let imageSize: CGFloat  = 40
+    private let imagePadding: CGFloat = 8
+    private let shadowRadius: CGFloat = 15
+    private let circleLineWidth: CGFloat = 1
+    private let cornerRadius: CGFloat = 38
     
     var body: some View {
         if contact.profileImageURL == nil {
@@ -138,7 +144,7 @@ struct ContactImage: View {
                 .clipped()
                 .cornerRadius(cornerRadius)
                 .overlay(RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color(.label), lineWidth: circleLineWidth) )
+                    .stroke(Color(.label), lineWidth: circleLineWidth) )
         }
     }
 }
@@ -147,17 +153,17 @@ struct ContactImage: View {
 //  MARK: - Messages
 /// Show the list of messages
 struct MessagesView: View {
-	@ObservedObject var vm: ChatsVM
-	private let topPadding: CGFloat = 10
-	static let bottomAnchor = "BottomAnchor"
-//	var chatUser: User
-	
-//	init(chatUser: User){
-//		self.chatUser = chatUser
-//		self.vm = .init(chatUser: chatUser)
-//	}
-	
-	var body: some View {
+    @ObservedObject var vm: ChatsVM
+    private let topPadding: CGFloat = 10
+    static let bottomAnchor = "BottomAnchor"
+    //	var chatUser: User
+    
+    //	init(chatUser: User){
+    //		self.chatUser = chatUser
+    //		self.vm = .init(chatUser: chatUser)
+    //	}
+    
+    var body: some View {
         ZStack(alignment: .top){
             ScrollView {
                 ScrollViewReader { scrollViewProxy in
@@ -166,7 +172,7 @@ struct MessagesView: View {
                             MessageView(vm: vm, message: message)
                         }
                         HStack { Spacer() }
-                        .id(Self.bottomAnchor)
+                            .id(Self.bottomAnchor)
                     }
                     .onReceive(vm.$count) { _ in
                         withAnimation(.easeOut(duration: 0.5)) {
@@ -176,8 +182,8 @@ struct MessagesView: View {
                 }
             }
         }
-//        .background(.gray)
-	}
+        //        .background(.gray)
+    }
 }
 
 
@@ -186,38 +192,38 @@ struct MessagesView: View {
 struct MessageView: View {
     @ObservedObject var vm: ChatsVM
     
-	let message: Chat
-	private let topPadding: CGFloat = 8
-
-	var body: some View {
-		VStack {
-			if message.fromId == FirebaseManager.shared.auth.currentUser?.uid {
-				HStack {
-					Spacer()
+    let message: Chat
+    private let topPadding: CGFloat = 8
+    
+    var body: some View {
+        VStack {
+            if message.fromId == FirebaseManager.shared.auth.currentUser?.uid {
+                HStack {
+                    Spacer()
                     HStack {
                         Bubble(vm: vm, message: message)
                     }
-					.padding()
+                    .padding()
                     .background(vm.bubbleColor)
-					.cornerRadius(8)
-				}
-				.padding(.horizontal)
-				.padding(.top, topPadding)
-			} else {
-				HStack {
-					HStack {
+                    .cornerRadius(8)
+                }
+                .padding(.horizontal)
+                .padding(.top, topPadding)
+            } else {
+                HStack {
+                    HStack {
                         Bubble(vm: vm, message: message)
                     }
                     .padding()
                     .background(.gray)
-					.cornerRadius(8)
-					Spacer()
-				}
-				.padding(.horizontal)
-				.padding(.top, topPadding)
-			}
-		}
-	}
+                    .cornerRadius(8)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.top, topPadding)
+            }
+        }
+    }
 }
 
 // MARK: - Bubble
@@ -255,9 +261,9 @@ struct ShowText: View {
             } else if text.isEmail() {
                 Link(text, destination: URL(string: "mailto:" + text)!)
                     .foregroundColor(.blue)
-//            } else if text.contains("://") {
-                    Link(text, destination: URL(string: text)!)
-                        .foregroundColor(.blue)
+                //            } else if text.contains("://") {
+                Link(text, destination: URL(string: text)!)
+                    .foregroundColor(.blue)
             } else if text.isPhone() {
                 Link(text, destination: URL(string: "phone:" + text)!)
                     .foregroundColor(.blue)
@@ -266,7 +272,7 @@ struct ShowText: View {
                     .foregroundColor(.white)
             }
         }
-            
+        
     }
 }
 
@@ -299,7 +305,7 @@ struct ShowPhoto: View {
 
 
 // MARK: - ShowAudio
-    /// Show audio in buble and enable play
+/// Show audio in buble and enable play
 struct ShowAudio: View {
     @ObservedObject var vm: ChatsVM
     @ObservedObject var vmAudio = AudioPlayer()
@@ -344,11 +350,11 @@ let data: [String: Any] = ["name": "Test"]
 let userTest = User(data: data)
 
 struct ChatView_Previews: PreviewProvider {
-	static var previews: some View {
+    static var previews: some View {
         iTalkView(userSelected: .constant(nil))
         //ChatView()
         //ChatView(chatUser: userTest)
-            .previewDevice("iPhone 13 mini")
-            .preferredColorScheme(.dark)
-	}
+            .previewDevice("iPhone 14 Pro")
+            //.preferredColorScheme(.dark)
+    }
 }

@@ -18,21 +18,23 @@ final class AudioRecorder: ObservableObject {
     @Published var audios = [URL]()
     private var audioRecorder: AVAudioRecorder!
     private var audioSession: AVAudioSession!
-   
+    // var objectWillChange = PassthroughSubject<AudioRecorder, Never>()
+    var recording = false
+    
     deinit {
         self.stopRecording()
     }
     
     
     // MARK: - Recording
-    private func isAllowedToRecord() -> Bool {
+    func isAllowedToRecord() -> Bool {
         var isAllowed = false
         do {
-            let recordingSession = AVAudioSession.sharedInstance()
-            try recordingSession.setCategory(.playAndRecord, mode: .spokenAudio)
-            try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() { grant in
-                isAllowed = grant
+            self.audioSession = AVAudioSession.sharedInstance()
+            try self.audioSession.setCategory(.record , mode: .spokenAudio)
+            try self.audioSession.setActive(true)
+            self.audioSession.requestRecordPermission() { allowed in
+                isAllowed = allowed
                 print("Audio -> Allowed to Record")
             }
         } catch {
@@ -53,6 +55,23 @@ final class AudioRecorder: ObservableObject {
     func startRecording() {
         guard isAllowedToRecord() else { return }
         
+        
+        self.audioSession = AVAudioSession.sharedInstance()
+        guard let availableInputs = audioSession.availableInputs,
+              let builtInMicInput = availableInputs.first(where: {
+                  $0.portType == .builtInMic
+              }) else {
+                print("Audio -> Not Mic detected")
+                return
+            }
+        do {
+            try self.audioSession.setPreferredInput(builtInMicInput)
+        } catch {
+            print("Audio -> Can't set default mic")
+        }
+            
+            
+            
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let audioFileName = Date().toString(dateFormat: "YY-MM-dd_HH-mm-ss") + ".m4a"
         let audioFileURL = paths.appendingPathComponent(audioFileName)
@@ -63,11 +82,16 @@ final class AudioRecorder: ObservableObject {
               AVSampleRateKey:44100.0 ] as [String : Any]
         print("Audio -> Start Record")
         do {
-            audioRecorder = try AVAudioRecorder(url: audioFileURL, settings: settings)
-            audioRecorder.isMeteringEnabled = true
-            audioRecorder.prepareToRecord()
+           // audioRecorder = try AVAudioRecorder(url: audioFileURL, settings: settings)
+            let audioFormat = AVAudioFormat(settings: settings)
+            audioRecorder = try AVAudioRecorder(url: audioFileURL, format: audioFormat!)
+            //audioRecorder.isMeteringEnabled = true
+            //audioRecorder.prepareToRecord()
+            //audioRecorder.delegate = self
+            //objectWillChange = delegate.publisher
             audioRecorder.record()
-            print("Audio -> Recording")
+            let isRecording = audioRecorder.isRecording
+            print("Audio -> Recording: \(isRecording)")
         } catch {
             print("Error recording: \(error)")
         }

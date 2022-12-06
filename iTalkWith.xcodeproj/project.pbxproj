@@ -28,6 +28,7 @@
 		181552732935B62900E051FE /* iTalk2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181552722935B62900E051FE /* iTalk2UITestsLaunchTests.swift */; };
 		181552802935B65B00E051FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1815527F2935B65B00E051FE /* README.md */; };
 		181552852935B6BA00E051FE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 181552842935B6BA00E051FE /* Documentation.docc */; };
+		182F0C76293ECF32002DE6BD /* FDWaveformView in Frameworks */ = {isa = PBXBuildFile; productRef = 182F0C75293ECF32002DE6BD /* FDWaveformView */; };
 		1852C2FE29383A690064D51D /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852C2FD29383A690064D51D /* GridCell.swift */; };
 		18A603B1293730C800C45CC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B0293730C800C45CC9 /* LogInView.swift */; };
 		18A603B52937315400C45CC9 /* ChatsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B42937315200C45CC9 /* ChatsVM.swift */; };
@@ -154,6 +155,7 @@
 			files = (
 				18BACEFA2936F1AF005EE142 /* FirebaseDatabaseSwift in Frameworks */,
 				18BACEF82936F1AF005EE142 /* FirebaseDatabase in Frameworks */,
+				182F0C76293ECF32002DE6BD /* FDWaveformView in Frameworks */,
 				18BACEF32936EE2E005EE142 /* SDWebImageSwiftUI in Frameworks */,
 				18BACEFC2936F1AF005EE142 /* FirebaseFirestore in Frameworks */,
 				18BACF002936F1AF005EE142 /* FirebaseStorage in Frameworks */,
@@ -403,6 +405,7 @@
 				18BACEFB2936F1AF005EE142 /* FirebaseFirestore */,
 				18BACEFD2936F1AF005EE142 /* FirebaseFirestoreSwift */,
 				18BACEFF2936F1AF005EE142 /* FirebaseStorage */,
+				182F0C75293ECF32002DE6BD /* FDWaveformView */,
 			);
 			productName = iTalk2;
 			productReference = 1815524C2935B62500E051FE /* iTalkWith.app */;
@@ -479,6 +482,7 @@
 			packageReferences = (
 				18BACEF12936EE2E005EE142 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				18BACEF42936F1AF005EE142 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				182F0C74293ECF31002DE6BD /* XCRemoteSwiftPackageReference "FDWaveformView" */,
 			);
 			productRefGroup = 1815524D2935B62500E051FE /* Products */;
 			projectDirPath = "";
@@ -739,7 +743,7 @@
 				INFOPLIST_KEY_NSContactsUsageDescription = "iTalkWith required access to your contacts";
 				INFOPLIST_KEY_NSLocationUsageDescription = "iTalkWith required access to you Location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iTalkWith required access to you Location";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "iTalkWith required access to your microphone";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "iTalkWith required access to the micriphone";
 				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "iTalkWith required Nearby Interaction";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "iTalkWith required access to your photo library";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "iTalkWith required access to your Photo Library";
@@ -779,7 +783,7 @@
 				INFOPLIST_KEY_NSContactsUsageDescription = "iTalkWith required access to your contacts";
 				INFOPLIST_KEY_NSLocationUsageDescription = "iTalkWith required access to you Location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "iTalkWith required access to you Location";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "iTalkWith required access to your microphone";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "iTalkWith required access to the micriphone";
 				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "iTalkWith required Nearby Interaction";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "iTalkWith required access to your photo library";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "iTalkWith required access to your Photo Library";
@@ -920,6 +924,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		182F0C74293ECF31002DE6BD /* XCRemoteSwiftPackageReference "FDWaveformView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fulldecent/FDWaveformView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		18BACEF12936EE2E005EE142 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -939,6 +951,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		182F0C75293ECF32002DE6BD /* FDWaveformView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182F0C74293ECF31002DE6BD /* XCRemoteSwiftPackageReference "FDWaveformView" */;
+			productName = FDWaveformView;
+		};
 		18BACEF22936EE2E005EE142 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18BACEF12936EE2E005EE142 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

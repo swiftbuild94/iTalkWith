@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("appColor", store: .standard) var appSorage = "blue"
     @StateObject var vmLogin = LogInSignInVM()
     @StateObject private var vmContacts = ContactsVM()
     @StateObject var vmChats = ChatsVM(chatUser: nil)

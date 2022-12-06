@@ -130,6 +130,6 @@ struct iTalk_Previews: PreviewProvider {
     static var previews: some View {
         iTalkView(userSelected: .constant(nil))
 //            .preferredColorScheme(.dark)
-            .previewDevice("iPhone 13 mini")
+            .previewDevice("iPhone 14 Pro")
     }
 }
