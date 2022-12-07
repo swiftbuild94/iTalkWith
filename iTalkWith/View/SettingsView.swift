@@ -152,7 +152,7 @@ struct userInfo: View {
                             .font(.system(size: usernameSize, weight: .bold))
                         HStack {
                             Circle()
-                                .foregroundColor(.green)
+                                .foregroundColor(.blue)
                                 .frame(width: onlineCircleSize, height: onlineCircleSize)
                             Text("online")
                                 .font(.subheadline)

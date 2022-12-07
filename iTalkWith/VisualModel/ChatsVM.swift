@@ -39,7 +39,7 @@ final class ChatsVM: ObservableObject {
     @Published var data: Data?
     @Published  var isLoading = true
     
-    @State var bubbleColor: Color = Color.green
+    @State var bubbleColor: Color = Color.blue
     private var badge = 0
     private var url: URL?
     var audioTimer: Double?
