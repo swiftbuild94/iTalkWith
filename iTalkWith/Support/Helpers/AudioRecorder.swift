@@ -13,30 +13,38 @@ import AVFoundation
 
 /// Record Audio
 ///
-/// Gret Audio and delete recordings
+/// Get Audio and delete recordings
 final class AudioRecorder: ObservableObject {
     @Published var audios = [URL]()
     private var audioRecorder: AVAudioRecorder!
     private var audioSession: AVAudioSession!
     // var objectWillChange = PassthroughSubject<AudioRecorder, Never>()
-    var recording = false
     
     deinit {
         self.stopRecording()
     }
     
     
-    // MARK: - Recording
+    // MARK: - Allowed
+    /// Is Allowed to Record
+    /// - Returns: True if allowed
     func isAllowedToRecord() -> Bool {
         var isAllowed = false
         do {
             self.audioSession = AVAudioSession.sharedInstance()
-            try self.audioSession.setCategory(.record , mode: .spokenAudio)
+            try self.audioSession.setCategory(.playAndRecord , mode: .spokenAudio)
+            
             try self.audioSession.setActive(true)
             self.audioSession.requestRecordPermission() { allowed in
                 isAllowed = allowed
                 print("Audio -> Allowed to Record")
             }
+            guard let availableInputs = self.audioSession.availableInputs else { return false }
+            guard let builtInMicInput = availableInputs.first(where: {
+                      $0.portType == .builtInMic
+                  }) else { return false }
+            try self.audioSession.setPreferredInput(builtInMicInput)
+            print("Audio -> Mic Selected")
         } catch {
             let vmAlerts = AlertsManager()
             vmAlerts.showCancel = true
@@ -52,57 +60,49 @@ final class AudioRecorder: ObservableObject {
         return isAllowed
     }
     
+    
+    // MARK: - Start Recording
+    /// Record audio
+    /// - Return: File Saved in documents
     func startRecording() {
         guard isAllowedToRecord() else { return }
-        
-        
-        self.audioSession = AVAudioSession.sharedInstance()
-        guard let availableInputs = audioSession.availableInputs,
-              let builtInMicInput = availableInputs.first(where: {
-                  $0.portType == .builtInMic
-              }) else {
-                print("Audio -> Not Mic detected")
-                return
-            }
-        do {
-            try self.audioSession.setPreferredInput(builtInMicInput)
-        } catch {
-            print("Audio -> Can't set default mic")
-        }
-            
-            
-            
+
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let audioFileName = Date().toString(dateFormat: "YY-MM-dd_HH-mm-ss") + ".m4a"
         let audioFileURL = paths.appendingPathComponent(audioFileName)
-        let settings =  [AVFormatIDKey: kAudioFormatMPEG4AAC,
-              AVEncoderAudioQualityKey:AVAudioQuality.max.rawValue,
-              AVEncoderBitRateKey:320000,
-              AVNumberOfChannelsKey:1,
-              AVSampleRateKey:44100.0 ] as [String : Any]
+        let recordSettings:[String:Any] = [AVFormatIDKey: kAudioFormatAppleLossless,
+                                  AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
+                                  AVEncoderBitRateKey: 320000,
+                                  AVNumberOfChannelsKey: 2,
+                                  AVSampleRateKey: 44100.0 ] as [String : Any]
         print("Audio -> Start Record")
         do {
-           // audioRecorder = try AVAudioRecorder(url: audioFileURL, settings: settings)
-            let audioFormat = AVAudioFormat(settings: settings)
-            audioRecorder = try AVAudioRecorder(url: audioFileURL, format: audioFormat!)
-            //audioRecorder.isMeteringEnabled = true
-            //audioRecorder.prepareToRecord()
-            //audioRecorder.delegate = self
-            //objectWillChange = delegate.publisher
+           audioRecorder = try AVAudioRecorder(url: audioFileURL, settings: recordSettings)
+            // let audioFormat = AVAudioFormat(settings: recordSettings)
+            // audioRecorder = try AVAudioRecorder(url: audioFileURL, format: audioFormat!)
+            // audioRecorder.isMeteringEnabled = true
+            // audioRecorder.prepareToRecord()
+            // audioRecorder.delegate = self
+            // objectWillChange = delegate.publisher
             audioRecorder.record()
             let isRecording = audioRecorder.isRecording
             print("Audio -> Recording: \(isRecording)")
         } catch {
-            print("Error recording: \(error)")
+            print("Audio -> Error recording: \(error)")
         }
     }
     
+    
+    // MARK: - Stop Recording
+    /// Stop the audio recording
     func stopRecording() {
         self.audioRecorder?.stop()
     }
     
     
     // MARK: - Get Audios
+    /// Get the Audios
+    /// - Return: An array with all the audio files in the document directory
     func getAudios() -> [URL]? {
         self.audios.removeAll()
         let fileManager = FileManager.default
@@ -120,7 +120,7 @@ final class AudioRecorder: ObservableObject {
     
 
     // MARK: - Delete Recordings
-    /// Delete Recordxings from the FileManager
+    /// Delete Recording from the FileManager
     func deleteRecording(url : URL){
         do {
             try FileManager.default.removeItem(at: url)
