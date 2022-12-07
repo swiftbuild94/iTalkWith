@@ -53,6 +53,7 @@ final class ContactsVM: ObservableObject {
     /// Connects to Firestore and get all users
     ///
     /// - Returns: all the users in 3 differents arrays
+    // TODO: Get only users in contact app
 	private func fetchAllUsers() {
         FirebaseManager.shared.firestore
             .collection(FirebaseConstants.users)

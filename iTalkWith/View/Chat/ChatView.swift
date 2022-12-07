@@ -25,13 +25,6 @@ struct ChatView: View {
     @ObservedObject var audioRecorder = AudioRecorder()
     private var isAllowedToRecord = false
     
-    //    init(vmChat: ChatsVM){
-    //        self.vmChat = vmChat
-    //        // self.contact = chatUser
-    //        // self.vmChat = .init(chatUser: chatUser)
-    //        self.focus = vmChat.focus
-    //    }
-    
     init(chatUser: User){
         self.contact = chatUser
         self.vmChat = .init(chatUser: chatUser)
@@ -311,6 +304,7 @@ struct ShowAudio: View {
     @ObservedObject var vmAudio = AudioPlayer()
     @ObservedObject var timerManager = TimerManager()
     let message: Chat
+
     
     var body: some View {
         if vmAudio.isPlaying {
@@ -333,7 +327,15 @@ struct ShowAudio: View {
                 }
             } label: {
                 Image(systemName: "play.fill")
-                Text(String(describing: message.audio))
+
+                //WaveformLiveView(configuration: liveConfiguration)
+//                WaveformImageView(coder:
+//                    audioURL: message.audio,
+//                    configuration: liveConfiguration,
+//                    render: CircularWaveformRenderer(kind: .ring(0.7))
+//                    )
+               
+               // Text(String(describing: message.audio))
                 if let audioTimer = message.audioTimer {
                     let trimedAudio = String(audioTimer).prefix(2)
                     Text(trimedAudio)
@@ -351,9 +353,7 @@ let userTest = User(data: data)
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        iTalkView(userSelected: .constant(nil))
-        //ChatView()
-        //ChatView(chatUser: userTest)
+        ChatView(chatUser: userTest)
             .previewDevice("iPhone 14 Pro")
             //.preferredColorScheme(.dark)
     }

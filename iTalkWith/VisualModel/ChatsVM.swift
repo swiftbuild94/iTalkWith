@@ -38,11 +38,11 @@ final class ChatsVM: ObservableObject {
     @Published var image: UIImage?
     @Published var data: Data?
     @Published  var isLoading = true
+    @Published var audioTimer: Double?
     
     @State var bubbleColor: Color = Color.blue
     private var badge = 0
     private var url: URL?
-    var audioTimer: Double?
     
     var firestoreListener: ListenerRegistration?
     
@@ -63,6 +63,11 @@ final class ChatsVM: ObservableObject {
         firestoreListener?.remove()
     }
 	
+    
+    // MARK: Bubble Colors
+    // TODO: also change the icon
+    /// Change the bubbles colors
+    #warning("TODO: change also the icon")
     private func setBubbleColor() {
         let storageBubble =  UserDefaults.standard.string(forKey: "bubbleColor")
         //print("storageBubble: \(String(describing: storageBubble) )")
@@ -75,13 +80,17 @@ final class ChatsVM: ObservableObject {
     
     
     // MARK: - Fetch Messages
+    // Get Messages
     func getMessages() {
         DispatchQueue.main.async {
             self.fetchMessages()
         }
     }
     
-    func fetchMessages() {
+    /// Fetch the messages from Firestore
+    /// Add snapshot to continues listening for new messages
+    ///  - Returns: chatMessages
+    private func fetchMessages() {
         print("#### FETCH MESSAGES \(Date()) ####")
         guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else { return }
         guard let toId = chatUser?.uid else { return }
@@ -118,18 +127,23 @@ final class ChatsVM: ObservableObject {
     
     
     // MARK: - Download Photo
+    /// Download Photo from Firestore Storage to memory
+    /// - Parameters:
+    ///  photo: string with the full path of the photo
+    ///  - Returns: UIImage
     func downloadPhoto(_ photo: String) -> UIImage? {
         var image: UIImage?
         // print("===Photo")
-        let storageRef = FirebaseManager.shared.storage.reference(withPath: "photos/")
+        let storageRef = FirebaseManager.shared.storage.reference()
+        //let photosRef = storageRef.child("photos/")
         let photoRef = storageRef.child(photo)
         print("===Photo: \(photoRef.fullPath)")
         photoRef.getData(maxSize: Int64(1 * 1024 * 1024)) { data, error in
             if let error = error {
-                print("====Error downloading \(error)")
+                print("===Error downloading Photo: \(error)")
             } else {
                 image = UIImage(data: data!)
-                print("====Image NOT Error: \(String(describing: data!))")
+                print("===Image NOT Error: \(String(describing: data!))")
             }
         }
         // print("====Image Returned===")
@@ -138,31 +152,43 @@ final class ChatsVM: ObservableObject {
     
     
     // MARK: - Download Audio
+    /// Download audio from from Firestore, save it to Documents folder
+    /// - Parameters:
+    /// audio: the full web url of the audio file
+    /// - Returns:
+    /// local url of the audio file
+    /// audioURL of the file for waveform
     func downloadAudio(_ audio: String) -> URL? {
-        print("----DOWNLOAD AUDIO")
         //guard let uid = Auth.auth().currentUser?.uid else { return nil }
         print("---AUDIO DOWNLOADING: \(audio)" )
-        let storageRef = FirebaseManager.shared.storage
-        let audioRef = storageRef.reference(forURL: audio)
-        let finalRef = audioRef.child(FirebaseConstants.audios)
-        let fileName = URL(string: audio)?.pathComponents.last?.description
+        let storageRef = Storage.storage().reference()
+        let audioRef = storageRef.child(FirebaseConstants.audios)
+        //let audioRef = storageRef.reference(forURL: audio)
+        let fileURL = URL(string: audio)
+        let fileName = String(fileURL!.pathComponents.last!.description)
+        let spaceRef = audioRef.child(fileName)
         print("----DOWNLOAD AUDIO -> FileName: \(String(describing: fileName))")
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         print("----Filepath: \(String(describing: url))")
-        let audioFileURL = url.appendingPathComponent(fileName ?? "")
-        finalRef.write(toFile: audioFileURL) { audioUrl, error in
+        let audioFileURL = url.appendingPathComponent(fileName)
+        spaceRef.write(toFile: audioFileURL) { audioUrl, error in
             if let err = error {
                 print("----Error downloading audio: \(err)")
             } else {
-                print("----Write Compleate: \(String(describing: audioUrl))")
+                print("----Audio Write Compleate: \(String(describing: audioUrl))")
             }
         }
+        
         print("----Audio: \(String(describing: audioFileURL))")
         return audioFileURL
     }
     
     
     // MARK: - Send Message
+    /// Handle the different types of send
+    /// - Parameters:
+    /// typeOfContent: TypeOfContent
+    /// data: of the message to send
     func handleSend(_ typeOfContent: TypeOfContent, data: [Any]? = nil) {
         switch typeOfContent {
         case .text:
@@ -176,6 +202,7 @@ final class ChatsVM: ObservableObject {
         }
     }
 
+    /// Handles the send of text to Firebase
     private func sendText(){
         if chatText != "" {
             print("Send Text: \(chatText)")
@@ -185,6 +212,10 @@ final class ChatsVM: ObservableObject {
     }
     
     // MARK: - PersistAudioToStorage
+    /// Save audio to Firebase
+    /// Temporary saving in the document folder and deletes it after
+    /// - Returns:
+    /// self.url: the web url of the audio
     private func persistAudioToStorage() {
         print("Saving Audio")
         var audios = [URL]()
@@ -218,12 +249,15 @@ final class ChatsVM: ObservableObject {
                 let downloadUrl = metadata?.path
                 print("URL: \(downloadUrl!)")
                 print("Success storing audio with URL: \(String(describing: url?.absoluteString))")
-                guard let url = url else { return }
+                guard let url else { return }
                 do {
-                    try FileManager.default.removeItem(at: url)
+                    for audio in directoryContents! {
+                        try FileManager.default.removeItem(at: audio)
+                    }
                 } catch {
                     print("Can't delete")
                 }
+                self.url = url
                 self.typeOfContent = .audio
                 self.sendToFirebase()
             }
@@ -232,6 +266,9 @@ final class ChatsVM: ObservableObject {
     
     
     // MARK: - PersistImageToStorage
+    /// Save image to Firebase
+    /// - Returns:
+    /// self.url: the web url of the image
     private func persistImageToStorage() {
         print("Saving Image")
         //guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
@@ -265,6 +302,11 @@ final class ChatsVM: ObservableObject {
     
     
     //    MARK: - Send To Firebase
+    /// Prepare for send to Firebase
+    /// - Parameters:
+    /// typeOfContent: the type of content
+    /// - Returns:
+    /// msg: with the Chat
 	private func sendToFirebase() {
         var msg: Chat
 		guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
@@ -290,6 +332,9 @@ final class ChatsVM: ObservableObject {
         }
 	}
 	
+    /// Prepare the differents colections in Firestored where to save the messages
+    /// - Parameters:
+    /// chat: Chat
 	private func saveToMessagesAndRecentMessages(_ chat: Chat) {
 //        print("----SaveToMessagesAndRecentMessages DATA: \(data)")
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
@@ -324,6 +369,10 @@ final class ChatsVM: ObservableObject {
     
     
     // MARK: - Save to Firebase
+    /// Save the chat to the collection in Firebase
+    /// - Parameters:
+    /// firebaseDocument: the collection where to save the message
+    /// chat: Chat the messages
     private func saveToFirebase(_ firebaseDocument: FirebaseDocument, chat: Chat) {
         print("Save to Firebase Document: \(firebaseDocument)")
         //print("Save to Firebase Data: \(chat)")
