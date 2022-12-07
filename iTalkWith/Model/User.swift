@@ -29,6 +29,10 @@ struct User: Identifiable, Codable, Hashable {
     }
     
     // MARK: - Mutating User Func
+    mutating func changeBadge(_ badge: Int){
+        self.badge = badge
+    }
+    
 //    mutating func changName(_ name: String){
 //        self.name = name
 //    }

@@ -121,7 +121,7 @@ final class ContactsVM: ObservableObject {
                         if let rm = try change.document.data(as: RecentMessage?.self) {
                             print(">>>>Fetch Recent Messages<<<<")
                             badge += 1
-                            self.usersDictionary[rm.toId]?.badge = badge
+                            self.usersDictionary[rm.toId]?.changeBadge(badge)
                             //print(">>>usersDictionary: \(self.usersDictionary)")
                             self.recentMessages.append(rm)
                             //print("RecentMessages: \(self.recentMessages)")

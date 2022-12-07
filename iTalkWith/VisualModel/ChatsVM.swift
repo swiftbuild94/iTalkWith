@@ -52,6 +52,7 @@ final class ChatsVM: ObservableObject {
         self.badge = chatUser?.badge ?? 0
         if self.badge > 0 {
             NotificationManager.shared.removeBadge(self.badge)
+            self.chatUser?.changeBadge(0)
         }
         DispatchQueue.main.async {
             self.getMessages()
@@ -120,10 +121,10 @@ final class ChatsVM: ObservableObject {
     func downloadPhoto(_ photo: String) -> UIImage? {
         var image: UIImage?
         // print("===Photo")
-        let storageRef = FirebaseManager.shared.storage.reference()
+        let storageRef = FirebaseManager.shared.storage.reference(withPath: "photos/")
         let photoRef = storageRef.child(photo)
-        // print("===Photo: \(photoRef.fullPath)")
-        photoRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        print("===Photo: \(photoRef.fullPath)")
+        photoRef.getData(maxSize: Int64(1 * 1024 * 1024)) { data, error in
             if let error = error {
                 print("====Error downloading \(error)")
             } else {
