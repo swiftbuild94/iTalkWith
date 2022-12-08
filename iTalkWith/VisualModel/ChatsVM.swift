@@ -37,8 +37,9 @@ final class ChatsVM: ObservableObject {
     @Published var alertMessage = ""
     @Published var image: UIImage?
     @Published var data: Data?
-    @Published  var isLoading = true
+    @Published var isLoading = true
     @Published var audioTimer: Double?
+    @Published var audioURL: URL?
     
     @State var bubbleColor: Color = Color.blue
     private var badge = 0
@@ -110,8 +111,12 @@ final class ChatsVM: ObservableObject {
                 querySnapshot?.documentChanges.forEach({ change in
                     if change.type == .added {
                         do {
-                            if let chats = try change.document.data(as: Chat?.self) {
-                                self.chatMessages.append(chats) 
+                            if var chats = try change.document.data(as: Chat?.self) {
+                                if chats.audio != nil {
+                                    let audioURL = self.downloadAudio(chats.audio!)
+                                    chats.audioURL = audioURL
+                                }
+                                self.chatMessages.append(chats)
                             }
                             self.chatMessages.sort(by: { $0.timestamp < $1.timestamp })
                         } catch {
@@ -150,7 +155,6 @@ final class ChatsVM: ObservableObject {
         return image
     }
     
-    
     // MARK: - Download Audio
     /// Download audio from from Firestore, save it to Documents folder
     /// - Parameters:
@@ -159,23 +163,31 @@ final class ChatsVM: ObservableObject {
     /// local url of the audio file
     /// audioURL of the file for waveform
     func downloadAudio(_ audio: String) -> URL? {
-        //guard let uid = Auth.auth().currentUser?.uid else { return nil }
-        print("---AUDIO DOWNLOADING: \(audio)" )
-        let storageRef = Storage.storage().reference()
-        let audioRef = storageRef.child(FirebaseConstants.audios)
-        //let audioRef = storageRef.reference(forURL: audio)
+        print("---AUDIO DOWNLOADING: -\(audio)-" )
+        if audio == "" { return nil}
         let fileURL = URL(string: audio)
         let fileName = String(fileURL!.pathComponents.last!.description)
-        let spaceRef = audioRef.child(fileName)
         print("----DOWNLOAD AUDIO -> FileName: \(String(describing: fileName))")
+        
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        print("----Filepath: \(String(describing: url))")
         let audioFileURL = url.appendingPathComponent(fileName)
+        print("----Filepath: \(String(describing: audioFileURL))")
+        
+        let path = String(describing: url)
+        let exists = FileManager.default.fileExists(atPath: path)
+        
+        if exists { return audioFileURL }
+        
+        let storageRef = Storage.storage().reference()
+        let audioRef = storageRef.child(FirebaseConstants.audios)
+        let spaceRef = audioRef.child(fileName)
+        
         spaceRef.write(toFile: audioFileURL) { audioUrl, error in
             if let err = error {
                 print("----Error downloading audio: \(err)")
             } else {
                 print("----Audio Write Compleate: \(String(describing: audioUrl))")
+                self.audioURL = audioUrl
             }
         }
         

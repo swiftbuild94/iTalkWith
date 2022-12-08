@@ -8,6 +8,8 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import DSWaveformImage
+import DSWaveformImageViews
 
 struct ChatView: View {
     @Environment(\.presentationMode) var chatMode
@@ -168,7 +170,7 @@ struct MessagesView: View {
                             .id(Self.bottomAnchor)
                     }
                     .onReceive(vm.$count) { _ in
-                        withAnimation(.easeOut(duration: 0.5)) {
+                        withAnimation(.easeOut(duration: 0.4)) {
                             scrollViewProxy.scrollTo(Self.bottomAnchor, anchor: .bottom)
                         }
                     }
@@ -304,38 +306,48 @@ struct ShowAudio: View {
     @ObservedObject var vmAudio = AudioPlayer()
     @ObservedObject var timerManager = TimerManager()
     let message: Chat
-
+    
+    @State var waveformConfiguration: Waveform.Configuration = Waveform.Configuration(
+        size: CGSize(width: 80, height: 30),
+        backgroundColor: .blue,
+        style: .filled(.white),
+        dampening: .none,
+        position: .middle,
+        scale: 1,
+        verticalScalingFactor: 1,
+        shouldAntialias: true
+        )
     
     var body: some View {
         if vmAudio.isPlaying {
             Button {
-                vmAudio.stopPlay()
+                DispatchQueue.global(qos: .userInteractive).async {
+                    vmAudio.stopPlay()
+                }
                 let _ = timerManager.stopTimer()
             } label: {
+//                if vm.audioURL != nil {
+//                    WaveformView(audioURL: vm.audioURL!, configuration: waveformConfiguration, priority: .medium)
+//                }
                 Image(systemName: "stop.fill")
                 Text(String(format: "%.1f", timerManager.secondsElapsed))
             }
         } else {
             Button {
                 timerManager.startTimer()
-                DispatchQueue.global(qos: .background).async {
+                //DispatchQueue.global(qos: .userInteractive).async {
                     if let audio = message.audio {
                         if let audioDownloaded = vm.downloadAudio(audio) {
                             vmAudio.playAudio(audioDownloaded)
                         }
                     }
-                }
+                //}
             } label: {
                 Image(systemName: "play.fill")
-
-                //WaveformLiveView(configuration: liveConfiguration)
-//                WaveformImageView(coder:
-//                    audioURL: message.audio,
-//                    configuration: liveConfiguration,
-//                    render: CircularWaveformRenderer(kind: .ring(0.7))
-//                    )
-               
-               // Text(String(describing: message.audio))
+//                if let audio = vm.audioURL {
+//                    WaveformView(audioURL: audio, configuration: waveformConfiguration, priority: .medium)
+//                        Text(String(describing: audio))
+//                }
                 if let audioTimer = message.audioTimer {
                     let trimedAudio = String(audioTimer).prefix(2)
                     Text(trimedAudio)
@@ -344,7 +356,6 @@ struct ShowAudio: View {
         }
     }
 }
-
 
 
 // MARK: - Preview

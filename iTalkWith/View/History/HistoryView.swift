@@ -21,7 +21,7 @@ struct HistoryView: View {
                         .foregroundColor(Color.red)
                     ForEach(vm.recentMessages, id:\.self) { recentMessage in
                         let uid = recentMessage.toId
-                        let user = vm.usersDictionary[uid]
+                        //let user = vm.usersDictionary[uid]
 //                        if let user = user {
 //                            NavigationLink(destination: ChatView(chatUser: user)) {
 //                                HistoryCell(contact: user, recentMessage: recentMessage)

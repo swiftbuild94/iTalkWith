@@ -14,25 +14,16 @@ import AVKit
 /// Play Audio
 final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     private var audioSession = AVAudioSession.sharedInstance()
-    @Published var audioPlayer = AVAudioPlayer()
-    let objectWillChange = PassthroughSubject<AudioPlayer, Never>()
-    
-    @Published var isPlaying = false {
-        didSet {
-            objectWillChange.send(self)
-        }
-    }
-    
-    static let shared = AudioPlayer()
-    
+    private var audioPlayer = AVAudioPlayer()
+    @Published var isPlaying = false
+
+    /// On denit Stop Play
     deinit {
         self.stopPlay()
     }
     
-    
-    // MARK: - Play Audio
-    func playAudio(_ audio: URL) {
-        print("=====Play Audio: \(audio)")
+    /// Setup the audio session
+    private func setAudioSession() {
         do {
             try AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
             print("Audio -> Allowed to Play")
@@ -42,44 +33,56 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
         }
         do {
             try audioSession.setCategory(.playback)
-            try audioSession.setMode(.spokenAudio)
+            try audioSession.setMode(.default)
             print("Audio -> Set Category")
         } catch {
             print("Error on Category")
             return
         }
         do {
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            try audioSession.setActive(true)
             print("Audio -> Activate session")
         } catch {
             print("Error on activate session: \(error)")
             return
         }
+    }
+    
+    /// Plays the audio
+    /// - Parameters:
+    /// audio: URL the local url of the audio
+    func playAudio(_ audio: URL) {
+        print("=====Play Audio: \(audio)")
+        setAudioSession()
+        guard ((try? (audio as NSURL).setResourceValue(.none, forKey: .fileProtectionKey)) != nil) else { return }
+        guard let data = try? Data(contentsOf: audio) else { return }
         do {
-            try? (audio as NSURL).setResourceValue(.none, forKey: .fileProtectionKey)
-            let data = try Data(contentsOf: audio)
-            audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.m4a.rawValue)
-            audioPlayer.prepareToPlay()
-            audioPlayer.delegate = self
-            audioPlayer.volume = 1.0
-            audioPlayer.prepareToPlay()
-            audioPlayer.play()
-            self.isPlaying = true
+            self.audioPlayer = try AVAudioPlayer(data: data, fileTypeHint: AVFileType.m4a.rawValue)
             print("Audio -> audio is playing")
         } catch {
             print("Error Playing: \(error)")
             return
         }
+        audioPlayer.prepareToPlay()
+        audioPlayer.delegate = self
+        audioPlayer.volume = 1.0
+        audioPlayer.isMeteringEnabled = true
+        audioPlayer.prepareToPlay()
+        audioPlayer.play()
+        DispatchQueue.main.async {
+            self.isPlaying = true
+        }
         print("Audio Played without errors")
     }
     
-
+    /// If audio stop playing
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if flag {
             isPlaying = false
         }
     }
     
+    ///Stop the play only if the audio has finished playing
     func stopPlay() {
         audioPlayer.stop()
         isPlaying = false

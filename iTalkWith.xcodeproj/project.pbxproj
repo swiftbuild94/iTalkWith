@@ -38,6 +38,8 @@
 		18A603BF2937319400C45CC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603BA2937318700C45CC9 /* User.swift */; };
 		18A603C02937319400C45CC9 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B92937318000C45CC9 /* Chat.swift */; };
 		18A603C12937319400C45CC9 /* FirebaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */; };
+		18AC0BC829415258001BECEC /* DSWaveformImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18AC0BC729415258001BECEC /* DSWaveformImage */; };
+		18AC0BCA29415258001BECEC /* DSWaveformImageViews in Frameworks */ = {isa = PBXBuildFile; productRef = 18AC0BC929415258001BECEC /* DSWaveformImageViews */; };
 		18B84ABE293804B000508B67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18B84ABD293804AF00508B67 /* GoogleService-Info.plist */; };
 		18BACEB72936863A005EE142 /* iTalkWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEB62936863A005EE142 /* iTalkWithApp.swift */; };
 		18BACEB929368697005EE142 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEB829368697005EE142 /* Persistence.swift */; };
@@ -152,11 +154,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AC0BC829415258001BECEC /* DSWaveformImage in Frameworks */,
 				18BACEFA2936F1AF005EE142 /* FirebaseDatabaseSwift in Frameworks */,
 				18BACEF82936F1AF005EE142 /* FirebaseDatabase in Frameworks */,
 				18BACEF32936EE2E005EE142 /* SDWebImageSwiftUI in Frameworks */,
 				18BACEFC2936F1AF005EE142 /* FirebaseFirestore in Frameworks */,
 				18BACF002936F1AF005EE142 /* FirebaseStorage in Frameworks */,
+				18AC0BCA29415258001BECEC /* DSWaveformImageViews in Frameworks */,
 				18BACEF62936F1AF005EE142 /* FirebaseAuth in Frameworks */,
 				18BACEFE2936F1AF005EE142 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -403,6 +407,8 @@
 				18BACEFB2936F1AF005EE142 /* FirebaseFirestore */,
 				18BACEFD2936F1AF005EE142 /* FirebaseFirestoreSwift */,
 				18BACEFF2936F1AF005EE142 /* FirebaseStorage */,
+				18AC0BC729415258001BECEC /* DSWaveformImage */,
+				18AC0BC929415258001BECEC /* DSWaveformImageViews */,
 			);
 			productName = iTalk2;
 			productReference = 1815524C2935B62500E051FE /* iTalkWith.app */;
@@ -479,6 +485,7 @@
 			packageReferences = (
 				18BACEF12936EE2E005EE142 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				18BACEF42936F1AF005EE142 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				18AC0BC629415258001BECEC /* XCRemoteSwiftPackageReference "DSWaveformImage" */,
 			);
 			productRefGroup = 1815524D2935B62500E051FE /* Products */;
 			projectDirPath = "";
@@ -920,6 +927,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		18AC0BC629415258001BECEC /* XCRemoteSwiftPackageReference "DSWaveformImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmrschmidt/DSWaveformImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.1;
+			};
+		};
 		18BACEF12936EE2E005EE142 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -939,6 +954,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		18AC0BC729415258001BECEC /* DSWaveformImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18AC0BC629415258001BECEC /* XCRemoteSwiftPackageReference "DSWaveformImage" */;
+			productName = DSWaveformImage;
+		};
+		18AC0BC929415258001BECEC /* DSWaveformImageViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18AC0BC629415258001BECEC /* XCRemoteSwiftPackageReference "DSWaveformImage" */;
+			productName = DSWaveformImageViews;
+		};
 		18BACEF22936EE2E005EE142 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18BACEF12936EE2E005EE142 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

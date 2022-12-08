@@ -6,12 +6,25 @@
 //
 
 import SwiftUI
+import DSWaveformImage
+import DSWaveformImageViews
 
 struct ChatAudioBar: View {
     @State private var audioIsRecording = false
     @ObservedObject var vmChat: ChatsVM
     @ObservedObject var audioRecorder = AudioRecorder()
     @ObservedObject var timerManager = TimerManager()
+    @State var waveformConfiguration: Waveform.Configuration = Waveform.Configuration(
+        size: CGSize(width: 80, height: 30),
+        backgroundColor: .gray,
+        style: .filled(.blue),
+        dampening: .none,
+        position: .middle,
+        scale: 1,
+        verticalScalingFactor: 1,
+        shouldAntialias: true
+        )
+    var samples: [Float] = []
     
     var body: some View {
         if audioIsRecording == true {
@@ -31,6 +44,10 @@ struct ChatAudioBar: View {
                     .padding(.bottom, 40)
                     .padding(.leading, 40)
                 Spacer()
+                
+                WaveformLiveCanvas(samples: samples, configuration: waveformConfiguration)
+                                .padding(.vertical, 2)
+                
                 Text(String(self.timerManager.secondsElapsed).prefix(4))
                     .dynamicTypeSize(.xxxLarge)
                 Spacer()
@@ -46,7 +63,7 @@ struct ChatAudioBar: View {
                     Image(systemName: "arrow.up.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 150, height: 150)
+                        .frame(width: 100, height: 100)
                         .clipped()
                         .foregroundColor(.blue)
                         .padding(.bottom, 40)

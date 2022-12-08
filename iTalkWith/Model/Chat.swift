@@ -22,7 +22,8 @@ struct Chat: Identifiable, Codable, Hashable {
     let photo: String?
     let audio: String?
     let audioTimer: Double?
-//    let readtime: Date?
+    var audioURL: URL?
+    //    let readtime: Date?
     let timestamp: Date
 //    var timeAgo: String {
 //        let formater = RelativeDateTimeFormatter()

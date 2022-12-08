@@ -68,7 +68,7 @@ final class AudioRecorder: ObservableObject {
         guard isAllowedToRecord() else { return }
 
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let audioFileName = Date().toString(dateFormat: "YY-MM-dd_HH-mm-ss") + ".m4a"
+        let audioFileName = Date().toString(dateFormat: "YY-MM-dd_HH-mm-ss-") + String(describing: UUID()) +  ".m4a"
         let audioFileURL = paths.appendingPathComponent(audioFileName)
         let recordSettings:[String:Any] = [AVFormatIDKey: kAudioFormatAppleLossless,
                                   AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
