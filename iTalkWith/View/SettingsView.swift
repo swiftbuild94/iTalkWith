@@ -18,6 +18,8 @@ struct SettingsView: View {
     @State private var isAutoPlayAudio = true
     @State private var isAutoRecordAudio = true
 //    @State var currentUser: User?
+    @EnvironmentObject var iconSettings : IconNames
+   
     let colorBubles = true
     
     let optionsSize: CGFloat = 16
@@ -69,8 +71,10 @@ struct SettingsView: View {
                         switch tag {
                         case .blue:
                             UserDefaults.standard.set("blue", forKey: "bubbleColor")
+                            UIApplication.shared.setAlternateIconName("AppIcon-Blue", completionHandler: {error in})
                         case .green:
                             UserDefaults.standard.set("green", forKey: "bubbleColor")
+                            UIApplication.shared.setAlternateIconName("AppIcon-Green", completionHandler: {error in})
                         }
                         
                     }

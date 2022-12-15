@@ -24,7 +24,6 @@ final class LogInSignInVM: ObservableObject {
     @Published var myUserPhoto = ""
 	@Published var shouldShowLogOutOptions = false
     @Published var bubbleColor: BubbleColors = .blue
-
     var selectedUser: String?
     
     init() {

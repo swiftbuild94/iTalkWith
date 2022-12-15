@@ -29,6 +29,9 @@
 		181552802935B65B00E051FE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1815527F2935B65B00E051FE /* README.md */; };
 		181552852935B6BA00E051FE /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 181552842935B6BA00E051FE /* Documentation.docc */; };
 		1852C2FE29383A690064D51D /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1852C2FD29383A690064D51D /* GridCell.swift */; };
+		1854DC08294BCDD70008B022 /* AppIcon-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854DC07294BCDD70008B022 /* AppIcon-Green.png */; };
+		1854DC0A294BCDF90008B022 /* AppIcon-Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 1854DC09294BCDF90008B022 /* AppIcon-Blue.png */; };
+		1854DC0C294BD5A80008B022 /* IconNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854DC0B294BD5A80008B022 /* IconNames.swift */; };
 		18A603B1293730C800C45CC9 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B0293730C800C45CC9 /* LogInView.swift */; };
 		18A603B52937315400C45CC9 /* ChatsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B42937315200C45CC9 /* ChatsVM.swift */; };
 		18A603B62937315400C45CC9 /* LogInSignInVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603B22937315100C45CC9 /* LogInSignInVM.swift */; };
@@ -115,6 +118,9 @@
 		1815527F2935B65B00E051FE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		181552842935B6BA00E051FE /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		1852C2FD29383A690064D51D /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		1854DC07294BCDD70008B022 /* AppIcon-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon-Green.png"; path = "iTalkWith/View/Assets.xcassets/AppIcon-Green.appiconset/AppIcon-Green.png"; sourceTree = SOURCE_ROOT; };
+		1854DC09294BCDF90008B022 /* AppIcon-Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon-Blue.png"; path = "iTalkWith/View/Assets.xcassets/AppIcon-Blue.appiconset/AppIcon-Blue.png"; sourceTree = SOURCE_ROOT; };
+		1854DC0B294BD5A80008B022 /* IconNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconNames.swift; sourceTree = "<group>"; };
 		18A603B0293730C800C45CC9 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		18A603B22937315100C45CC9 /* LogInSignInVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInSignInVM.swift; sourceTree = "<group>"; };
 		18A603B32937315100C45CC9 /* ContactsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsVM.swift; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 				180946CF29373F3B0061AA22 /* LocationManager.swift */,
 				180946CB29373F390061AA22 /* Notifications.swift */,
 				180946CE29373F3B0061AA22 /* TimerManager.swift */,
+				1854DC0B294BD5A80008B022 /* IconNames.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 				18BACEB62936863A005EE142 /* iTalkWithApp.swift */,
 				1815525D2935B62800E051FE /* Info.plist */,
 				18B84ABD293804AF00508B67 /* GoogleService-Info.plist */,
+				1854DC06294BCD5B0008B022 /* Icons */,
 				181552842935B6BA00E051FE /* Documentation.docc */,
 				180946C5293735DC0061AA22 /* Model */,
 				180946BD293732570061AA22 /* VisualModel */,
@@ -381,6 +389,15 @@
 				18BACEDE2936EA8F005EE142 /* GridLayout.swift */,
 			);
 			path = Old;
+			sourceTree = "<group>";
+		};
+		1854DC06294BCD5B0008B022 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				1854DC07294BCDD70008B022 /* AppIcon-Green.png */,
+				1854DC09294BCDF90008B022 /* AppIcon-Blue.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,7 +520,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1854DC08294BCDD70008B022 /* AppIcon-Green.png in Resources */,
 				181552802935B65B00E051FE /* README.md in Resources */,
+				1854DC0A294BCDF90008B022 /* AppIcon-Blue.png in Resources */,
 				181552572935B62800E051FE /* Preview Assets.xcassets in Resources */,
 				18B84ABE293804B000508B67 /* GoogleService-Info.plist in Resources */,
 			);
@@ -541,6 +560,7 @@
 				18BACF0629370552005EE142 /* SettingsView.swift in Sources */,
 				1815525C2935B62800E051FE /* iTalk2.xcdatamodeld in Sources */,
 				180946D429373F3D0061AA22 /* ImagePicker.swift in Sources */,
+				1854DC0C294BD5A80008B022 /* IconNames.swift in Sources */,
 				180946D329373F3D0061AA22 /* LocationManager.swift in Sources */,
 				180946E129373F720061AA22 /* String+Extension.swift in Sources */,
 				18BACF172937056A005EE142 /* ContactCell.swift in Sources */,
@@ -732,7 +752,7 @@
 		181552772935B62900E051FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Blue.png";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
