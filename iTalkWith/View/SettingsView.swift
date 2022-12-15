@@ -10,18 +10,16 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct SettingsView: View {
-    @ObservedObject private var vmLogin = LogInSignInVM()
-//    @ObservedObject private var vmContacts = ContactsVM()
     @State var shouldShowLogOutOptions = true
     @State private var shouldShowImagePicker = false
     @State private var image: UIImage?
     @State private var isAutoPlayAudio = true
     @State private var isAutoRecordAudio = true
-//    @State var currentUser: User?
-    @EnvironmentObject var iconSettings : IconNames
+    
+    @EnvironmentObject var vmLogin: LogInSignInVM
+    @EnvironmentObject var vmIconNames: IconNames
    
     let colorBubles = true
-    
     let optionsSize: CGFloat = 16
     
     var body: some View {
@@ -71,12 +69,11 @@ struct SettingsView: View {
                         switch tag {
                         case .blue:
                             UserDefaults.standard.set("blue", forKey: "bubbleColor")
-                            UIApplication.shared.setAlternateIconName("AppIcon-Blue", completionHandler: {error in})
+                            UIApplication.shared.setAlternateIconName(nil)
                         case .green:
                             UserDefaults.standard.set("green", forKey: "bubbleColor")
-                            UIApplication.shared.setAlternateIconName("AppIcon-Green", completionHandler: {error in})
+                            UIApplication.shared.setAlternateIconName("AppIcon-Green")
                         }
-                        
                     }
                 Section {
                     Text("Chat Background")

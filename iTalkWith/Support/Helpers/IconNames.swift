@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 class IconNames: ObservableObject {
-    var iconNames: [String?] = [nil]
+    var iconNames: [String?] = []
     @Published var currentIndex = 0
     
     init() {
