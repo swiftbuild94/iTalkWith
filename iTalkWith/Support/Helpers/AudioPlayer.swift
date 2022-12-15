@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 import AVFoundation
-import AVKit
+//import AVKit
 
 /// Play Audio
 final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
@@ -84,8 +84,8 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     ///Stop the play only if the audio has finished playing
     func stopPlay() {
-        audioPlayer.stop()
-        DispatchQueue.main.async {
+        self.audioPlayer.stop()
+        if self.isPlaying {
             self.isPlaying = false
         }
     }
