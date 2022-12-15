@@ -85,6 +85,8 @@ final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     ///Stop the play only if the audio has finished playing
     func stopPlay() {
         audioPlayer.stop()
-        isPlaying = false
+        DispatchQueue.main.async {
+            self.isPlaying = false
+        }
     }
 }

@@ -348,6 +348,7 @@ struct ShowAudio: View {
 //                    WaveformView(audioURL: audio, configuration: waveformConfiguration, priority: .medium)
 //                        Text(String(describing: audio))
 //                }
+                Text(message.audio ?? "")
                 if let audioTimer = message.audioTimer {
                     let trimedAudio = String(audioTimer).prefix(2)
                     Text(trimedAudio)
