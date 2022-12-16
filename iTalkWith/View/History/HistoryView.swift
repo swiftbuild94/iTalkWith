@@ -20,7 +20,7 @@ struct HistoryView: View {
                     Text(vmContacts.errorMessage)
                         .foregroundColor(Color.red)
                     ForEach(vmContacts.recentMessages, id:\.self) { recentMessage in
-                        let uid = recentMessage.toId
+                       // let uid = recentMessage.toId
                         //let user = vm.usersDictionary[uid]
 //                        if let user = user {
 //                            NavigationLink(destination: ChatView(chatUser: user)) {

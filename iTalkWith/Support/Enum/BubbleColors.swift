@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum BubbleColors {
-    case blue
-    case green
+enum BubbleColors: String {
+    case blue = "blue"
+    case green = "green"
 }

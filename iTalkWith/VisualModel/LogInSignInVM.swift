@@ -23,11 +23,25 @@ final class LogInSignInVM: ObservableObject {
     @Published var myUserName = ""
     @Published var myUserPhoto = ""
 	@Published var shouldShowLogOutOptions = false
-    @Published var bubbleColor: BubbleColors = .blue
+    //@Published var bubbleColor: BubbleColors = .blue
     var selectedUser: String?
     
     init() {
         getCurrentUser()
+    }
+    
+    // MARK: - Bubble Colors
+    /// Change the bubbles colors & the app icon
+    func setBubbleColor(bubbleColor: BubbleColors) {
+        //print("storageBubble: \(String(describing: storageBubble) )")
+        if bubbleColor == .green {
+            UserDefaults.standard.set("green", forKey: "bubbleColor")
+            UIApplication.shared.setAlternateIconName("AppIcon-Green")
+        } else {
+            UserDefaults.standard.set("blue", forKey: "bubbleColor")
+            UIApplication.shared.setAlternateIconName(nil)
+            
+        }
     }
     
     
