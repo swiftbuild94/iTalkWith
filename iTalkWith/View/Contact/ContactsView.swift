@@ -9,14 +9,14 @@
 import SwiftUI	
 
 struct ContactsView: View {
-	@ObservedObject private var viewModel = ContactsVM()
+    @EnvironmentObject var vmContacts: ContactsVM
 	@Environment(\.presentationMode) var presentationMode
 	let didSelectNewUser: (User) -> ()
 	
     var body: some View {
 //		NavigationView {
 			ScrollView {
-				ForEach(viewModel.users) { contact in
+				ForEach(vmContacts.users) { contact in
 					Button {
 						presentationMode.wrappedValue.dismiss()
 						didSelectNewUser(contact)

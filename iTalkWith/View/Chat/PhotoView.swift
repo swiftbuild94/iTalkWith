@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct PhotoView: View {
     @Environment(\.presentationMode) private var presentationMode
     var photo: String
-    var vmChat: ChatsVM
+    @EnvironmentObject var vmChats: ChatsVM
     
     var body: some View {
         NavigationView {
@@ -25,7 +25,7 @@ struct PhotoView: View {
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button {
-                                vmChat.shouldShowPhoto = false
+                                vmChats.shouldShowPhoto = false
                                 self.presentationMode.wrappedValue.dismiss()
                             } label: {
                                 Text("Cancel")

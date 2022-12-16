@@ -11,7 +11,7 @@ import DSWaveformImageViews
 
 struct ChatAudioBar: View {
     @State private var audioIsRecording = false
-    @ObservedObject var vmChat: ChatsVM
+    @EnvironmentObject var vmChats: ChatsVM
     @ObservedObject var audioRecorder = AudioRecorder()
     @ObservedObject var timerManager = TimerManager()
     @State var waveformConfiguration: Waveform.Configuration = Waveform.Configuration(
@@ -55,9 +55,9 @@ struct ChatAudioBar: View {
                     self.audioIsRecording = false
                     //AudioRecorder.shared.stopRecording()
                     self.audioRecorder.stopRecording()
-                    vmChat.audioTimer = self.timerManager.stopTimer()
+                    vmChats.audioTimer = self.timerManager.stopTimer()
                     if self.audioRecorder.getAudios() != nil {
-                        vmChat.handleSend(.audio)
+                        vmChats.handleSend(.audio)
                     }
                 } label: {
                     Image(systemName: "arrow.up.circle.fill")

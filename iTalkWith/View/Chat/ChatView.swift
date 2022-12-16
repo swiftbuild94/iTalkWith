@@ -14,7 +14,8 @@ import DSWaveformImageViews
 struct ChatView: View {
     @Environment(\.presentationMode) var chatMode
     //    @ObservedObject private var vmLogin = LogInSignInVM()
-    @ObservedObject var vmChat: ChatsVM
+//    @EnvironmentObject var vmChats: ChatsVM
+    @EnvironmentObject var vmChats: ChatsVM
     @State private var zoomed = false
     //	@State private var typeOfContent: TypeOfContent = .text
     //    @State private var image: UIImage?
@@ -23,15 +24,14 @@ struct ChatView: View {
     @FocusState private var focus
     var contact: User?
     private let topPadding: CGFloat = 8
-    @ObservedObject private var vmContacts = ContactsVM()
+    //@ObservedObject private var vmContacts = ContactsVM()
     @ObservedObject var audioRecorder = AudioRecorder()
     private var isAllowedToRecord = false
     
     init(chatUser: User){
         self.contact = chatUser
-        self.vmChat = .init(chatUser: chatUser)
-        self.focus = vmChat.focus
-        self.vmChat.getMessages()
+        self.vmChats.setUser(chatUser: chatUser)
+        self.focus = vmChats.focus
         isAllowedToRecord = self.audioRecorder.isAllowedToRecord()
     }
     
@@ -43,13 +43,13 @@ struct ChatView: View {
         ZStack(alignment: .top) {
             VStack() {
                 Divider()
-                MessagesView(vm: vmChat)
+                MessagesView()
                     .padding(.bottom, topPadding)
-                InputsButtons(vm: vmChat)
-                if vmChat.typeOfContent == .text {
-                    ChatTextBar(vm: vmChat)
-                } else if vmChat.typeOfContent == .audio {
-                    ChatAudioBar(vmChat: vmChat)
+                InputsButtons()
+                if vmChats.typeOfContent == .text {
+                    ChatTextBar(vm: vmChats)
+                } else if vmChats.typeOfContent == .audio {
+                    ChatAudioBar()
                 }
             }
         }
@@ -79,30 +79,30 @@ struct ChatView: View {
             }
         }
         .onDisappear {
-            vmChat.firestoreListener?.remove()
+            vmChats.firestoreListener?.remove()
         }
-        .sheet(isPresented: $vmChat.shouldShowImagePicker, onDismiss: {
-            if vmChat.image != nil {
-                vmChat.handleSend(.photoalbum)
-                vmChat.count += 1
-                vmChat.getMessages()
+        .sheet(isPresented: $vmChats.shouldShowImagePicker, onDismiss: {
+            if vmChats.image != nil {
+                vmChats.handleSend(.photoalbum)
+                vmChats.count += 1
+                vmChats.getMessages()
             }
         }) {
             VStack {
-                ImagePicker(selectedImage: $vmChat.image, didSet: $shouldShowImagePicker)
+                ImagePicker(selectedImage: $vmChats.image, didSet: $shouldShowImagePicker)
             }
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
         }
-        .sheet(isPresented: $vmChat.shouldShowLocation, onDismiss: {
-            if vmChat.location != nil {
-                vmChat.handleSend(.location)
-                vmChat.count += 1
-                vmChat.getMessages()
+        .sheet(isPresented: $vmChats.shouldShowLocation, onDismiss: {
+            if vmChats.location != nil {
+                vmChats.handleSend(.location)
+                vmChats.count += 1
+                vmChats.getMessages()
             }
         }, content: {
             VStack {
-                MapView(vmChat: vmChat)
+                MapView()
             }
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
@@ -148,7 +148,7 @@ struct ContactImage: View {
 //  MARK: - Messages
 /// Show the list of messages
 struct MessagesView: View {
-    @ObservedObject var vm: ChatsVM
+    @EnvironmentObject var vmChat: ChatsVM
     private let topPadding: CGFloat = 10
     static let bottomAnchor = "BottomAnchor"
     //	var chatUser: User
@@ -163,13 +163,13 @@ struct MessagesView: View {
             ScrollView {
                 ScrollViewReader { scrollViewProxy in
                     LazyVStack {
-                        ForEach(vm.chatMessages) { message in
-                            MessageView(vm: vm, message: message)
+                        ForEach(vmChat.chatMessages) { message in
+                            MessageView(message: message)
                         }
                         HStack { Spacer() }
                             .id(Self.bottomAnchor)
                     }
-                    .onReceive(vm.$count) { _ in
+                    .onReceive(vmChat.$count) { _ in
                         withAnimation(.easeOut(duration: 0.4)) {
                             scrollViewProxy.scrollTo(Self.bottomAnchor, anchor: .bottom)
                         }
@@ -185,7 +185,7 @@ struct MessagesView: View {
 // MARK: - MessageView
 /// Shows the message in bubbles incoming and outgoing
 struct MessageView: View {
-    @ObservedObject var vm: ChatsVM
+    @EnvironmentObject var vmChats: ChatsVM
     
     let message: Chat
     private let topPadding: CGFloat = 8
@@ -196,10 +196,10 @@ struct MessageView: View {
                 HStack {
                     Spacer()
                     HStack {
-                        Bubble(vm: vm, message: message)
+                        Bubble(message: message)
                     }
                     .padding()
-                    .background(vm.bubbleColor)
+                    .background(vmChats.bubbleColor)
                     .cornerRadius(8)
                 }
                 .padding(.horizontal)
@@ -207,7 +207,7 @@ struct MessageView: View {
             } else {
                 HStack {
                     HStack {
-                        Bubble(vm: vm, message: message)
+                        Bubble(message: message)
                     }
                     .padding()
                     .background(.gray)
@@ -224,15 +224,14 @@ struct MessageView: View {
 // MARK: - Bubble
 /// Show text, photo, audio in buble
 struct Bubble: View {
-    @ObservedObject var vm: ChatsVM
     let message: Chat
     
     var body: some View {
         if message.photo != nil {
-            ShowPhoto(vm: vm, message: message)
+            ShowPhoto(message: message)
         }
         if message.audio != nil {
-            ShowAudio(vm: vm, message: message)
+            ShowAudio(message: message)
         } else {
             ShowText(message: message)
         }
@@ -274,14 +273,14 @@ struct ShowText: View {
 // MARK: - ShowPhoto
 /// Show Image in the bubble
 struct ShowPhoto: View {
-    @ObservedObject var vm: ChatsVM
+    @EnvironmentObject var vmChats: ChatsVM
     let message: Chat
     
     var body: some View {
         Button {
-            vm.shouldShowPhoto = true
+            vmChats.shouldShowPhoto = true
         } label: {
-            if let photo = vm.downloadPhoto(message.photo!) {
+            if let photo = vmChats.downloadPhoto(message.photo!) {
                 Image(uiImage: photo)
                     .resizable()
                     .scaledToFill()
@@ -302,7 +301,7 @@ struct ShowPhoto: View {
 // MARK: - ShowAudio
 /// Show audio in buble and enable play
 struct ShowAudio: View {
-    @ObservedObject var vm: ChatsVM
+    @EnvironmentObject var vmChats: ChatsVM
     @ObservedObject var vmAudio = AudioPlayer()
     @ObservedObject var timerManager = TimerManager()
     let message: Chat
@@ -337,7 +336,7 @@ struct ShowAudio: View {
                 timerManager.startTimer()
                 //DispatchQueue.global(qos: .userInteractive).async {
                     if let audio = message.audio {
-                        if let audioDownloaded = vm.downloadAudio(audio) {
+                        if let audioDownloaded = vmChats.downloadAudio(audio) {
                             vmAudio.playAudio(audioDownloaded)
                         }
                     }

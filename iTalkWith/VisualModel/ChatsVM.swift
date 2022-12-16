@@ -47,10 +47,13 @@ final class ChatsVM: ObservableObject {
     
     var firestoreListener: ListenerRegistration?
     
-	init(chatUser: User?) {
-		self.chatUser = chatUser
-        setBubbleColor()
-        self.badge = chatUser?.badge ?? 0
+	init() {
+		setBubbleColor()
+	}
+    
+    func setUser(chatUser: User) {
+        self.chatUser = chatUser
+        self.badge = self.chatUser?.badge ?? 0
         if self.badge > 0 {
             NotificationManager.shared.removeBadge(self.badge)
             self.chatUser?.changeBadge(0)
@@ -58,7 +61,8 @@ final class ChatsVM: ObservableObject {
         DispatchQueue.main.async {
             self.getMessages()
         }
-	}
+    }
+    
     
     deinit {
         firestoreListener?.remove()

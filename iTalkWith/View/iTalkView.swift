@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct iTalkView: View {
-	@ObservedObject private var vmContacts = ContactsVM()
+    @EnvironmentObject private var vmContacts: ContactsVM
     @State private var shouldShowNewUserScreen = false
     @State private var shouldNavigateToChatView = false
     @Binding var userSelected: User?
    // @Binding var isShowChat: Bool
-    @ObservedObject private var vmChats = ChatsVM(chatUser: nil)
+   // @ObservedObject private var vmChats = ChatsVM(chatUser: nil)
     
     var columns = [
         GridItem(spacing: 0),

@@ -10,8 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("appColor", store: .standard) var appSorage = "blue"
     @StateObject var vmLogin = LogInSignInVM()
-    @StateObject private var vmContacts = ContactsVM()
-    @StateObject var vmChats = ChatsVM(chatUser: nil)
+    @StateObject var vmContacts = ContactsVM()
+    @StateObject var vmChats = ChatsVM()
+    @StateObject var vmIconNames = IconNames()
     // @StateObject private var vmAlerts = Alerts()
     // @State var isUserLoggedOut = false
     @State private var selection = 0
@@ -74,7 +75,7 @@ struct ContentView: View {
         .sheet(item: $userSelected, onDismiss: {
             //vmContacts.getAllUsers()
             //vmContacts.getRecentMessagges()
-            vmChats.firestoreListener?.remove()
+            //vmChats.firestoreListener?.remove()
             userSelected = nil
         }) { _ in
             if let userSelected {
@@ -120,6 +121,10 @@ struct ContentView: View {
             }
         }
          */
+        .environmentObject(vmLogin)
+        .environmentObject(vmContacts)
+        .environmentObject(vmChats)
+        .environmentObject(vmIconNames)
     }
 }
 

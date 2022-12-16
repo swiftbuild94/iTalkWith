@@ -24,7 +24,7 @@ struct MapView: View {
         longitudinalMeters: 1000
     )
     @ObservedObject private var locationManager = LocationManager()
-    @ObservedObject var vmChat: ChatsVM
+    @EnvironmentObject var vmChats: ChatsVM
     
     private var homeLocation : [AnnotationItem] {
           guard let location = locationManager.location?.coordinate else {
@@ -55,7 +55,7 @@ struct MapView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
-                        vmChat.shouldShowLocation = false
+                        vmChats.shouldShowLocation = false
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Cancel")
@@ -64,7 +64,7 @@ struct MapView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
-                        vmChat.shouldShowLocation = false
+                        vmChats.shouldShowLocation = false
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Send Location")

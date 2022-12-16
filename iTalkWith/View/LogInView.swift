@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LogInView: View {
-    @ObservedObject var vm = LogInSignInVM()
+    @EnvironmentObject var vmLogin: LogInSignInVM
 //    @State private var name = ""
 //    @State private var email = ""
 //    @State private var password = "" 0
@@ -34,19 +34,19 @@ struct LogInView: View {
     }
     
 //    init(){
-//        if !vm.isUserLoggedOut {
+//        if !vmLogin.isUserLoggedOut {
 //            self.didCompleateLoginProcess()
 //        }
 //    }
     
     func handleAction() {
-        if vm.isLoginMode {
-            vm.loginUser()
+        if vmLogin.isLoginMode {
+            vmLogin.loginUser()
         } else {
-            vm.createAccount()
+            vmLogin.createAccount()
         }
-        print("IsUserLoggedOut \(vm.isUserLoggedOut)")
-        if vm.isUserLoggedOut {
+        print("IsUserLoggedOut \(vmLogin.isUserLoggedOut)")
+        if vmLogin.isUserLoggedOut {
 //            presentationMode.wrappedValue.dismiss()
             self.didCompleateLoginProcess()
         }
@@ -54,7 +54,7 @@ struct LogInView: View {
     
     var body: some View {
           VStack {
-              Picker(selection: $vm.isLoginMode, label: Text("Picker")) {
+              Picker(selection: $vmLogin.isLoginMode, label: Text("Picker")) {
                   Text("Login")
                       .tag(true)
                   Text("Create Account")
@@ -64,12 +64,12 @@ struct LogInView: View {
               Spacer()
               ScrollView {
                   VStack {
-                      if !vm.isLoginMode {
+                      if !vmLogin.isLoginMode {
                           Button {
                               shouldShowImagePicker.toggle()
                           } label: {
                               VStack {
-                                  if let image = vm.image {
+                                  if let image = vmLogin.image {
                                       Image(uiImage: image)
                                           .resizable()
                                           .scaledToFill()
@@ -87,7 +87,7 @@ struct LogInView: View {
                           }
                           Spacer()
                           Group {
-                              TextField("Name", text: $vm.name)
+                              TextField("Name", text: $vmLogin.name)
                                   .autocapitalization(.words)
                                   .keyboardType(.asciiCapable)
                                   .dynamicTypeSize(.large)
@@ -96,7 +96,7 @@ struct LogInView: View {
                                       focus = .emailSignUp
                                   }
                                   .submitLabel(.next)
-                              TextField("Email", text: $vm.email)
+                              TextField("Email", text: $vmLogin.email)
                                   .keyboardType(.emailAddress)
                                   .autocapitalization(.none)
                                   .dynamicTypeSize(.large)
@@ -105,14 +105,14 @@ struct LogInView: View {
                                       focus = .phone
                                   }
                                   .submitLabel(.next)
-                              TextField("Phone", text: $vm.phoneNumber)
+                              TextField("Phone", text: $vmLogin.phoneNumber)
                                   .keyboardType(.phonePad)
                                   .dynamicTypeSize(.large).focused($focus, equals: .phone)
                                   .onSubmit {
                                       focus = .passwordSignUp
                                   }
                                   .submitLabel(.next)
-                              SecureField("Password", text: $vm.password)
+                              SecureField("Password", text: $vmLogin.password)
                                   .keyboardType(/*@START_MENU_TOKEN@*/.asciiCapableNumberPad/*@END_MENU_TOKEN@*/)
                                   .autocapitalization(.none)
                                   .dynamicTypeSize(.large)
@@ -121,7 +121,7 @@ struct LogInView: View {
                                       focus = .retype
                                   }
                                   .submitLabel(.next)
-                              SecureField("Retype Password", text: $vm.passwordRetype)
+                              SecureField("Retype Password", text: $vmLogin.passwordRetype)
                                   .keyboardType(/*@START_MENU_TOKEN@*/.asciiCapableNumberPad/*@END_MENU_TOKEN@*/)
                                   .autocapitalization(.none)
                                   .dynamicTypeSize(.large)
@@ -137,7 +137,7 @@ struct LogInView: View {
                           Spacer()
                       } else {
                           Group {
-                              TextField("Email", text: $vm.email)
+                              TextField("Email", text: $vmLogin.email)
                                   .keyboardType(.emailAddress)
                                   .autocapitalization(.none)
                                   .dynamicTypeSize(.large)
@@ -146,7 +146,7 @@ struct LogInView: View {
                                       focus = .passwordLogin
                                   }
                                   .submitLabel(.next)
-                              SecureField("Password", text: $vm.password)
+                              SecureField("Password", text: $vmLogin.password)
                               .autocapitalization(.none)
                                   .dynamicTypeSize(.large)
                                   .focused($focus, equals: .passwordLogin)
@@ -164,7 +164,7 @@ struct LogInView: View {
                   Button(action: {
                       handleAction()
                   }, label: {
-                      Text(vm.isLoginMode ? "Log In" : "Create Account" )
+                      Text(vmLogin.isLoginMode ? "Log In" : "Create Account" )
                           .font(.headline)
                           .padding(.vertical, 10)
                           .padding(5)
@@ -172,12 +172,12 @@ struct LogInView: View {
                   .buttonBorderShape(.capsule)
                     .background(Color.blue)
                     .controlSize(.regular)
-                  Text(vm.errorMessage)
+                  Text(vmLogin.errorMessage)
                     .foregroundColor(.red)
               }
           }
           .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
-              ImagePicker(selectedImage: $vm.image, didSet: $shouldShowImagePicker)
+              ImagePicker(selectedImage: $vmLogin.image, didSet: $shouldShowImagePicker)
           }
     }
         

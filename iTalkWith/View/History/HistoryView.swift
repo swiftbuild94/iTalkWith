@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @ObservedObject private var vm = ContactsVM()
+    @EnvironmentObject var vmContacts: ContactsVM
 	@State private var shouldShowNewUserScreen = false
 	@State private var shouldNavigateToChatView = false
 	@State private var userSelected: User?
@@ -17,9 +17,9 @@ struct HistoryView: View {
     var body: some View {
         NavigationView {
                 ScrollView {
-                    Text(vm.errorMessage)
+                    Text(vmContacts.errorMessage)
                         .foregroundColor(Color.red)
-                    ForEach(vm.recentMessages, id:\.self) { recentMessage in
+                    ForEach(vmContacts.recentMessages, id:\.self) { recentMessage in
                         let uid = recentMessage.toId
                         //let user = vm.usersDictionary[uid]
 //                        if let user = user {

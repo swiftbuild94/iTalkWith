@@ -241,8 +241,8 @@
 		180946E6293740EF0061AA22 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				18BACF1629370569005EE142 /* ContactCell.swift */,
 				18BACF1529370569005EE142 /* ContactsView.swift */,
+				18BACF1629370569005EE142 /* ContactCell.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
