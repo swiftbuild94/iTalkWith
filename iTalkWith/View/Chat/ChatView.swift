@@ -12,39 +12,31 @@ import DSWaveformImage
 import DSWaveformImageViews
 
 struct ChatView: View {
-    @Environment(\.presentationMode) var chatMode
+    //@Environment(\.presentationMode) var chatMode
     //    @ObservedObject private var vmLogin = LogInSignInVM()
-//    @EnvironmentObject var vmChats: ChatsVM
-    @EnvironmentObject var vmChats: ChatsVM
-    @State private var zoomed = false
-    //	@State private var typeOfContent: TypeOfContent = .text
-    //    @State private var image: UIImage?
-    @State private var shouldShowImagePicker = false
-    @State private var shouldShowLocation = false
-    @FocusState private var focus
-    var contact: User?
-    private let topPadding: CGFloat = 8
-    //@ObservedObject private var vmContacts = ContactsVM()
-    @ObservedObject var audioRecorder = AudioRecorder()
-    private var isAllowedToRecord = false
-    
-    init(chatUser: User){
-        self.contact = chatUser
-        self.vmChats.setUser(chatUser: chatUser)
-        self.focus = vmChats.focus
-        isAllowedToRecord = self.audioRecorder.isAllowedToRecord()
-    }
+    @StateObject var vmChats = ChatsVM()
+    @State var zoomed = false
+    @State var shouldShowImagePicker = false
+    @State var shouldShowLocation = false
+    @StateObject var audioRecorder = AudioRecorder()
+    @FocusState var focus
+    @EnvironmentObject var vmContacts: ContactsVM
+    //var contact: User?
+    let topPadding: CGFloat = 8
+    @State var isAllowedToRecord = false
+    @State var isActivityIndicator = false
+    var contact: User
     
     var body: some View {
-//        ActivityIndicator(isAnimating: $vmChat.isLoading) {
-//            $0.style = .large
-//            $0.hidesWhenStopped = true
-//        }
         ZStack(alignment: .top) {
             VStack() {
                 Divider()
-                MessagesView()
-                    .padding(.bottom, topPadding)
+                if isActivityIndicator {
+                    MessagesView()
+                        .padding(.bottom, topPadding)
+                } else {
+                    ActivityIndicator($isActivityIndicator, style: .large)
+                }
                 InputsButtons()
                 if vmChats.typeOfContent == .text {
                     ChatTextBar(vm: vmChats)
@@ -53,20 +45,30 @@ struct ChatView: View {
                 }
             }
         }
+        .onAppear() {
+            self.isAllowedToRecord = self.audioRecorder.isAllowedToRecord()
+            self.vmChats.setUser(chatUser: contact)
+            self.focus = vmChats.focus
+            DispatchQueue.main.async {
+                self.vmChats.getMessages()
+                self.isActivityIndicator.toggle()
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading)  {
-                Text("Back")
-                //                    Image(systemName: "phone.fill")
-                //                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
-                //                    Image(systemName: "video.fill")
-                //                        .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+                Button {
+                    //userSelected = nil
+                } label: {
+                    Text("Back")
+                }
             }
             ToolbarItem(placement: .principal) {
                 Button {
-                    //                          chatMode.showUserDetails()
+                    // TODO: show user details
+                    //  chatMode.showUserDetails()
                 } label: {
-                    ContactImage(contact: contact!)
-                    Text(contact!.name)
+                    ContactImage(contact: contact)
+                    Text(contact.name)
                         .foregroundColor(Color.accentColor)
                         .dynamicTypeSize(.xxxLarge)
                 }
@@ -107,6 +109,7 @@ struct ChatView: View {
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
         })
+        .environmentObject(vmChats)
     }
 }
 
@@ -115,7 +118,7 @@ struct ChatView: View {
 // MARK: - ContactImage
 /// Shows the Contact Image
 struct ContactImage: View {
-    var contact: User
+    var contact: User?
     private let imageSize: CGFloat  = 40
     private let imagePadding: CGFloat = 8
     private let shadowRadius: CGFloat = 15
@@ -123,23 +126,25 @@ struct ContactImage: View {
     private let cornerRadius: CGFloat = 38
     
     var body: some View {
-        if contact.profileImageURL == nil {
-            Image(systemName: "person.fill")
-                .clipShape(Circle())
-                .shadow(radius: shadowRadius)
-                .overlay(Circle().stroke(Color.black, lineWidth: circleLineWidth))
-                .font(.system(size: imageSize))
-                .padding(imagePadding)
-        } else {
-            Image(contact.profileImageURL!)
-            WebImage(url: URL(string: contact.profileImageURL!))
-                .resizable()
-                .scaledToFill()
-                .frame(width: imageSize, height: imageSize)
-                .clipped()
-                .cornerRadius(cornerRadius)
-                .overlay(RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(Color(.label), lineWidth: circleLineWidth) )
+        if contact != nil {
+            if contact!.profileImageURL == nil {
+                Image(systemName: "person.fill")
+                    .clipShape(Circle())
+                    .shadow(radius: shadowRadius)
+                    .overlay(Circle().stroke(Color.black, lineWidth: circleLineWidth))
+                    .font(.system(size: imageSize))
+                    .padding(imagePadding)
+            } else {
+                Image(contact!.profileImageURL!)
+                WebImage(url: URL(string: contact!.profileImageURL!))
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: imageSize, height: imageSize)
+                    .clipped()
+                    .cornerRadius(cornerRadius)
+                    .overlay(RoundedRectangle(cornerRadius: cornerRadius)
+                        .stroke(Color(.label), lineWidth: circleLineWidth) )
+            }
         }
     }
 }
@@ -359,13 +364,13 @@ struct ShowAudio: View {
 
 
 // MARK: - Preview
-let data: [String: Any] = ["name": "Test"]
-let userTest = User(data: data)
+//let data: [String: Any] = ["name": "Test"]
+//let userTest = User(data: data)
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(chatUser: userTest)
-            .previewDevice("iPhone 14 Pro")
-            //.preferredColorScheme(.dark)
-    }
-}
+//struct ChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      //  ChatView()
+//            .previewDevice("iPhone 14 Pro")
+//            //.preferredColorScheme(.dark)
+//    }
+//}

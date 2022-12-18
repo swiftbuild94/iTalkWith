@@ -41,47 +41,45 @@ final class ChatsVM: ObservableObject {
     @Published var audioTimer: Double?
     @Published var audioURL: URL?
     
-    @State var bubbleColor: Color = Color.blue
+    @Published var bubbleColor: Color = Color.blue
     private var badge = 0
     private var url: URL?
     
     var firestoreListener: ListenerRegistration?
     
-	init() {
-		setBubbleColor()
-	}
+    // MARK: - Dein
+    /// Deinit
+    /// Remove the firestoreListener
+    deinit {
+        firestoreListener?.remove()
+    }
     
+    // MARK: - SetUser
+    /// Set User to start using the chat
     func setUser(chatUser: User) {
+        print("SetUser: \(chatUser)")
         self.chatUser = chatUser
+        self.bubbleColor = getColor()
         self.badge = self.chatUser?.badge ?? 0
         if self.badge > 0 {
             NotificationManager.shared.removeBadge(self.badge)
             self.chatUser?.changeBadge(0)
         }
-        DispatchQueue.main.async {
-            self.getMessages()
-        }
     }
     
-    
-    deinit {
-        firestoreListener?.remove()
-    }
-	
-    
-    // MARK: Bubble Colors
-    // TODO: also change the icon
-    /// Change the bubbles colors
-    #warning("TODO: change also the icon")
-    private func setBubbleColor() {
-        let storageBubble =  UserDefaults.standard.string(forKey: "bubbleColor")
-        //print("storageBubble: \(String(describing: storageBubble) )")
-        if storageBubble == "green" {
-            self.bubbleColor = Color.green
+    /// Get the appColor
+    private func getColor() -> Color {
+        let bubble = UserDefaults.standard.string(forKey: "bubbleColor")
+        if bubble == "green" {
+            //bubbleColor = Color.green
+            return Color.green
         } else {
-            self.bubbleColor = Color.blue
+           // bubbleColor = Color.blue
+            return Color.blue
         }
     }
+    
+    
     
     
     // MARK: - Fetch Messages

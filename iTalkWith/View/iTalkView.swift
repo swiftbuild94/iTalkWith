@@ -35,11 +35,12 @@ struct iTalkView: View {
 //                            NavigationLink(destination: //ChatView(chatUser: user)) {
 //                                ChatView(vmChats: vmChats) {
                             Button(action: {
+                                    //self.vmContacts.userSelected = userSelected
                                     userSelected = user
                                     //vmChats.chatUser = user
                                     //vmChats.fetchMessages()
                                     print("UserSelected: \(user.name)")
-                                
+                                   // ChatView(contact: user)
                                 //isShowChat.toggle()
                                 // ChatView(vmChats: vmChats)
                             }, label: {
@@ -77,7 +78,9 @@ struct iTalkView: View {
                 ForEach(vmContacts.users, id:\.self) { user in
                     if let user = user {
                         Button(action: {
+                            //self.vmContacts.userSelected = userSelected
                             userSelected = user
+                            print("UserSelected: \(user.name)")
                         }, label: {
                             ContactCell(contact: user)
                                 .swipeActions(edge: .leading) {

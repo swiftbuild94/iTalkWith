@@ -20,10 +20,11 @@ final class ContactsVM: ObservableObject {
 	@Published var usersDictionary = [String: User]()
     @Published var unshownUsersDictionary = [String: User]()
 	@Published var currentUser: User?
-    @Published var myUser: User?
-    @Published var myUserUid = ""
-    @Published var myUserName = ""
-    @Published var myUserPhoto = ""
+  //  @Published var userSelected: User?
+//    @Published var myUser: User?
+//    @Published var myUserUid = ""
+//    @Published var myUserName = ""
+//    @Published var myUserPhoto = ""
 	@Published var errorMessage = ""
     @Published var count = 0
 //  @Published var isShowChat = false
@@ -37,6 +38,8 @@ final class ContactsVM: ObservableObject {
     init() {
         DispatchQueue.main.async() {
             self.getAllUsers()
+        }
+        DispatchQueue.main.async {
             self.getRecentMessagges()
         }
     }

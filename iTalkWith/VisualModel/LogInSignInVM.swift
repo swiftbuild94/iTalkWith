@@ -40,7 +40,6 @@ final class LogInSignInVM: ObservableObject {
         } else {
             UserDefaults.standard.set("blue", forKey: "bubbleColor")
             UIApplication.shared.setAlternateIconName(nil)
-            
         }
     }
     

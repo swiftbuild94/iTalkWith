@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("appColor", store: .standard) var appSorage = "blue"
+    //@AppStorage("appColor", store: .standard) var appSorage = "blue"
     @StateObject var vmLogin = LogInSignInVM()
     @StateObject var vmContacts = ContactsVM()
-    @StateObject var vmChats = ChatsVM()
+    //@StateObject var vmChats = ChatsVM()
     @StateObject var vmIconNames = IconNames()
     // @StateObject private var vmAlerts = Alerts()
     // @State var isUserLoggedOut = false
@@ -78,31 +78,26 @@ struct ContentView: View {
             //vmChats.firestoreListener?.remove()
             userSelected = nil
         }) { _ in
-            if let userSelected {
-                VStack {
-                    NavigationView {
-                        ChatView(chatUser: userSelected)
-                    }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button {
-                                //vmChat.shouldShowLocation = false
-                                // self.presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Text("Cancel")
-                                    .foregroundColor(Color.accentColor)
-                            }
+            VStack {
+                NavigationView {
+                    ChatView(contact: userSelected!)
+                }
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button {
+                            //vmChat.shouldShowLocation = false
+                            // self.presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("Cancel")
+                                .foregroundColor(Color.accentColor)
                         }
                     }
                 }
-                .presentationDetents([.large])
-                .presentationDragIndicator(.hidden)
             }
+            .presentationDetents([.large])
+            .presentationDragIndicator(.hidden)
         }
-//        .fullScreenCover(isPresented: $isShowChat) {
-//            ChatView(vmChat: vmChats)
-//        }
         /*
         .alert(isPresented: AlertsManager.shared.$isAlert) {
             if AlertsManager.shared.showCancel {
@@ -123,7 +118,6 @@ struct ContentView: View {
          */
         .environmentObject(vmLogin)
         .environmentObject(vmContacts)
-        .environmentObject(vmChats)
         .environmentObject(vmIconNames)
     }
 }
