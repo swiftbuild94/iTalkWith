@@ -64,8 +64,8 @@ final class AudioRecorder: ObservableObject {
     // MARK: - Start Recording
     /// Record audio
     /// - Return: File Saved in documents
-    func startRecording() {
-        guard isAllowedToRecord() else { return }
+    func startRecording() -> URL? {
+        guard isAllowedToRecord() else { return nil }
 
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let audioFileName = Date().toString(dateFormat: "YY-MM-dd_HH-mm-ss-") + String(describing: UUID()) +  ".m4a"
@@ -90,6 +90,7 @@ final class AudioRecorder: ObservableObject {
         } catch {
             print("Audio -> Error recording: \(error)")
         }
+        return audioFileURL
     }
     
     

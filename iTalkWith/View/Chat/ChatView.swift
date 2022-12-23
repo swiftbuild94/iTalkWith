@@ -24,19 +24,19 @@ struct ChatView: View {
     //var contact: User?
     let topPadding: CGFloat = 8
     @State var isAllowedToRecord = false
-    @State var isActivityIndicator = false
+    @State var isActivityIndicator = true
     var contact: User
     
     var body: some View {
         ZStack(alignment: .top) {
             VStack() {
                 Divider()
-                if isActivityIndicator {
-                    MessagesView()
-                        .padding(.bottom, topPadding)
-                } else {
-                    ActivityIndicator($isActivityIndicator, style: .large)
-                }
+                // if isActivityIndicator {
+                //  ActivityIndicator($isActivityIndicator, style: .large)
+                // } else {
+                MessagesView()
+                    .padding(.bottom, topPadding)
+                // }
                 InputsButtons()
                 if vmChats.typeOfContent == .text {
                     ChatTextBar(vm: vmChats)
@@ -51,7 +51,7 @@ struct ChatView: View {
             self.focus = vmChats.focus
             DispatchQueue.main.async {
                 self.vmChats.getMessages()
-                self.isActivityIndicator.toggle()
+               // self.isActivityIndicator.toggle()
             }
         }
         .toolbar {
@@ -312,7 +312,7 @@ struct ShowAudio: View {
     let message: Chat
     
     @State var waveformConfiguration: Waveform.Configuration = Waveform.Configuration(
-        size: CGSize(width: 80, height: 30),
+        size: CGSize(width: 80, height: 280),
         backgroundColor: .blue,
         style: .filled(.white),
         dampening: .none,
@@ -333,7 +333,11 @@ struct ShowAudio: View {
 //                if vm.audioURL != nil {
 //                    WaveformView(audioURL: vm.audioURL!, configuration: waveformConfiguration, priority: .medium)
 //                }
-                Image(systemName: "stop.fill")
+                Image(systemName: "stop.fill").dynamicTypeSize(.xxxLarge)
+                if message.audioLocalURL != nil {
+                    //Text(String(describing: message.audioLocalURL!))
+                    WaveformView(audioURL: message.audioLocalURL!, configuration: waveformConfiguration, priority: .background)
+                }
                 Text(String(format: "%.1f", timerManager.secondsElapsed))
             }
         } else {
@@ -347,12 +351,17 @@ struct ShowAudio: View {
                     }
                 //}
             } label: {
-                Image(systemName: "play.fill")
-//                if let audio = vm.audioURL {
-//                    WaveformView(audioURL: audio, configuration: waveformConfiguration, priority: .medium)
-//                        Text(String(describing: audio))
+                Image(systemName: "play.fill").dynamicTypeSize(.xxxLarge)
+                if message.audioLocalURL != nil {
+                    //Text(String(describing: message.audioLocalURL!))
+                    WaveformView(audioURL: message.audioLocalURL!, configuration: waveformConfiguration, priority: .background)
+                }
+//                if let audio = message.audio {
+//                    if let audioDownloaded = vmChats.downloadAudio(audio) {
+//                        Text(String(describing: audioDownloaded))
+//
+//                    }
 //                }
-                Text(message.audio ?? "")
                 if let audioTimer = message.audioTimer {
                     let trimedAudio = String(audioTimer).prefix(2)
                     Text(trimedAudio)

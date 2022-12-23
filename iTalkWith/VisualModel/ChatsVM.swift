@@ -116,7 +116,8 @@ final class ChatsVM: ObservableObject {
                             if var chats = try change.document.data(as: Chat?.self) {
                                 if chats.audio != nil {
                                     let audioURL = self.downloadAudio(chats.audio!)
-                                    chats.audioURL = audioURL
+                                    chats.setAudioLocalURL(audioURL!)
+                                   // chats.audioURL = audioURL
                                 }
                                 self.chatMessages.append(chats)
                             }
@@ -165,20 +166,23 @@ final class ChatsVM: ObservableObject {
     /// local url of the audio file
     /// audioURL of the file for waveform
     func downloadAudio(_ audio: String) -> URL? {
-        print("---AUDIO DOWNLOADING: -\(audio)-" )
+        //print("---AUDIO DOWNLOADING: -\(audio)-" )
         if audio == "" { return nil}
         let fileURL = URL(string: audio)
         let fileName = String(fileURL!.pathComponents.last!.description)
-        print("----DOWNLOAD AUDIO -> FileName: \(String(describing: fileName))")
         
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let audioFileURL = url.appendingPathComponent(fileName)
-        print("----Filepath: \(String(describing: audioFileURL))")
+        print("----AUDIO Filepath: \(String(describing: audioFileURL))")
         
-        let path = String(describing: url)
+        let path = String(describing: audioFileURL)
         let exists = FileManager.default.fileExists(atPath: path)
         
-        if exists { return audioFileURL }
+        if exists {
+            print("----AUDIO Exists")
+            return audioFileURL
+        }
+        print("----AUDIO DOWNLOADING: \(audio)")
         
         let storageRef = Storage.storage().reference()
         let audioRef = storageRef.child(FirebaseConstants.audios)
@@ -186,14 +190,14 @@ final class ChatsVM: ObservableObject {
         
         spaceRef.write(toFile: audioFileURL) { audioUrl, error in
             if let err = error {
-                print("----Error downloading audio: \(err)")
+                print("----AUDIO Error downloading audio: \(err)")
             } else {
-                print("----Audio Write Compleate: \(String(describing: audioUrl))")
+                print("----AUDIO Write Compleate: \(String(describing: audioUrl))")
                 self.audioURL = audioUrl
             }
         }
         
-        print("----Audio: \(String(describing: audioFileURL))")
+        print("----AUDIO RETURNS: \(String(describing: audioFileURL))")
         return audioFileURL
     }
     

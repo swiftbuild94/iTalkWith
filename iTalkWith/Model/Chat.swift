@@ -22,7 +22,7 @@ struct Chat: Identifiable, Codable, Hashable {
     let photo: String?
     let audio: String?
     let audioTimer: Double?
-    var audioURL: URL?
+    var audioLocalURL: URL?
     //    let readtime: Date?
     let timestamp: Date
 //    var timeAgo: String {
@@ -30,4 +30,8 @@ struct Chat: Identifiable, Codable, Hashable {
 //        formater.unitsStyle = .abbreviated
 //        return formater.localizedString(for: timestamp, relativeTo: Date())
 //    }
+    
+    mutating func setAudioLocalURL(_ audioLocalURL: URL){
+        self.audioLocalURL = audioLocalURL
+    }
 }

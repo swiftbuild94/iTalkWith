@@ -80,7 +80,9 @@ struct ContentView: View {
         }) { _ in
             VStack {
                 NavigationView {
-                    ChatView(contact: userSelected!)
+                    if let userSelected {
+                        ChatView(contact: userSelected)
+                    }
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

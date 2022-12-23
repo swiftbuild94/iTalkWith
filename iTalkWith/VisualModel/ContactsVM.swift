@@ -16,9 +16,9 @@ import FirebaseAuth
 /// Used in iTalkView and HistoryView
 final class ContactsVM: ObservableObject {
 	@Published var users = [User]()
-    //@Published var unshownUsers = [User]()
+    @Published var unshownUsers = [User]()
 	@Published var usersDictionary = [String: User]()
-    @Published var unshownUsersDictionary = [String: User]()
+    //@Published var unshownUsersDictionary = [String: User]()
 	@Published var currentUser: User?
   //  @Published var userSelected: User?
 //    @Published var myUser: User?
@@ -77,7 +77,8 @@ final class ContactsVM: ObservableObject {
                         self.users.append(.init(data: data))
                         //print("User: \(self.users)")
                         self.usersDictionary[user.uid] = (.init(data: data))
-                        self.unshownUsersDictionary[user.uid] = (.init(data: data))
+                    self.unshownUsers.append(.init(data: data))
+                    //self.unshownUsersDictionary[user.uid] = (.init(data: data))
                     //}
 				}
 			})
@@ -129,8 +130,15 @@ final class ContactsVM: ObservableObject {
                             //print(">>>usersDictionary: \(self.usersDictionary)")
                             self.recentMessages.append(rm)
                             //print("RecentMessages: \(self.recentMessages)")
-                            self.unshownUsersDictionary.removeValue(forKey: rm.toId)
-                        
+                            //self.unshownUsersDictionary.removeValue(forKey: rm.toId)
+                            //self.unshownUsersDictionary[rm.toId] = nil
+                            for (key, item) in self.unshownUsers.enumerated()  {
+                                if item.uid == rm.toId {
+                                    print("Remove: \(String(describing: item.name))")
+                                    self.unshownUsers.remove(at: key)
+                                }
+                            }
+                            print("Unshown Users: \(String(describing: self.unshownUsers))")
                             var body = ""
                             if rm.audioTimer == nil {
                                 body = rm.text ?? "Photo"
@@ -140,6 +148,7 @@ final class ContactsVM: ObservableObject {
                             let user = self.usersDictionary[rm.toId]
                             NotificationManager.shared.sendNotification(title: "iTalkWith", subtitle: user?.name, body: body, launchIn: 1, badge: badge)
                             print("RecentMessages User: \(String(describing: user?.name))")
+                          
                         }
                         
                         //self.unshownUsers = Array(self.unshownUsersDictionary.values.map { $0 })
