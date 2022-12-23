@@ -24,7 +24,7 @@ struct ChatAudioBar: View {
         verticalScalingFactor: 1,
         shouldAntialias: true
         )
-//    let audioURL: URL?
+    var samples: [Float] = []
     
     var body: some View {
         if audioIsRecording == true {
@@ -44,8 +44,31 @@ struct ChatAudioBar: View {
                     .padding(.bottom, 40)
                     .padding(.leading, 40)
                 Spacer()
-//                WaveformView(audioURL: message.audioLocalURL!, configuration: waveformConfiguration, priority: .background)
-//                WaveformLiveCanvas(samples: <#T##[Float]#>)
+                
+                WaveformLiveCanvas(samples: samples, configuration: waveformConfiguration)
+                                .padding(.vertical, 2)
+                
+                Text(String(self.timerManager.secondsElapsed).prefix(4))
+                    .dynamicTypeSize(.xxxLarge)
+                Spacer()
+                Button {
+                    self.audioIsRecording = false
+                    //AudioRecorder.shared.stopRecording()
+                    self.audioRecorder.stopRecording()
+                    vmChats.audioTimer = self.timerManager.stopTimer()
+                    if self.audioRecorder.getAudios() != nil {
+                        vmChats.handleSend(.audio)
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipped()
+                        .foregroundColor(.blue)
+                        .padding(.bottom, 40)
+                        .padding()
+                }
             }
         } else {
             Button {
@@ -53,8 +76,7 @@ struct ChatAudioBar: View {
                 self.audioIsRecording = true
                 self.timerManager.startTimer()
                 //AudioRecorder.shared.startRecording()
-                let _ = self.audioRecorder.startRecording()
-                //self.samples.append(audioURL)
+                self.audioRecorder.startRecording()
             } label: {
                 Image(systemName: "mic.circle.fill")
                     .resizable()

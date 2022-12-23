@@ -250,13 +250,8 @@
 		180946E7293741180061AA22 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				18BACF0D2937055D005EE142 /* ChatAudioBar.swift */,
-				18BACF0A2937055C005EE142 /* ChatTextBar.swift */,
 				18BACF082937055B005EE142 /* ChatView.swift */,
-				18BACF072937055B005EE142 /* ImageZoom.swift */,
-				18BACF092937055B005EE142 /* InputsButtons.swift */,
-				18BACF0B2937055C005EE142 /* MapView.swift */,
-				18BACF0C2937055C005EE142 /* PhotoView.swift */,
+				18A0FFBA295658F0004D2F79 /* Input */,
 				1852C2FD29383A690064D51D /* GridCell.swift */,
 			);
 			path = Chat;
@@ -398,6 +393,19 @@
 				1854DC10294C15BC0008B022 /* AppIcon-Green.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		18A0FFBA295658F0004D2F79 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				18BACF0D2937055D005EE142 /* ChatAudioBar.swift */,
+				18BACF0A2937055C005EE142 /* ChatTextBar.swift */,
+				18BACF072937055B005EE142 /* ImageZoom.swift */,
+				18BACF092937055B005EE142 /* InputsButtons.swift */,
+				18BACF0B2937055C005EE142 /* MapView.swift */,
+				18BACF0C2937055C005EE142 /* PhotoView.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
