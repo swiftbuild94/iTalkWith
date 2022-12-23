@@ -24,7 +24,7 @@ struct ChatAudioBar: View {
         verticalScalingFactor: 1,
         shouldAntialias: true
         )
-    let audioURL: URL?
+//    let audioURL: URL?
     
     var body: some View {
         if audioIsRecording == true {
@@ -45,7 +45,7 @@ struct ChatAudioBar: View {
                     .padding(.leading, 40)
                 Spacer()
 //                WaveformView(audioURL: message.audioLocalURL!, configuration: waveformConfiguration, priority: .background)
-                WaveformLiveCanvas(samples: <#T##[Float]#>)
+//                WaveformLiveCanvas(samples: <#T##[Float]#>)
             }
         } else {
             Button {
@@ -53,8 +53,8 @@ struct ChatAudioBar: View {
                 self.audioIsRecording = true
                 self.timerManager.startTimer()
                 //AudioRecorder.shared.startRecording()
-                self.audioURL = self.audioRecorder.startRecording()
-                self.samples.append(audioURL)
+                let _ = self.audioRecorder.startRecording()
+                //self.samples.append(audioURL)
             } label: {
                 Image(systemName: "mic.circle.fill")
                     .resizable()

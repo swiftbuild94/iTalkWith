@@ -313,8 +313,8 @@ struct ShowAudio: View {
     
     @State var waveformConfiguration: Waveform.Configuration = Waveform.Configuration(
         size: CGSize(width: 80, height: 280),
-        backgroundColor: .blue,
-        style: .filled(.white),
+        backgroundColor: .white,
+        style: .filled(.blue),
         dampening: .none,
         position: .middle,
         scale: 1,
