@@ -89,3 +89,11 @@ struct ChatAudioBar: View {
         }
     }
 }
+
+
+struct ChatAudioBar_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatAudioBar()
+//            .environmentObject(ChatsVM())
+    }
+}

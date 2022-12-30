@@ -128,9 +128,7 @@ final class ChatsVM: ObservableObject {
                     }
                 })
             }
-        DispatchQueue.main.async {
-            self.count += 1
-        }
+        self.count += 1
     }
     
     
@@ -342,12 +340,10 @@ final class ChatsVM: ObservableObject {
         default:
             msg = Chat(id: nil, fromId: uid, toId: toId, text: nil, photo: nil, audio: self.url?.absoluteString ?? "", audioTimer: nil, timestamp: Date())
         }
-        DispatchQueue.main.async {
-            self.saveToMessagesAndRecentMessages(msg)
-            self.chatText = ""
-            self.getMessages()
-            self.count += 1
-        }
+        self.saveToMessagesAndRecentMessages(msg)
+        self.chatText = ""
+        self.getMessages()
+        self.count += 1
 	}
 	
     /// Prepare the differents colections in Firestored where to save the messages

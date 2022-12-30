@@ -43,7 +43,7 @@ struct ContactCell: View {
 //							.font(.system(size: contactSize, weight: .bold))
                             .dynamicTypeSize(.large)
                         Spacer()
-                        Text(contact.email ?? "")
+                        Text(contact.phoneNumber ?? "")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
 					}

@@ -18,7 +18,7 @@ struct iTalkView: View {
    // @Binding var isShowChat: Bool
    // @ObservedObject private var vmChats = ChatsVM(chatUser: nil)
     
-    var columns = [
+    let columns = [
         GridItem(spacing: 0),
         GridItem(spacing: 0)
     ]
@@ -140,5 +140,8 @@ struct iTalk_Previews: PreviewProvider {
         iTalkView(userSelected: .constant(nil))
 //            .preferredColorScheme(.dark)
             .previewDevice("iPhone 14 Pro")
+            .environmentObject(LogInSignInVM())
+            .environmentObject(ContactsVM())
     }
+
 }

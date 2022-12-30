@@ -79,3 +79,10 @@ struct InputsButtons: View {
         .font(.system(size: buttonsSize))
     }
 }
+
+struct InputsButtons_Previews: PreviewProvider {
+    static var previews: some View {
+        InputsButtons()
+            .environmentObject(ChatsVM())
+    }
+}

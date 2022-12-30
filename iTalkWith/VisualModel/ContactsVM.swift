@@ -36,12 +36,8 @@ final class ContactsVM: ObservableObject {
     
     /// On Init get all users and all recent messages
     init() {
-        DispatchQueue.main.async() {
-            self.getAllUsers()
-        }
-        DispatchQueue.main.async {
-            self.getRecentMessagges()
-        }
+        self.getAllUsers()
+        self.getRecentMessagges()
     }
     
     deinit {
@@ -50,7 +46,9 @@ final class ContactsVM: ObservableObject {
 	
 	// MARK: - Get All Users
     func getAllUsers() {
-        self.fetchAllUsers()
+        DispatchQueue.main.async() {
+            self.fetchAllUsers()
+        }
 	}
 	
     /// Connects to Firestore and get all users
@@ -90,9 +88,9 @@ final class ContactsVM: ObservableObject {
 	
 	// MARK: - Get Recent Messages
 	func getRecentMessagges() {
-//		DispatchQueue.main.async {
+		DispatchQueue.main.async {
 			self.fetchRecentMessages()
-//		}
+		}
 	}
 	
     /// - Returns: all recent Messages and an array if usersWithOutReccentMessages

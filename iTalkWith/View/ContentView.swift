@@ -130,6 +130,7 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .preferredColorScheme(.dark)
+                .previewDevice("iPhone 14 Pro")
         }
     }
 }

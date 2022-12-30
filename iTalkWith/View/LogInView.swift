@@ -185,6 +185,8 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
     static var previews: some View {
-        LogInView(isUserLoggedOut: .constant(true), didCompleateLoginProcess: { })
+        ContentView()
+            .preferredColorScheme(.dark)
+            .previewDevice("iPhone 14 Pro")
     }
 }

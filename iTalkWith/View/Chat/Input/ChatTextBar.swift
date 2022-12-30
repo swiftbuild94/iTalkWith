@@ -70,3 +70,9 @@ struct ChatTextBar: View {
         .padding()
     }
 }
+
+struct ChatTextBar_Previews: PreviewProvider {
+    static var previews: some View {
+        ChatTextBar(vm: ChatsVM())
+    }
+}

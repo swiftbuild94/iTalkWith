@@ -37,3 +37,10 @@ struct PhotoView: View {
         }
     }
 }
+
+
+struct PhotoView_Previews: PreviewProvider {
+    static var previews: some View {
+        PhotoView(photo: "")
+    }
+}

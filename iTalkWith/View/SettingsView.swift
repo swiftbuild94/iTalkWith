@@ -10,14 +10,13 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var vmLogin: LogInSignInVM
+    @EnvironmentObject var vmIconNames: IconNames
+    //    @EnvironmentObject var vmChats: ChatsVM
+    
     @State var shouldShowLogOutOptions = true
     @State private var shouldShowImagePicker = false
     @State private var image: UIImage?
-    
-    @EnvironmentObject var vmChats: ChatsVM
-    @EnvironmentObject var vmLogin: LogInSignInVM
-    @EnvironmentObject var vmIconNames: IconNames
-    //@EnvironmentObject var iconSettings : IconNames
     @State var bubbleColor: BubbleColors = .blue
     
     let optionsSize: CGFloat = 16
@@ -136,5 +135,6 @@ struct UserInfo: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(LogInSignInVM())
     }
 }
