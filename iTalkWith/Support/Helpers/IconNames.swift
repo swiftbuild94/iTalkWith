@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class IconNames: ObservableObject {
+final class IconNames: ObservableObject {
     var iconNames: [String?] = []
     @Published var currentIndex = 0
     

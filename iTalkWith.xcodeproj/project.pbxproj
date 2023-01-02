@@ -49,6 +49,8 @@
 		18A603C12937319400C45CC9 /* FirebaseDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */; };
 		18AC0BC829415258001BECEC /* DSWaveformImage in Frameworks */ = {isa = PBXBuildFile; productRef = 18AC0BC729415258001BECEC /* DSWaveformImage */; };
 		18AC0BCA29415258001BECEC /* DSWaveformImageViews in Frameworks */ = {isa = PBXBuildFile; productRef = 18AC0BC929415258001BECEC /* DSWaveformImageViews */; };
+		18B02451296255FA00DDFFFC /* CamaraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B02450296255FA00DDFFFC /* CamaraManager.swift */; };
+		18B024532962611000DDFFFC /* CamaraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B024522962610F00DDFFFC /* CamaraView.swift */; };
 		18B84ABE293804B000508B67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18B84ABD293804AF00508B67 /* GoogleService-Info.plist */; };
 		18BACEB72936863A005EE142 /* iTalkWithApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEB62936863A005EE142 /* iTalkWithApp.swift */; };
 		18BACEB929368697005EE142 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BACEB829368697005EE142 /* Persistence.swift */; };
@@ -142,6 +144,8 @@
 		18A603BA2937318700C45CC9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18A603BB2937318F00C45CC9 /* FirebaseDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDocument.swift; sourceTree = "<group>"; };
 		18A603BC2937319300C45CC9 /* RecentMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessage.swift; sourceTree = "<group>"; };
+		18B02450296255FA00DDFFFC /* CamaraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamaraManager.swift; sourceTree = "<group>"; };
+		18B024522962610F00DDFFFC /* CamaraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamaraView.swift; sourceTree = "<group>"; };
 		18B84ABD293804AF00508B67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18BACEB62936863A005EE142 /* iTalkWithApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTalkWithApp.swift; sourceTree = "<group>"; };
 		18BACEB829368697005EE142 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -304,14 +308,15 @@
 			isa = PBXGroup;
 			children = (
 				18BACEB829368697005EE142 /* Persistence.swift */,
+				180946D029373F3C0061AA22 /* ImagePicker.swift */,
 				180946CD29373F3A0061AA22 /* AlertsManager.swift */,
 				180946CA29373F390061AA22 /* AudioPlayer.swift */,
 				180946CC29373F3A0061AA22 /* AudioRecorder.swift */,
-				180946D029373F3C0061AA22 /* ImagePicker.swift */,
 				180946CF29373F3B0061AA22 /* LocationManager.swift */,
 				180946CB29373F390061AA22 /* Notifications.swift */,
 				180946CE29373F3B0061AA22 /* TimerManager.swift */,
 				1854DC0B294BD5A80008B022 /* IconNames.swift */,
+				18B02450296255FA00DDFFFC /* CamaraManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				18BACF092937055B005EE142 /* InputsButtons.swift */,
 				18BACF0B2937055C005EE142 /* MapView.swift */,
 				18BACF0C2937055C005EE142 /* PhotoView.swift */,
+				18B024522962610F00DDFFFC /* CamaraView.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -610,6 +616,7 @@
 				18BACF102937055D005EE142 /* PhotoView.swift in Sources */,
 				18BACF132937055D005EE142 /* ChatTextBar.swift in Sources */,
 				18A0FFBF295659CF004D2F79 /* MessageView.swift in Sources */,
+				18B024532962611000DDFFFC /* CamaraView.swift in Sources */,
 				18A0FFC129565A19004D2F79 /* BubbleView.swift in Sources */,
 				180946E229373F720061AA22 /* BubbleColors.swift in Sources */,
 				1852C2FE29383A690064D51D /* GridCell.swift in Sources */,
@@ -629,6 +636,7 @@
 				18A603B62937315400C45CC9 /* LogInSignInVM.swift in Sources */,
 				18A603B1293730C800C45CC9 /* LogInView.swift in Sources */,
 				18BACF0429370552005EE142 /* iTalkView.swift in Sources */,
+				18B02451296255FA00DDFFFC /* CamaraManager.swift in Sources */,
 				180946D229373F3D0061AA22 /* AudioRecorder.swift in Sources */,
 				180946E029373F720061AA22 /* Array+Extension.swift in Sources */,
 				18BACF1C2937056F005EE142 /* HistoryCell.swift in Sources */,
