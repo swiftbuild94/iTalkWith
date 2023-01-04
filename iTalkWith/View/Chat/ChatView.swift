@@ -107,6 +107,19 @@ struct ChatView: View {
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
         })
+        .sheet(isPresented: $vmChats.shouldShowCamara, onDismiss: {
+            if vmChats.location != nil {
+                vmChats.handleSend(.location)
+                vmChats.count += 1
+                vmChats.getMessages()
+            }
+        }, content: {
+            VStack {
+                CamaraView()
+            }
+            .presentationDetents([.large, .medium])
+            .presentationDragIndicator(.visible)
+        })
         .environmentObject(vmChats)
     }
 }
