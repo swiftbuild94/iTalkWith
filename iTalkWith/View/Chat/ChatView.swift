@@ -89,7 +89,7 @@ struct ChatView: View {
             }
         }) {
             VStack {
-                ImagePicker(selectedImage: $vmChats.image, didSet: $shouldShowImagePicker)
+				ImagePicker(selectedImage: $vmChats.image, didSet: $shouldShowImagePicker, sourceType: .photoLibrary)
             }
             .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
@@ -114,10 +114,10 @@ struct ChatView: View {
                 vmChats.getMessages()
             }
         }, content: {
-            VStack {
-                CamaraView()
-            }
-            .presentationDetents([.large, .medium])
+			VStack {
+				ImagePicker(selectedImage: $vmChats.image, didSet: $shouldShowImagePicker, sourceType: .camera)
+			}
+			.presentationDetents([.large, .medium])
             .presentationDragIndicator(.visible)
         })
         .environmentObject(vmChats)
